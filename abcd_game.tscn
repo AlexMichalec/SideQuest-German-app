@@ -1,0 +1,181 @@
+[gd_scene load_steps=3 format=3 uid="uid://clrbqcpm846bw"]
+
+[ext_resource type="Script" path="res://ABCDGame.gd" id="1_kn337"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_msc8y"]
+font_size = 24
+
+[node name="ABCDGame" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+alignment = 1
+script = ExtResource("1_kn337")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Basic Game"
+horizontal_alignment = 1
+
+[node name="Control2" type="Control" parent="."]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="ScoreLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0/10"
+label_settings = SubResource("LabelSettings_msc8y")
+horizontal_alignment = 1
+
+[node name="QuestionLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "German Word"
+horizontal_alignment = 1
+
+[node name="ScrollModifyContainer" type="ScrollContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ModifyWordsContainr" type="VBoxContainer" parent="VBoxContainer/ScrollModifyContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="EditWord" type="MarginContainer" parent="VBoxContainer/ScrollModifyContainer/ModifyWordsContainr"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollModifyContainer/ModifyWordsContainr/EditWord"]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="Index" type="Label" parent="VBoxContainer/ScrollModifyContainer/ModifyWordsContainr/EditWord/HBoxContainer"]
+layout_mode = 2
+text = "001"
+
+[node name="DE" type="Label" parent="VBoxContainer/ScrollModifyContainer/ModifyWordsContainr/EditWord/HBoxContainer"]
+layout_mode = 2
+text = " - DE:"
+
+[node name="German" type="TextEdit" parent="VBoxContainer/ScrollModifyContainer/ModifyWordsContainr/EditWord/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/ScrollModifyContainer/ModifyWordsContainr/EditWord/HBoxContainer"]
+layout_mode = 2
+text = "ENG:"
+
+[node name="English" type="TextEdit" parent="VBoxContainer/ScrollModifyContainer/ModifyWordsContainr/EditWord/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "
+"
+
+[node name="Label2" type="Label" parent="VBoxContainer/ScrollModifyContainer/ModifyWordsContainr/EditWord/HBoxContainer"]
+layout_mode = 2
+text = "Weight:"
+
+[node name="Waga" type="TextEdit" parent="VBoxContainer/ScrollModifyContainer/ModifyWordsContainr/EditWord/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+text = "
+"
+
+[node name="Sentence" type="CheckButton" parent="VBoxContainer/ScrollModifyContainer/ModifyWordsContainr/EditWord/HBoxContainer"]
+layout_mode = 2
+text = "Satz"
+
+[node name="Control" type="Control" parent="."]
+visible = false
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Control2" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Answer1" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_font_sizes/font_size = 24
+text = "1. Answer"
+
+[node name="Answer2" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_font_sizes/font_size = 24
+text = "2. Answer"
+
+[node name="Control" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Control3" type="Control" parent="HBoxContainer2"]
+layout_mode = 2
+
+[node name="Answer3" type="Button" parent="HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_font_sizes/font_size = 24
+text = "3. Answer"
+
+[node name="Answer4" type="Button" parent="HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_font_sizes/font_size = 24
+text = "4. Answer"
+
+[node name="Control2" type="Control" parent="HBoxContainer2"]
+layout_mode = 2
+
+[connection signal="pressed" from="HBoxContainer/Answer1" to="." method="_on_answer_1_pressed"]
+[connection signal="pressed" from="HBoxContainer/Answer2" to="." method="_on_answer_2_pressed"]
+[connection signal="pressed" from="HBoxContainer2/Answer3" to="." method="_on_answer_3_pressed"]
+[connection signal="pressed" from="HBoxContainer2/Answer4" to="." method="_on_answer_4_pressed"]

@@ -1,0 +1,112 @@
+[gd_scene load_steps=14 format=3 uid="uid://c0ibistihw7hb"]
+
+[ext_resource type="Texture2D" uid="uid://c2qke7stoi4jv" path="res://GraphicAssets/Plate.png" id="1_4s8yu"]
+[ext_resource type="Shader" path="res://Coloring.gdshader" id="2_jc63o"]
+[ext_resource type="Script" path="res://plate.gd" id="2_o166s"]
+
+[sub_resource type="Shader" id="Shader_2o0gt"]
+code = "shader_type canvas_item;
+uniform vec4 given_color :source_color;
+void fragment() {
+	vec4 color = texture(TEXTURE, UV);
+	COLOR = given_color * color;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j2iko"]
+resource_local_to_scene = true
+shader = SubResource("Shader_2o0gt")
+shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gub61"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eyhne"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tbx1m"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xj4gu"]
+resource_local_to_scene = true
+shader = ExtResource("2_jc63o")
+shader_parameter/given_color = Color(0.729412, 0.729412, 0.729412, 1)
+
+[sub_resource type="Animation" id="Animation_xka1i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_2hqn2"]
+resource_name = "scale_down"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3, 3), Vector2(2, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_q8sm3"]
+resource_name = "scale_up"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(3, 3)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_52ggc"]
+_data = {
+"RESET": SubResource("Animation_xka1i"),
+"scale_down": SubResource("Animation_2hqn2"),
+"scale_up": SubResource("Animation_q8sm3")
+}
+
+[node name="Plate" type="Button"]
+material = SubResource("ShaderMaterial_j2iko")
+offset_right = 48.0
+offset_bottom = 48.0
+scale = Vector2(2, 2)
+pivot_offset = Vector2(24, 24)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxEmpty_gub61")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_eyhne")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_tbx1m")
+script = ExtResource("2_o166s")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_xj4gu")
+position = Vector2(24, 24)
+texture = ExtResource("1_4s8yu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_52ggc")
+}
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

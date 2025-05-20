@@ -1,0 +1,170 @@
+extends Control
+signal closed
+var BIG_SET : Array
+var day_of_learning : int
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	BIG_SET = load_array()
+	#for b in BIG_SET:
+	#	print(b[4]*0.8)
+	#update_day_now()
+	update_weights()
+
+func update_weights():
+	var today = round(Time.get_unix_time_from_system()/(60*60*24))
+	if FileAccess.file_exists("user://GermanDate.save"):
+		var last_day_file = FileAccess.open("user://GermanDate.save", FileAccess.READ)
+		var last_day = last_day_file.get_32()
+		last_day_file.close()
+		var days_between = (today - last_day)
+		var ratio = 1
+		for d in range(days_between):
+			ratio = ratio * 0.9
+		ratio = round(ratio*100)/100
+		print("Ratio")
+		print(ratio)
+		if ratio != 1:
+			for b in BIG_SET:
+				b[4] *= ratio
+	var save_file = FileAccess.open("user://GermanDate.save", FileAccess.WRITE)
+	save_file.store_32(today)
+	save_file.close()
+
+	
+	
+func update_day_now():
+	day_of_learning = round(Time.get_unix_time_from_system()/(60*60*24))
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+
+func _on_back_pressed():
+	%MainMenu.visible = true 
+	%GamesMenu.visible = false
+	%EditingMenu.visible = false
+
+
+func _on_quit_pressed():
+	closed.emit()
+	if get_tree().current_scene == self:
+		get_tree().quit()
+
+
+func _on_learn_pressed():
+	%MainMenu.visible = false
+	%GamesMenu.visible = true
+
+
+func _on_improve_pressed():
+	%MainMenu.visible = false
+	%EditingMenu.visible = true
+	
+	
+func save_array():
+	var file = FileAccess.open("user://FiszkiGerman.json", FileAccess.WRITE)
+	var json_string = JSON.stringify(BIG_SET)  # Convert array to JSON
+	file.store_string(json_string)  # Save to file
+	file.close()
+	
+func load_array():
+	if not FileAccess.file_exists("user://FiszkiGerman.json"):
+		print("File not found!")
+		return []
+	
+	var file = FileAccess.open("user://FiszkiGerman.json", FileAccess.READ)
+	var json_string = file.get_as_text()  # Read the file content
+	file.close()
+	
+	var json = JSON.parse_string(json_string)  # Convert JSON back to array
+	return json if json is Array else []
+
+
+
+func _on_abcd_game_closed():
+	%Menus.visible = true
+	%MainMenu.visible = true
+	%GamesMenu.visible = false
+	%ABCDGame.visible = false
+	
+
+
+func _on_abcd_button_pressed():
+	%Menus.visible = false
+	%MainMenu.visible = true
+	%GamesMenu.visible = false
+	%ABCDGame.visible = true
+	%ABCDGame.training_on_new_words = false
+	%ABCDGame.BIG_SET = BIG_SET
+	%ABCDGame.start()
+
+
+func _on_edit_all_button_pressed():
+	%Menus.visible = false
+	%MainMenu.visible = true
+	%EditingMenu.visible = false
+	%EditAll.visible = true
+	%EditAll.BIG_SET = BIG_SET
+	%EditAll.start()
+
+
+func _on_edit_all_closed():
+	%Menus.visible = true
+	%EditAll.visible = false
+	BIG_SET = %EditAll.BIG_SET
+	for i in range(BIG_SET.size()):
+		print(i, " ", BIG_SET[i])
+	
+	
+
+
+func _on_new_words_pressed():
+	%Menus.visible = false
+	%Generator.visible = true
+	%Generator.BIG_SET = BIG_SET
+	%Generator.new_words = []
+
+
+func _on_generator_closed():
+	%Menus.visible = true
+	%Generator.visible = false
+
+
+func _on_generator_test_words():
+	%Generator.visible = false
+	%ABCDGame.TEST_SET = %Generator.new_words
+	%ABCDGame.training_on_new_words = true
+	%ABCDGame.visible = true
+	%ABCDGame.start()
+	
+
+
+func _on_spelling_button_pressed():
+	%Menus.visible = false
+	%MainMenu.visible = true
+	%GamesMenu.visible = false
+	%SpellingGame.visible = true
+	%SpellingGame.BIG_SET = BIG_SET
+	%SpellingGame.start()
+
+
+func _on_spelling_game_closed():
+	%Menus.visible = true
+	%SpellingGame.visible = false
+
+
+
+func _on_crossword_button_pressed():
+	%Menus.visible = false
+	%MainMenu.visible = true
+	%GamesMenu.visible = false
+	%Crossword.visible = true
+	%Crossword.start()
+
+
+func _on_crossword_closed():
+	%Crossword.visible = false
+	%Menus.visible = true

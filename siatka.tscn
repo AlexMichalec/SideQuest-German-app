@@ -1,0 +1,436 @@
+[gd_scene load_steps=34 format=3 uid="uid://drev7wkt7u7kf"]
+
+[ext_resource type="Script" path="res://SiatkaPoziom.gd" id="1_fgmnd"]
+[ext_resource type="PackedScene" uid="uid://c0ibistihw7hb" path="res://plate.tscn" id="1_qcv2u"]
+
+[sub_resource type="Shader" id="Shader_2o0gt"]
+code = "shader_type canvas_item;
+uniform vec4 given_color :source_color;
+void fragment() {
+	vec4 color = texture(TEXTURE, UV);
+	COLOR = given_color * color;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lmxp0"]
+resource_local_to_scene = true
+shader = SubResource("Shader_2o0gt")
+shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mp2pd"]
+resource_local_to_scene = true
+shader = SubResource("Shader_2o0gt")
+shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_22ebi"]
+resource_local_to_scene = true
+shader = SubResource("Shader_2o0gt")
+shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x7ucg"]
+resource_local_to_scene = true
+shader = SubResource("Shader_2o0gt")
+shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ymv2j"]
+resource_local_to_scene = true
+shader = SubResource("Shader_2o0gt")
+shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wrw83"]
+resource_local_to_scene = true
+shader = SubResource("Shader_2o0gt")
+shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lp34t"]
+resource_local_to_scene = true
+shader = SubResource("Shader_2o0gt")
+shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hkc1g"]
+resource_local_to_scene = true
+shader = SubResource("Shader_2o0gt")
+shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t0vjp"]
+resource_local_to_scene = true
+shader = SubResource("Shader_2o0gt")
+shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ofhkp"]
+resource_local_to_scene = true
+shader = SubResource("Shader_2o0gt")
+shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5rv8s"]
+resource_local_to_scene = true
+shader = SubResource("Shader_2o0gt")
+shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_onvjj"]
+resource_local_to_scene = true
+shader = SubResource("Shader_2o0gt")
+shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bq6df"]
+resource_local_to_scene = true
+shader = SubResource("Shader_2o0gt")
+shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u5cdl"]
+resource_local_to_scene = true
+shader = SubResource("Shader_2o0gt")
+shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nio3y"]
+resource_local_to_scene = true
+shader = SubResource("Shader_2o0gt")
+shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r44os"]
+resource_local_to_scene = true
+shader = SubResource("Shader_2o0gt")
+shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t1f4y"]
+resource_local_to_scene = true
+shader = SubResource("Shader_2o0gt")
+shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_au3il"]
+resource_local_to_scene = true
+shader = SubResource("Shader_2o0gt")
+shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gffv3"]
+resource_local_to_scene = true
+shader = SubResource("Shader_2o0gt")
+shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k20qb"]
+resource_local_to_scene = true
+shader = SubResource("Shader_2o0gt")
+shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oragq"]
+resource_local_to_scene = true
+shader = SubResource("Shader_2o0gt")
+shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mklq4"]
+resource_local_to_scene = true
+shader = SubResource("Shader_2o0gt")
+shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nfsp7"]
+resource_local_to_scene = true
+shader = SubResource("Shader_2o0gt")
+shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_os7i5"]
+resource_local_to_scene = true
+shader = SubResource("Shader_2o0gt")
+shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q3h6v"]
+resource_local_to_scene = true
+shader = SubResource("Shader_2o0gt")
+shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_086cv"]
+resource_local_to_scene = true
+shader = SubResource("Shader_2o0gt")
+shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tyfg4"]
+resource_local_to_scene = true
+shader = SubResource("Shader_2o0gt")
+shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b87ab"]
+resource_local_to_scene = true
+shader = SubResource("Shader_2o0gt")
+shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tc6ea"]
+resource_local_to_scene = true
+shader = SubResource("Shader_2o0gt")
+shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wn514"]
+resource_local_to_scene = true
+shader = SubResource("Shader_2o0gt")
+shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
+
+[node name="Siatka" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+script = ExtResource("1_fgmnd")
+
+[node name="Plate" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_qcv2u")]
+material = SubResource("ShaderMaterial_lmxp0")
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 5
+tint = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="Plate2" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_qcv2u")]
+material = SubResource("ShaderMaterial_mp2pd")
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 5
+tint = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="Plate3" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_qcv2u")]
+material = SubResource("ShaderMaterial_22ebi")
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 5
+tint = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="Plate4" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_qcv2u")]
+material = SubResource("ShaderMaterial_x7ucg")
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 5
+tint = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="Plate5" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("1_qcv2u")]
+material = SubResource("ShaderMaterial_ymv2j")
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 5
+tint = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+script = ExtResource("1_fgmnd")
+
+[node name="Plate" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("1_qcv2u")]
+material = SubResource("ShaderMaterial_wrw83")
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 5
+tint = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="Plate2" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("1_qcv2u")]
+material = SubResource("ShaderMaterial_lp34t")
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 5
+tint = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="Plate3" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("1_qcv2u")]
+material = SubResource("ShaderMaterial_hkc1g")
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 5
+tint = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="Plate4" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("1_qcv2u")]
+material = SubResource("ShaderMaterial_t0vjp")
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 5
+tint = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="Plate5" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("1_qcv2u")]
+material = SubResource("ShaderMaterial_ofhkp")
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 5
+tint = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+script = ExtResource("1_fgmnd")
+
+[node name="Plate" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3" instance=ExtResource("1_qcv2u")]
+material = SubResource("ShaderMaterial_5rv8s")
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 5
+tint = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="Plate2" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3" instance=ExtResource("1_qcv2u")]
+material = SubResource("ShaderMaterial_onvjj")
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 5
+tint = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="Plate3" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3" instance=ExtResource("1_qcv2u")]
+material = SubResource("ShaderMaterial_bq6df")
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 5
+tint = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="Plate4" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3" instance=ExtResource("1_qcv2u")]
+material = SubResource("ShaderMaterial_u5cdl")
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 5
+tint = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="Plate5" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3" instance=ExtResource("1_qcv2u")]
+material = SubResource("ShaderMaterial_nio3y")
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 5
+tint = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+script = ExtResource("1_fgmnd")
+
+[node name="Plate" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4" instance=ExtResource("1_qcv2u")]
+material = SubResource("ShaderMaterial_r44os")
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 5
+tint = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="Plate2" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4" instance=ExtResource("1_qcv2u")]
+material = SubResource("ShaderMaterial_t1f4y")
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 5
+tint = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="Plate3" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4" instance=ExtResource("1_qcv2u")]
+material = SubResource("ShaderMaterial_au3il")
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 5
+tint = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="Plate4" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4" instance=ExtResource("1_qcv2u")]
+material = SubResource("ShaderMaterial_gffv3")
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 5
+tint = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="Plate5" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4" instance=ExtResource("1_qcv2u")]
+material = SubResource("ShaderMaterial_k20qb")
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 5
+tint = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+script = ExtResource("1_fgmnd")
+
+[node name="Plate" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5" instance=ExtResource("1_qcv2u")]
+material = SubResource("ShaderMaterial_oragq")
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 5
+tint = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="Plate2" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5" instance=ExtResource("1_qcv2u")]
+material = SubResource("ShaderMaterial_mklq4")
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 5
+tint = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="Plate3" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5" instance=ExtResource("1_qcv2u")]
+material = SubResource("ShaderMaterial_nfsp7")
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 5
+tint = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="Plate4" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5" instance=ExtResource("1_qcv2u")]
+material = SubResource("ShaderMaterial_os7i5")
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 5
+tint = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="Plate5" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer5" instance=ExtResource("1_qcv2u")]
+material = SubResource("ShaderMaterial_q3h6v")
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 5
+tint = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+script = ExtResource("1_fgmnd")
+
+[node name="Plate" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer6" instance=ExtResource("1_qcv2u")]
+material = SubResource("ShaderMaterial_086cv")
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 5
+tint = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="Plate2" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer6" instance=ExtResource("1_qcv2u")]
+material = SubResource("ShaderMaterial_tyfg4")
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 5
+tint = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="Plate3" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer6" instance=ExtResource("1_qcv2u")]
+material = SubResource("ShaderMaterial_b87ab")
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 5
+tint = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="Plate4" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer6" instance=ExtResource("1_qcv2u")]
+material = SubResource("ShaderMaterial_tc6ea")
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 5
+tint = Color(0.45098, 0.45098, 0.45098, 1)
+
+[node name="Plate5" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer6" instance=ExtResource("1_qcv2u")]
+material = SubResource("ShaderMaterial_wn514")
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 5
+tint = Color(0.45098, 0.45098, 0.45098, 1)

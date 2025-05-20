@@ -1,0 +1,279 @@
+[gd_scene load_steps=12 format=3 uid="uid://67im38sis6n6"]
+
+[ext_resource type="Script" path="res://german_menu.gd" id="1_efs7r"]
+[ext_resource type="PackedScene" uid="uid://clrbqcpm846bw" path="res://abcd_game.tscn" id="2_orjqv"]
+[ext_resource type="PackedScene" uid="uid://cmx8vfjl7gvvw" path="res://german.tscn" id="3_oiy0r"]
+[ext_resource type="PackedScene" uid="uid://c76ek4haptlih" path="res://edit_all.tscn" id="4_pt8fh"]
+[ext_resource type="PackedScene" uid="uid://dfgpugq072h13" path="res://SpellingGame.tscn" id="5_faymh"]
+[ext_resource type="PackedScene" uid="uid://c0ibistihw7hb" path="res://plate.tscn" id="5_qqbec"]
+[ext_resource type="PackedScene" uid="uid://dgbc5buanapff" path="res://Crossword.tscn" id="6_nraox"]
+
+[sub_resource type="Shader" id="Shader_2o0gt"]
+code = "shader_type canvas_item;
+uniform vec4 given_color :source_color;
+void fragment() {
+	vec4 color = texture(TEXTURE, UV);
+	COLOR = given_color * color;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ren15"]
+resource_local_to_scene = true
+shader = SubResource("Shader_2o0gt")
+shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i0cae"]
+resource_local_to_scene = true
+shader = SubResource("Shader_2o0gt")
+shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yp4r4"]
+resource_local_to_scene = true
+shader = SubResource("Shader_2o0gt")
+shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
+
+[node name="GermanMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_efs7r")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Menus" type="MarginContainer" parent="Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -314.0
+offset_top = -240.0
+offset_right = 314.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainMenu" type="VBoxContainer" parent="Panel/Menus"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="NewWords" type="Button" parent="Panel/Menus/MainMenu"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+text = "Nowe Słownictwo"
+
+[node name="Learn" type="Button" parent="Panel/Menus/MainMenu"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+text = "Ucz się!"
+
+[node name="Improve" type="Button" parent="Panel/Menus/MainMenu"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+text = "Popraw Bazę"
+
+[node name="Quit" type="Button" parent="Panel/Menus/MainMenu"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+text = "Wyjdź"
+
+[node name="GamesMenu" type="VBoxContainer" parent="Panel/Menus"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="ABCD_Button" type="Button" parent="Panel/Menus/GamesMenu"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+text = "ABCD"
+
+[node name="SpellingButton" type="Button" parent="Panel/Menus/GamesMenu"]
+layout_mode = 2
+size_flags_vertical = 3
+tooltip_text = "Not ready yet"
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+text = "Ćwicz pisownię!"
+
+[node name="CrosswordButton" type="Button" parent="Panel/Menus/GamesMenu"]
+layout_mode = 2
+size_flags_vertical = 3
+tooltip_text = "Not ready yet"
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+text = "Czas na Krzyżówkę!"
+
+[node name="Button4" type="Button" parent="Panel/Menus/GamesMenu"]
+layout_mode = 2
+size_flags_vertical = 3
+tooltip_text = "Not ready yet"
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+disabled = true
+text = "Genders"
+
+[node name="Back" type="Button" parent="Panel/Menus/GamesMenu"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+theme_override_font_sizes/font_size = 20
+text = "Wróc do menu głównego"
+
+[node name="EditingMenu" type="VBoxContainer" parent="Panel/Menus"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="EditAllButton" type="Button" parent="Panel/Menus/EditingMenu"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+text = "Cała baza"
+
+[node name="Button2" type="Button" parent="Panel/Menus/EditingMenu"]
+layout_mode = 2
+size_flags_vertical = 3
+tooltip_text = "Not ready yet"
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+disabled = true
+text = "Add Genders"
+
+[node name="Button3" type="Button" parent="Panel/Menus/EditingMenu"]
+layout_mode = 2
+size_flags_vertical = 3
+tooltip_text = "Not ready yet"
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+disabled = true
+text = "Cut Sentences"
+
+[node name="Button4" type="Button" parent="Panel/Menus/EditingMenu"]
+layout_mode = 2
+size_flags_vertical = 3
+tooltip_text = "Not ready yet"
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+disabled = true
+text = "????"
+
+[node name="Back" type="Button" parent="Panel/Menus/EditingMenu"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+theme_override_font_sizes/font_size = 20
+text = "Wróc do menu głównego"
+
+[node name="ABCDGame" parent="Panel" instance=ExtResource("2_orjqv")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -425.5
+offset_top = -276.5
+offset_right = 425.5
+offset_bottom = 276.5
+
+[node name="Generator" parent="Panel" instance=ExtResource("3_oiy0r")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="EditAll" parent="Panel" instance=ExtResource("4_pt8fh")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="SpellingGame" parent="Panel" instance=ExtResource("5_faymh")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="Crossword" parent="Panel" instance=ExtResource("6_nraox")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+anchors_preset = 0
+
+[node name="Plate" parent="." instance=ExtResource("5_qqbec")]
+visible = false
+material = SubResource("ShaderMaterial_ren15")
+layout_mode = 0
+offset_left = 60.0
+offset_top = 50.0
+offset_right = 108.0
+offset_bottom = 98.0
+tint = Color(0.137255, 0.137255, 0.141176, 1)
+
+[node name="Plate2" parent="." instance=ExtResource("5_qqbec")]
+visible = false
+material = SubResource("ShaderMaterial_i0cae")
+layout_mode = 0
+offset_left = 60.0
+offset_top = 120.0
+offset_right = 108.0
+offset_bottom = 168.0
+tint = Color(0.796078, 0.113725, 0, 1)
+
+[node name="Plate3" parent="." instance=ExtResource("5_qqbec")]
+visible = false
+material = SubResource("ShaderMaterial_yp4r4")
+layout_mode = 0
+offset_left = 60.0
+offset_top = 190.0
+offset_right = 108.0
+offset_bottom = 238.0
+tint = Color(0.745098, 0.568627, 0, 1)
+
+[connection signal="pressed" from="Panel/Menus/MainMenu/NewWords" to="." method="_on_new_words_pressed"]
+[connection signal="pressed" from="Panel/Menus/MainMenu/Learn" to="." method="_on_learn_pressed"]
+[connection signal="pressed" from="Panel/Menus/MainMenu/Improve" to="." method="_on_improve_pressed"]
+[connection signal="pressed" from="Panel/Menus/MainMenu/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Panel/Menus/GamesMenu/ABCD_Button" to="." method="_on_abcd_button_pressed"]
+[connection signal="pressed" from="Panel/Menus/GamesMenu/SpellingButton" to="." method="_on_spelling_button_pressed"]
+[connection signal="pressed" from="Panel/Menus/GamesMenu/CrosswordButton" to="." method="_on_crossword_button_pressed"]
+[connection signal="pressed" from="Panel/Menus/GamesMenu/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Panel/Menus/EditingMenu/EditAllButton" to="." method="_on_edit_all_button_pressed"]
+[connection signal="pressed" from="Panel/Menus/EditingMenu/Back" to="." method="_on_back_pressed"]
+[connection signal="closed" from="Panel/ABCDGame" to="." method="_on_abcd_game_closed"]
+[connection signal="closed" from="Panel/Generator" to="." method="_on_generator_closed"]
+[connection signal="test_words" from="Panel/Generator" to="." method="_on_generator_test_words"]
+[connection signal="closed" from="Panel/EditAll" to="." method="_on_edit_all_closed"]
+[connection signal="closed" from="Panel/SpellingGame" to="." method="_on_spelling_game_closed"]
+[connection signal="closed" from="Panel/Crossword" to="." method="_on_crossword_closed"]

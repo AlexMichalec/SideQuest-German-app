@@ -1,0 +1,220 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmx8vfjl7gvvw"]
+
+[ext_resource type="Script" path="res://german.gd" id="1_iupop"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fv1e6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_f2458"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_jpktt"]
+
+[node name="Generator" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iupop")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -461.0
+offset_top = -264.0
+offset_right = 461.0
+offset_bottom = 264.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_fv1e6")
+
+[node name="Container" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Container"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="Panel/Container/VBoxContainer"]
+layout_mode = 2
+text = "Generator"
+label_settings = SubResource("LabelSettings_f2458")
+horizontal_alignment = 1
+
+[node name="InputContainer" type="VBoxContainer" parent="Panel/Container/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/Container/VBoxContainer/InputContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/Container/VBoxContainer/InputContainer/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="LinesCounterLeft" type="Label" parent="Panel/Container/VBoxContainer/InputContainer/MarginContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+label_settings = SubResource("LabelSettings_jpktt")
+
+[node name="Control" type="Control" parent="Panel/Container/VBoxContainer/InputContainer/MarginContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LinesCounterRight" type="Label" parent="Panel/Container/VBoxContainer/InputContainer/MarginContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+label_settings = SubResource("LabelSettings_jpktt")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/Container/VBoxContainer/InputContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="TextLeft" type="TextEdit" parent="Panel/Container/VBoxContainer/InputContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "German"
+
+[node name="TextRight" type="TextEdit" parent="Panel/Container/VBoxContainer/InputContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "English"
+
+[node name="ScrollModifyContainer" type="ScrollContainer" parent="Panel/Container/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ModifyContainer" type="VBoxContainer" parent="Panel/Container/VBoxContainer/ScrollModifyContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="NewWord" type="MarginContainer" parent="Panel/Container/VBoxContainer/ScrollModifyContainer/ModifyContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/Container/VBoxContainer/ScrollModifyContainer/ModifyContainer/NewWord"]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="DE" type="Label" parent="Panel/Container/VBoxContainer/ScrollModifyContainer/ModifyContainer/NewWord/HBoxContainer"]
+layout_mode = 2
+text = "DE:"
+
+[node name="German" type="TextEdit" parent="Panel/Container/VBoxContainer/ScrollModifyContainer/ModifyContainer/NewWord/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Panel/Container/VBoxContainer/ScrollModifyContainer/ModifyContainer/NewWord/HBoxContainer"]
+layout_mode = 2
+text = "ENG:"
+
+[node name="English" type="TextEdit" parent="Panel/Container/VBoxContainer/ScrollModifyContainer/ModifyContainer/NewWord/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "
+"
+
+[node name="Sentence" type="CheckButton" parent="Panel/Container/VBoxContainer/ScrollModifyContainer/ModifyContainer/NewWord/HBoxContainer"]
+layout_mode = 2
+text = "Satz"
+
+[node name="Important" type="CheckButton" parent="Panel/Container/VBoxContainer/ScrollModifyContainer/ModifyContainer/NewWord/HBoxContainer"]
+layout_mode = 2
+text = "Wichtig"
+
+[node name="Skip" type="CheckButton" parent="Panel/Container/VBoxContainer/ScrollModifyContainer/ModifyContainer/NewWord/HBoxContainer"]
+layout_mode = 2
+text = "Skip"
+
+[node name="WhatNext" type="VBoxContainer" parent="Panel/Container/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="Panel/Container/VBoxContainer/WhatNext"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 44
+text = "Do you want to test new words?"
+horizontal_alignment = 1
+
+[node name="Yes" type="Button" parent="Panel/Container/VBoxContainer/WhatNext"]
+custom_minimum_size = Vector2(450, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 24
+text = "Yes, sure"
+
+[node name="NoAddMore" type="Button" parent="Panel/Container/VBoxContainer/WhatNext"]
+custom_minimum_size = Vector2(450, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 24
+text = "No, I want to add more"
+
+[node name="NoBack" type="Button" parent="Panel/Container/VBoxContainer/WhatNext"]
+custom_minimum_size = Vector2(450, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 24
+text = "No, take me back to Main Menu"
+
+[node name="Forward" type="Button" parent="Panel/Container/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "Glue them up!"
+
+[node name="Finish" type="Button" parent="Panel/Container/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+text = "Add to the set!"
+
+[connection signal="text_changed" from="Panel/Container/VBoxContainer/InputContainer/HBoxContainer/TextLeft" to="." method="_on_text_left_text_changed"]
+[connection signal="text_changed" from="Panel/Container/VBoxContainer/InputContainer/HBoxContainer/TextRight" to="." method="_on_text_right_text_changed"]
+[connection signal="pressed" from="Panel/Container/VBoxContainer/WhatNext/Yes" to="." method="_on_yes_pressed"]
+[connection signal="pressed" from="Panel/Container/VBoxContainer/WhatNext/NoAddMore" to="." method="_on_no_add_more_pressed"]
+[connection signal="pressed" from="Panel/Container/VBoxContainer/WhatNext/NoBack" to="." method="_on_no_back_pressed"]
+[connection signal="pressed" from="Panel/Container/VBoxContainer/Forward" to="." method="_on_forward_pressed"]
+[connection signal="pressed" from="Panel/Container/VBoxContainer/Finish" to="." method="_on_finish_pressed"]

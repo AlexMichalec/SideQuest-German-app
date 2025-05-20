@@ -1,0 +1,120 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlvl6kdhvx0ai"]
+
+[ext_resource type="Script" path="res://crossword_button.gd" id="1_6fbsh"]
+[ext_resource type="PackedScene" uid="uid://42oxmd28tyes" path="res://german_text_input.tscn" id="1_imltw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i2t5s"]
+
+[node name="CrosswordButton" type="Control"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_6fbsh")
+square_type = "white"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HorizontalNumber" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -21.0
+offset_top = 3.0
+offset_right = -1.0
+offset_bottom = 29.0
+theme_override_colors/font_color = Color(1, 0.45098, 0.380392, 1)
+theme_override_font_sizes/font_size = 16
+text = "10"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="HorizontalScoreNumber" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 28.0
+offset_top = 3.0
+offset_right = 57.0
+offset_bottom = 29.0
+theme_override_colors/font_color = Color(0, 0.788235, 0.47451, 1)
+theme_override_font_sizes/font_size = 12
+text = "+10p"
+vertical_alignment = 1
+
+[node name="VerticalNumber" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 4.0
+offset_top = -22.0
+offset_right = 24.0
+offset_bottom = 4.0
+theme_override_colors/font_color = Color(0.486275, 0.654902, 1, 1)
+theme_override_font_sizes/font_size = 16
+text = "13"
+horizontal_alignment = 1
+
+[node name="VerticalScoreNumber" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -5.0
+offset_top = 27.0
+offset_right = 33.0
+offset_bottom = 53.0
+theme_override_colors/font_color = Color(0, 0.788235, 0.47451, 1)
+theme_override_font_sizes/font_size = 12
+text = "+10p"
+horizontal_alignment = 1
+
+[node name="SolutionNumber" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 3.0
+offset_top = 8.0
+offset_right = 27.0
+offset_bottom = 34.0
+theme_override_colors/font_color = Color(1, 0.921569, 0.8, 1)
+theme_override_font_sizes/font_size = 16
+text = "14
+"
+horizontal_alignment = 2
+
+[node name="Input" parent="." instance=ExtResource("1_imltw")]
+unique_name_in_owner = true
+layout_mode = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/caret_color = Color(0, 0, 0, 1)
+theme_override_constants/minimum_character_width = 1
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxEmpty_i2t5s")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_i2t5s")
+alignment = 1
+context_menu_enabled = false
+z_to_y = false
+ae_to_umlaut = false
+
+[connection signal="focus_entered" from="Input" to="." method="_on_input_focus_entered"]
+[connection signal="text_changed" from="Input" to="." method="_on_input_text_changed"]

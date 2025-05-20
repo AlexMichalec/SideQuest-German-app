@@ -1,0 +1,1397 @@
+[gd_scene load_steps=6 format=3 uid="uid://dgbc5buanapff"]
+
+[ext_resource type="Script" path="res://Crossword.gd" id="1_7dihb"]
+[ext_resource type="PackedScene" uid="uid://dlvl6kdhvx0ai" path="res://crossword_button.tscn" id="1_ptl07"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jb6vw"]
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_pm2d5"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_5jdvi"]
+font_size = 20
+font_color = Color(0, 0.807843, 0.290196, 1)
+
+[node name="Control" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+script = ExtResource("1_7dihb")
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Control" type="Control" parent="HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="Label" type="Label" parent="HBoxContainer4"]
+layout_mode = 2
+text = "Crossword"
+label_settings = SubResource("LabelSettings_jb6vw")
+horizontal_alignment = 1
+
+[node name="Score" type="Label" parent="HBoxContainer4"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "240p"
+label_settings = SubResource("LabelSettings_pm2d5")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="NewPoints" type="Label" parent="HBoxContainer4"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "+ 10p"
+label_settings = SubResource("LabelSettings_5jdvi")
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Control2" type="Control" parent="HBoxContainer2"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HorLegend" type="VBoxContainer" parent="HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer2/HorLegend"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.392157, 0.32549, 1)
+theme_override_font_sizes/font_size = 20
+text = "Horizontal:"
+
+[node name="HorizontalSample" type="Label" parent="HBoxContainer2/HorLegend"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "1. "
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer2"]
+layout_mode = 2
+
+[node name="CrossWord" type="VBoxContainer" parent="HBoxContainer2/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="CrossLine" type="HBoxContainer" parent="HBoxContainer2/MarginContainer/CrossWord"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="CrossButton" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton2" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton3" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton4" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton5" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton6" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton7" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton8" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton9" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton10" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton11" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton12" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton13" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton14" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton15" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton16" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton17" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton18" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton19" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton20" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton21" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton22" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton23" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton24" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossLine2" type="HBoxContainer" parent="HBoxContainer2/MarginContainer/CrossWord"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="CrossButton" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine2" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton2" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine2" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton3" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine2" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton4" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine2" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton5" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine2" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton6" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine2" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton7" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine2" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton8" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine2" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton9" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine2" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton10" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine2" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton11" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine2" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton12" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine2" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton13" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine2" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton14" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine2" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton15" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine2" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton16" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine2" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton17" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine2" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton18" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine2" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton19" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine2" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton20" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine2" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton21" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine2" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton22" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine2" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton23" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine2" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton24" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine2" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossLine3" type="HBoxContainer" parent="HBoxContainer2/MarginContainer/CrossWord"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="CrossButton" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine3" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton2" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine3" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton3" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine3" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton4" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine3" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton5" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine3" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton6" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine3" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton7" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine3" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton8" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine3" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton9" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine3" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton10" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine3" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton11" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine3" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton12" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine3" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton13" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine3" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton14" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine3" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton15" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine3" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton16" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine3" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton17" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine3" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton18" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine3" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton19" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine3" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton20" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine3" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton21" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine3" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton22" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine3" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton23" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine3" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton24" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine3" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossLine4" type="HBoxContainer" parent="HBoxContainer2/MarginContainer/CrossWord"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="CrossButton" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine4" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton2" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine4" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton3" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine4" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton4" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine4" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton5" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine4" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton6" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine4" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton7" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine4" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton8" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine4" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton9" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine4" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton10" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine4" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton11" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine4" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton12" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine4" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton13" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine4" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton14" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine4" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton15" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine4" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton16" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine4" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton17" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine4" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton18" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine4" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton19" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine4" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton20" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine4" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton21" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine4" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton22" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine4" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton23" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine4" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton24" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine4" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossLine5" type="HBoxContainer" parent="HBoxContainer2/MarginContainer/CrossWord"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="CrossButton" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine5" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton2" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine5" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton3" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine5" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton4" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine5" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton5" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine5" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton6" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine5" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton7" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine5" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton8" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine5" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton9" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine5" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton10" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine5" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton11" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine5" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton12" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine5" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton13" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine5" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton14" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine5" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton15" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine5" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton16" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine5" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton17" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine5" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton18" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine5" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton19" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine5" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton20" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine5" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton21" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine5" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton22" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine5" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton23" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine5" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton24" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine5" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossLine6" type="HBoxContainer" parent="HBoxContainer2/MarginContainer/CrossWord"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="CrossButton" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine6" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton2" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine6" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton3" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine6" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton4" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine6" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton5" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine6" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton6" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine6" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton7" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine6" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton8" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine6" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton9" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine6" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton10" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine6" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton11" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine6" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton12" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine6" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton13" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine6" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton14" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine6" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton15" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine6" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton16" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine6" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton17" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine6" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton18" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine6" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton19" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine6" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton20" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine6" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton21" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine6" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton22" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine6" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton23" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine6" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton24" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine6" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossLine7" type="HBoxContainer" parent="HBoxContainer2/MarginContainer/CrossWord"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="CrossButton" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine7" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton2" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine7" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton3" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine7" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton4" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine7" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton5" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine7" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton6" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine7" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton7" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine7" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton8" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine7" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton9" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine7" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton10" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine7" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton11" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine7" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton12" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine7" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton13" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine7" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton14" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine7" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton15" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine7" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton16" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine7" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton17" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine7" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton18" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine7" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton19" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine7" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton20" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine7" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton21" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine7" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton22" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine7" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton23" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine7" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton24" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine7" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossLine8" type="HBoxContainer" parent="HBoxContainer2/MarginContainer/CrossWord"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="CrossButton" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine8" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton2" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine8" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton3" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine8" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton4" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine8" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton5" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine8" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton6" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine8" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton7" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine8" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton8" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine8" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton9" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine8" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton10" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine8" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton11" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine8" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton12" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine8" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton13" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine8" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton14" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine8" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton15" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine8" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton16" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine8" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton17" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine8" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton18" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine8" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton19" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine8" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton20" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine8" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton21" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine8" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton22" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine8" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton23" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine8" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton24" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine8" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossLine9" type="HBoxContainer" parent="HBoxContainer2/MarginContainer/CrossWord"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="CrossButton" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine9" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton2" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine9" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton3" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine9" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton4" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine9" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton5" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine9" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton6" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine9" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton7" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine9" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton8" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine9" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton9" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine9" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton10" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine9" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton11" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine9" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton12" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine9" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton13" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine9" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton14" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine9" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton15" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine9" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton16" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine9" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton17" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine9" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton18" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine9" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton19" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine9" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton20" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine9" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton21" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine9" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton22" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine9" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton23" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine9" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton24" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine9" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossLine10" type="HBoxContainer" parent="HBoxContainer2/MarginContainer/CrossWord"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="CrossButton" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine10" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton2" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine10" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton3" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine10" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton4" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine10" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton5" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine10" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton6" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine10" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton7" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine10" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton8" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine10" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton9" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine10" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton10" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine10" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton11" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine10" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton12" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine10" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton13" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine10" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton14" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine10" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton15" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine10" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton16" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine10" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton17" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine10" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton18" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine10" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton19" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine10" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton20" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine10" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton21" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine10" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton22" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine10" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton23" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine10" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton24" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine10" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossLine11" type="HBoxContainer" parent="HBoxContainer2/MarginContainer/CrossWord"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="CrossButton" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine11" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton2" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine11" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton3" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine11" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton4" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine11" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton5" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine11" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton6" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine11" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton7" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine11" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton8" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine11" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton9" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine11" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton10" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine11" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton11" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine11" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton12" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine11" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton13" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine11" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton14" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine11" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton15" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine11" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton16" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine11" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton17" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine11" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton18" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine11" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton19" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine11" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton20" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine11" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton21" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine11" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton22" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine11" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton23" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine11" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton24" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine11" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossLine12" type="HBoxContainer" parent="HBoxContainer2/MarginContainer/CrossWord"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="CrossButton" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine12" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton2" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine12" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton3" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine12" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton4" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine12" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton5" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine12" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton6" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine12" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton7" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine12" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton8" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine12" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton9" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine12" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton10" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine12" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton11" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine12" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton12" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine12" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton13" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine12" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton14" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine12" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton15" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine12" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton16" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine12" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton17" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine12" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton18" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine12" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton19" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine12" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton20" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine12" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton21" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine12" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton22" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine12" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton23" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine12" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="CrossButton24" parent="HBoxContainer2/MarginContainer/CrossWord/CrossLine12" instance=ExtResource("1_ptl07")]
+layout_mode = 2
+square_type = "gray"
+
+[node name="VerLegend" type="VBoxContainer" parent="HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer2/VerLegend"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.592157, 0.72549, 0.996078, 1)
+theme_override_font_sizes/font_size = 20
+text = "Vertical:"
+
+[node name="VerticalSample" type="Label" parent="HBoxContainer2/VerLegend"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "Verical:"
+
+[node name="Control" type="Control" parent="HBoxContainer2"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SolutionContainer" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="HasloLabel" type="Label" parent="SolutionContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Hasło:"
+
+[node name="HasloCrossSample" parent="SolutionContainer" instance=ExtResource("1_ptl07")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 1
+
+[node name="HasloEmpty" type="Control" parent="SolutionContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Control2" type="Control" parent="HBoxContainer3"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="GivenWordsLabel" type="Label" parent="HBoxContainer3"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "Tips:"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ShowTips" type="Button" parent="HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+text = "Show Used Word"
+
+[node name="Control" type="Control" parent="HBoxContainer3"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="new_crossword" type="Button" parent="HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+text = "TRY ONE MORE TIME"
+
+[node name="back" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "BACK TO MENU"
+
+[node name="new_words" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "NEW CROSSWORD"
+
+[node name="check_crossword" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "CHECK CROSSWORD"
+
+[connection signal="pressed" from="HBoxContainer3/ShowTips" to="." method="_on_show_tips_pressed"]
+[connection signal="pressed" from="HBoxContainer/new_crossword" to="." method="_on_new_crossword_pressed"]
+[connection signal="pressed" from="HBoxContainer/back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="HBoxContainer/new_words" to="." method="_on_new_words_pressed"]
+[connection signal="pressed" from="HBoxContainer/check_crossword" to="." method="_on_check_crossword_pressed"]

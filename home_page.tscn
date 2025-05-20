@@ -1,0 +1,452 @@
+[gd_scene load_steps=19 format=3 uid="uid://bejrni54dt0js"]
+
+[ext_resource type="Script" path="res://home_page.gd" id="1_bk1bi"]
+[ext_resource type="FontFile" uid="uid://duod5phe1frai" path="res://Fonts/Bright DEMO.otf" id="1_sfbro"]
+[ext_resource type="FontFile" uid="uid://dem4l2ybpsy0q" path="res://Fonts/Geoform-ExtraBold.otf" id="2_2uo0s"]
+[ext_resource type="Script" path="res://HBoxContainer.gd" id="4_fyun5"]
+[ext_resource type="Script" path="res://CategoriesBox.gd" id="4_x70gf"]
+[ext_resource type="FontFile" uid="uid://budjd1t3dt3vn" path="res://Fonts/DS-DIGII.TTF" id="5_jvtbd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ybkyv"]
+content_margin_right = 26.0
+bg_color = Color(0.141176, 0.141176, 0.141176, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vymoa"]
+bg_color = Color(0, 0.478431, 0.811765, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h2i61"]
+content_margin_right = 26.0
+bg_color = Color(0.141176, 0.141176, 0.141176, 0.537255)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kuwwb"]
+bg_color = Color(0, 0.603922, 0.811765, 1)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="Theme" id="Theme_weaiy"]
+CheckButton/styles/hover = SubResource("StyleBoxFlat_ybkyv")
+CheckButton/styles/hover_pressed = SubResource("StyleBoxFlat_vymoa")
+CheckButton/styles/normal = SubResource("StyleBoxFlat_h2i61")
+CheckButton/styles/pressed = SubResource("StyleBoxFlat_kuwwb")
+
+[sub_resource type="LabelSettings" id="LabelSettings_od38k"]
+font = ExtResource("1_sfbro")
+font_size = 80
+
+[sub_resource type="LabelSettings" id="LabelSettings_x8nyh"]
+font = ExtResource("2_2uo0s")
+font_size = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3ggrj"]
+bg_color = Color(0, 0.541176, 0.247059, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f15mb"]
+bg_color = Color(0.956863, 0, 0.027451, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7lgns"]
+font = ExtResource("5_jvtbd")
+font_size = 49
+
+[sub_resource type="LabelSettings" id="LabelSettings_11vdd"]
+font = ExtResource("2_2uo0s")
+font_size = 48
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1huel"]
+resource_local_to_scene = true
+bg_color = Color(0.403922, 0.454902, 0.447059, 1)
+
+[node name="HomePage" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bk1bi")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_weaiy")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 50
+
+[node name="MainBox" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Panel/MarginContainer/MainBox"]
+layout_mode = 2
+text = "Side-Questing"
+label_settings = SubResource("LabelSettings_od38k")
+horizontal_alignment = 1
+
+[node name="HBox Container" type="HBoxContainer" parent="Panel/MarginContainer/MainBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="SideQuesty" type="VBoxContainer" parent="Panel/MarginContainer/MainBox/HBox Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/MainBox/HBox Container/SideQuesty"]
+layout_mode = 2
+text = "Side Quests:"
+label_settings = SubResource("LabelSettings_x8nyh")
+
+[node name="Range" type="HBoxContainer" parent="Panel/MarginContainer/MainBox/HBox Container/SideQuesty"]
+layout_mode = 2
+
+[node name="ShowDay" type="CheckBox" parent="Panel/MarginContainer/MainBox/HBox Container/SideQuesty/Range"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+button_pressed = true
+text = "Day"
+
+[node name="ShowWeek" type="CheckBox" parent="Panel/MarginContainer/MainBox/HBox Container/SideQuesty/Range"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = "Week"
+
+[node name="ShowMonth" type="CheckBox" parent="Panel/MarginContainer/MainBox/HBox Container/SideQuesty/Range"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = "Month"
+
+[node name="ShowAll" type="CheckBox" parent="Panel/MarginContainer/MainBox/HBox Container/SideQuesty/Range"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = "All"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer/MainBox/HBox Container/SideQuesty"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Plates" type="VBoxContainer" parent="Panel/MarginContainer/MainBox/HBox Container/SideQuesty/ScrollContainer"]
+layout_mode = 2
+
+[node name="Przyciski" type="HBoxContainer" parent="Panel/MarginContainer/MainBox/HBox Container/SideQuesty"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Panel/MarginContainer/MainBox/HBox Container/SideQuesty/Przyciski"]
+layout_mode = 2
+text = "Add New"
+
+[node name="Button2" type="Button" parent="Panel/MarginContainer/MainBox/HBox Container/SideQuesty/Przyciski"]
+layout_mode = 2
+text = "Manage Categories"
+
+[node name="HBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/MainBox/HBox Container/SideQuesty"]
+layout_mode = 2
+script = ExtResource("4_fyun5")
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/MainBox/HBox Container/SideQuesty/HBoxContainer"]
+layout_mode = 2
+text = "Pomodoro-Timer"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/MainBox/HBox Container/SideQuesty/HBoxContainer"]
+layout_mode = 2
+
+[node name="PomProgressBar" type="ProgressBar" parent="Panel/MarginContainer/MainBox/HBox Container/SideQuesty/HBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_3ggrj")
+theme_override_styles/fill = SubResource("StyleBoxFlat_f15mb")
+max_value = 120.0
+value = 30.0
+fill_mode = 3
+
+[node name="PomTime" type="Label" parent="Panel/MarginContainer/MainBox/HBox Container/SideQuesty/HBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "25:00"
+label_settings = SubResource("LabelSettings_7lgns")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PauseButton" type="Button" parent="Panel/MarginContainer/MainBox/HBox Container/SideQuesty/HBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = "Pauza"
+
+[node name="StopButton" type="Button" parent="Panel/MarginContainer/MainBox/HBox Container/SideQuesty/HBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = "Reset"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/MarginContainer/MainBox/HBox Container/SideQuesty/HBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="CheckBox" type="CheckBox" parent="Panel/MarginContainer/MainBox/HBox Container/SideQuesty/HBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "45x15"
+
+[node name="MainQuesty" type="VBoxContainer" parent="Panel/MarginContainer/MainBox/HBox Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/MainBox/HBox Container/MainQuesty"]
+layout_mode = 2
+text = "Main Quests:"
+label_settings = SubResource("LabelSettings_x8nyh")
+horizontal_alignment = 1
+
+[node name="TextEdit" type="TextEdit" parent="Panel/MarginContainer/MainBox/HBox Container/MainQuesty"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+wrap_mode = 1
+
+[node name="Control" type="Control" parent="Panel/MarginContainer/MainBox/HBox Container/MainQuesty"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Panel/MarginContainer/MainBox/HBox Container/MainQuesty"]
+layout_mode = 2
+text = "Regular Events: "
+label_settings = SubResource("LabelSettings_x8nyh")
+horizontal_alignment = 1
+
+[node name="TextEdit2" type="TextEdit" parent="Panel/MarginContainer/MainBox/HBox Container/MainQuesty"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+wrap_mode = 1
+
+[node name="Control2" type="Control" parent="Panel/MarginContainer/MainBox/HBox Container/MainQuesty"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="Panel/MarginContainer/MainBox/HBox Container/MainQuesty"]
+layout_mode = 2
+text = "Little Dreams:"
+label_settings = SubResource("LabelSettings_x8nyh")
+horizontal_alignment = 1
+
+[node name="TextEdit3" type="TextEdit" parent="Panel/MarginContainer/MainBox/HBox Container/MainQuesty"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+wrap_mode = 1
+
+[node name="Woda" type="VBoxContainer" parent="Panel/MarginContainer/MainBox/HBox Container"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/MainBox/HBox Container/Woda"]
+layout_mode = 2
+text = "Water:"
+label_settings = SubResource("LabelSettings_x8nyh")
+horizontal_alignment = 1
+
+[node name="CheckButton" type="CheckButton" parent="Panel/MarginContainer/MainBox/HBox Container/Woda"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 3
+focus_mode = 0
+button_pressed = true
+
+[node name="CheckButton2" type="CheckButton" parent="Panel/MarginContainer/MainBox/HBox Container/Woda"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 3
+focus_mode = 0
+button_pressed = true
+
+[node name="CheckButton3" type="CheckButton" parent="Panel/MarginContainer/MainBox/HBox Container/Woda"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 3
+focus_mode = 0
+
+[node name="CheckButton4" type="CheckButton" parent="Panel/MarginContainer/MainBox/HBox Container/Woda"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 3
+focus_mode = 0
+
+[node name="CheckButton5" type="CheckButton" parent="Panel/MarginContainer/MainBox/HBox Container/Woda"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 5
+size_flags_vertical = 3
+focus_mode = 0
+
+[node name="CategoriesBox" type="MarginContainer" parent="Panel/MarginContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+script = ExtResource("4_x70gf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/CategoriesBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/CategoriesBox/VBoxContainer"]
+layout_mode = 2
+text = "Manage Categories"
+label_settings = SubResource("LabelSettings_11vdd")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/CategoriesBox/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="CategoriesContainer" type="VBoxContainer" parent="Panel/MarginContainer/CategoriesBox/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SampleCat" type="Button" parent="Panel/MarginContainer/CategoriesBox/VBoxContainer/HBoxContainer/CategoriesContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_1huel")
+theme_override_styles/hover = SubResource("StyleBoxFlat_1huel")
+text = "Sample Category Button"
+
+[node name="NewCategoryButton" type="Button" parent="Panel/MarginContainer/CategoriesBox/VBoxContainer/HBoxContainer/CategoriesContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "+ New Category"
+
+[node name="VSeparator" type="VSeparator" parent="Panel/MarginContainer/CategoriesBox/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="SubCategoriesContainer" type="VBoxContainer" parent="Panel/MarginContainer/CategoriesBox/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NewSubCategory" type="Button" parent="Panel/MarginContainer/CategoriesBox/VBoxContainer/HBoxContainer/SubCategoriesContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "+ New Sub-Category"
+
+[node name="VSeparator2" type="VSeparator" parent="Panel/MarginContainer/CategoriesBox/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="DataContainer" type="VBoxContainer" parent="Panel/MarginContainer/CategoriesBox/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/CategoriesBox/VBoxContainer/HBoxContainer/DataContainer"]
+layout_mode = 2
+text = "Name:"
+
+[node name="NameInput" type="LineEdit" parent="Panel/MarginContainer/CategoriesBox/VBoxContainer/HBoxContainer/DataContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Category Name"
+
+[node name="Label2" type="Label" parent="Panel/MarginContainer/CategoriesBox/VBoxContainer/HBoxContainer/DataContainer"]
+layout_mode = 2
+text = "Color:"
+
+[node name="ColorInput" type="ColorPickerButton" parent="Panel/MarginContainer/CategoriesBox/VBoxContainer/HBoxContainer/DataContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = "Choose Color"
+edit_alpha = false
+
+[node name="Label3" type="Label" parent="Panel/MarginContainer/CategoriesBox/VBoxContainer/HBoxContainer/DataContainer"]
+layout_mode = 2
+text = "Standard Time:"
+
+[node name="TimeInput" type="SpinBox" parent="Panel/MarginContainer/CategoriesBox/VBoxContainer/HBoxContainer/DataContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 5.0
+max_value = 240.0
+page = 15.0
+value = 60.0
+suffix = "min"
+custom_arrow_step = 10.0
+
+[node name="Label4" type="Label" parent="Panel/MarginContainer/CategoriesBox/VBoxContainer/HBoxContainer/DataContainer"]
+layout_mode = 2
+text = "Standard Exp:"
+
+[node name="ExpInput" type="SpinBox" parent="Panel/MarginContainer/CategoriesBox/VBoxContainer/HBoxContainer/DataContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+min_value = 10.0
+value = 20.0
+suffix = "exp"
+custom_arrow_step = 5.0
+
+[node name="Control2" type="Control" parent="Panel/MarginContainer/CategoriesBox/VBoxContainer/HBoxContainer/DataContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/CategoriesBox/VBoxContainer/HBoxContainer/DataContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="Panel/MarginContainer/CategoriesBox/VBoxContainer/HBoxContainer/DataContainer/HBoxContainer"]
+layout_mode = 2
+text = "Cancel"
+
+[node name="Control" type="Control" parent="Panel/MarginContainer/CategoriesBox/VBoxContainer/HBoxContainer/DataContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="Panel/MarginContainer/CategoriesBox/VBoxContainer/HBoxContainer/DataContainer/HBoxContainer"]
+layout_mode = 2
+text = "Save
+"
+
+[node name="Control3" type="Control" parent="Panel/MarginContainer/CategoriesBox/VBoxContainer/HBoxContainer/DataContainer"]
+custom_minimum_size = Vector2(50, 10)
+layout_mode = 2
+
+[connection signal="pressed" from="Panel/MarginContainer/MainBox/HBox Container/SideQuesty/Range/ShowDay" to="." method="_on_show_day_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/MainBox/HBox Container/SideQuesty/Range/ShowWeek" to="." method="_on_show_week_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/MainBox/HBox Container/SideQuesty/Range/ShowMonth" to="." method="_on_show_month_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/MainBox/HBox Container/SideQuesty/Range/ShowAll" to="." method="_on_show_all_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/MainBox/HBox Container/SideQuesty/HBoxContainer/HBoxContainer/PauseButton" to="Panel/MarginContainer/MainBox/HBox Container/SideQuesty/HBoxContainer" method="_on_pause_button_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/MainBox/HBox Container/SideQuesty/HBoxContainer/HBoxContainer/StopButton" to="Panel/MarginContainer/MainBox/HBox Container/SideQuesty/HBoxContainer" method="_on_stop_button_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/CategoriesBox/VBoxContainer/HBoxContainer/CategoriesContainer/NewCategoryButton" to="Panel/MarginContainer/CategoriesBox" method="_on_new_category_button_pressed"]
