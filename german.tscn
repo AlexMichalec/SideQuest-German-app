@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cmx8vfjl7gvvw"]
+[gd_scene load_steps=6 format=3 uid="uid://cmx8vfjl7gvvw"]
 
 [ext_resource type="Script" path="res://german.gd" id="1_iupop"]
+[ext_resource type="PackedScene" uid="uid://42oxmd28tyes" path="res://german_text_input.tscn" id="2_hfa6b"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fv1e6"]
 
@@ -133,15 +134,17 @@ alignment = 1
 layout_mode = 2
 text = "DE:"
 
-[node name="German" type="TextEdit" parent="Panel/Container/VBoxContainer/ScrollModifyContainer/ModifyContainer/NewWord/HBoxContainer"]
+[node name="German" parent="Panel/Container/VBoxContainer/ScrollModifyContainer/ModifyContainer/NewWord/HBoxContainer" instance=ExtResource("2_hfa6b")]
 layout_mode = 2
 size_flags_horizontal = 3
+z_to_y = false
+ae_to_umlaut = false
 
 [node name="Label" type="Label" parent="Panel/Container/VBoxContainer/ScrollModifyContainer/ModifyContainer/NewWord/HBoxContainer"]
 layout_mode = 2
 text = "ENG:"
 
-[node name="English" type="TextEdit" parent="Panel/Container/VBoxContainer/ScrollModifyContainer/ModifyContainer/NewWord/HBoxContainer"]
+[node name="English" type="LineEdit" parent="Panel/Container/VBoxContainer/ScrollModifyContainer/ModifyContainer/NewWord/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "
@@ -152,6 +155,7 @@ layout_mode = 2
 text = "Satz"
 
 [node name="Important" type="CheckButton" parent="Panel/Container/VBoxContainer/ScrollModifyContainer/ModifyContainer/NewWord/HBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Wichtig"
 

@@ -37,7 +37,7 @@ func reset():
 	word_set = []
 	while word_set.size() < min(10, big_set.size()):
 		var new_q = big_set.pick_random()
-		if not new_q[2] and not new_q in word_set:
+		if not new_q["is_sentence"] and not new_q in word_set:
 			word_set.append(new_q.duplicate())
 	question_id = 0
 	done = 0
@@ -63,23 +63,23 @@ func next_question():
 	if question_id >= word_set.size():
 		add_progress()
 		question_id = 0
-	while word_set[question_id][2]:
+	while word_set[question_id]["is_sentence"]:
 		question_id = question_id + 1
 		if question_id >= word_set.size():
 			add_progress()
 			question_id = 0
-	%QuestionLabel.text = word_set[question_id][0]
-	var good_answer = word_set[question_id][1]
+	%QuestionLabel.text = word_set[question_id]["original"]
+	var good_answer = word_set[question_id]["translation"]
 	var answers = [good_answer]
 	while answers.size()< 4:
 		var new_a:String
 		if answers_from_the_same_deck:
-			new_a = word_set.pick_random()[1]
+			new_a = word_set.pick_random()["translation"]
 		else:
 			var new_aa = TEST_SET.pick_random()
-			while new_aa[2]:
+			while new_aa["is_sentence"]:
 				new_aa = TEST_SET.pick_random()
-			new_a = new_aa[1]
+			new_a = new_aa["translation"]
 		if not new_a in answers:
 			answers.append(new_a)
 	answers.shuffle()
@@ -91,16 +91,16 @@ func next_question():
 
 func add_progress():
 	for w in word_set:
-		if w in progressed_words or not w[2]:
+		if w in progressed_words or not w["is_sentence"]:
 			continue
 		var index = 0
 		for b in TEST_SET:
-			if b[0] == w[0]:
-				b[4] = min(10, w[4]+ 4/runda)
+			if b["original"] == w["original"]:
+				b["weight"] = min(10, w["weight"]+ 4/runda)
 		if training_on_new_words:
 			for b in BIG_SET:
-				if b[0] == w[0]:
-					b[4] = min(4, w[4]+ 2/runda)
+				if b["original"] == w["original"]:
+					b["weight"] = min(4, w["weight"]+ 2/runda)
 		progressed_words.append(w)
 	runda += 1
 	save_array()
@@ -125,7 +125,7 @@ func check(x:int):
 		return
 	if x == good_answer_id:
 		done += 1
-		word_set[question_id][2] = true
+		word_set[question_id]["is_sentence"] = true
 		
 		%ScoreLabel.label_settings.font_color = Color.GREEN
 		await show_good_answer_correct()
@@ -141,7 +141,7 @@ func check(x:int):
 func prepare_set():
 	var result = []
 	for b in TEST_SET:
-		if b[2]:
+		if b["is_sentence"]:
 			continue
 		result.append(b)
 	print(result.size())
@@ -149,7 +149,7 @@ func prepare_set():
 	for i in range(10):
 		var end = result2.size()>0
 		for r in result:
-			if r[4] <= i and r[4]> i -1:
+			if r["weight"] <= i and r["weight"]> i -1:
 				result2.append(r)
 		if end:
 			break
@@ -158,13 +158,13 @@ func prepare_set():
 
 func show_good_answer_correct():
 	%ScoreLabel.label_settings.font_color = Color.GREEN
-	%QuestionLabel.text = %QuestionLabel.text + " = " + word_set[question_id][1]
+	%QuestionLabel.text = %QuestionLabel.text + " = " + word_set[question_id]["translation"]
 	await get_tree().create_timer(0.8).timeout
 	%ScoreLabel.label_settings.font_color = Color.WHITE
 	
 func show_good_answer():
 	%ScoreLabel.label_settings.font_color = Color.RED
-	%QuestionLabel.text = %QuestionLabel.text + " = " + word_set[question_id][1]
+	%QuestionLabel.text = %QuestionLabel.text + " = " + word_set[question_id]["translation"]
 	await get_tree().create_timer(1.5).timeout
 	%ScoreLabel.label_settings.font_color = Color.WHITE
 	
@@ -179,11 +179,11 @@ func finale():
 	%QuestionLabel.text = "GOOD JOB! :D"
 	var temp:float = 0
 	for b in TEST_SET:
-		if not b[2]:
-			temp += b[4]
+		if not b["is_sentence"]:
+			temp += b["weight"]
 	var words_max:float = 0
 	for b in TEST_SET:
-		if not b[2]:
+		if not b["is_sentence"]:
 			words_max += 10
 	var percent : float = (temp/words_max) * 100.0
 	percent = round(percent * 100)/100
@@ -200,13 +200,13 @@ func start_modifying():
 		var new_record = %EditWord.duplicate()
 		new_record.visible = true
 		%ModifyWordsContainr.add_child(new_record)
-		new_record.get_node("HBoxContainer/German").text = w[0]
-		new_record.get_node("HBoxContainer/English").text = w[1]
+		new_record.get_node("HBoxContainer/German").text = w["original"]
+		new_record.get_node("HBoxContainer/English").text = w["translation"]
 		for b in BIG_SET:
-			if b[0] == w[0]:
+			if b["original"] == w["original"]:
 				new_record.get_node("HBoxContainer/Index").text = str(BIG_SET.find(b))
-				new_record.get_node("HBoxContainer/Waga").text = str(b[4])
-				new_record.get_node("HBoxContainer/Sentence").button_pressed = b[2]
+				new_record.get_node("HBoxContainer/Waga").text = str(b["weight"])
+				new_record.get_node("HBoxContainer/Sentence").button_pressed = b["is_sentence"]
 	editing = true
 	finished = false
 	
@@ -235,10 +235,10 @@ func save_edited():
 		if record.get_node("HBoxContainer/German").text == "":
 			continue
 		var index = int(record.get_node("HBoxContainer/Index").text)
-		BIG_SET[index][0]=record.get_node("HBoxContainer/German").text
-		BIG_SET[index][1]=record.get_node("HBoxContainer/English").text
-		BIG_SET[index][4]=int(record.get_node("HBoxContainer/Waga").text)
-		BIG_SET[index][2]=record.get_node("HBoxContainer/Sentence").button_pressed
+		BIG_SET[index]["original"]=record.get_node("HBoxContainer/German").text
+		BIG_SET[index]["translation"]=record.get_node("HBoxContainer/English").text
+		BIG_SET[index]["weight"]=int(record.get_node("HBoxContainer/Waga").text)
+		BIG_SET[index]["is_sentence"]=record.get_node("HBoxContainer/Sentence").button_pressed
 		record.queue_free()
 
 	#for b in BIG_SET:

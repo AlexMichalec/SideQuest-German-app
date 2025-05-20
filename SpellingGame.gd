@@ -41,22 +41,22 @@ func new_question():
 	question_type = q_type
 	var new_q = BIG_SET.pick_random()
 	if q_type == 1:
-		if new_q[2]:
+		if new_q["is_sentence"]:
 			%Tip.text = "Copy the sentence!"
 			points = 6
 		else:
 			%Tip.text = "Copy the word!"
 			points = 4
-		%Question.text = new_q[0]
-		correct_answer = new_q[0]
-		given_tip = new_q[1]
-		is_sentence = new_q[2]
+		%Question.text = new_q["original"]
+		correct_answer = new_q["original"]
+		given_tip = new_q["translation"]
+		is_sentence = new_q["is_sentence"]
 	elif q_type == 2:
-		while new_q[2]:
+		while new_q["is_sentence"]:
 			new_q = BIG_SET.pick_random()
 		%Tip.text = "Write it in German!"
-		%Question.text = new_q[1]
-		correct_answer = new_q[0]
+		%Question.text = new_q["translation"]
+		correct_answer = new_q["original"]
 		given_tip = ""
 		tip_array = []
 		for c in correct_answer:
@@ -67,11 +67,11 @@ func new_question():
 		tip_array[0] = "_"
 		is_sentence = false
 	elif q_type == 3:
-		while not new_q[2]:
+		while not new_q["is_sentence"]:
 			new_q = BIG_SET.pick_random()
 		%Tip.text = "Fill the gap!"
-		correct_sentence = new_q[0]
-		var word_array = new_q[0].split(" ")
+		correct_sentence = new_q["original"]
+		var word_array = new_q["original"].split(" ")
 		var chosen_index = randi_range(0,word_array.size()-1)
 		while word_array[chosen_index].length() <= 3:
 			chosen_index = randi_range(0,word_array.size()-1)
@@ -84,7 +84,7 @@ func new_question():
 		#word_array[chosen_index][-1] = " _ "
 		%Question.text = " ".join(word_array)
 		points = min(10,correct_answer.length() * 2)
-		given_tip = new_q[1]
+		given_tip = new_q["translation"]
 		await get_tree().create_timer(2).timeout
 		%Tip.text = given_tip
 		"""

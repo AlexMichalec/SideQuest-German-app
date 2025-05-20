@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://c76ek4haptlih"]
+[gd_scene load_steps=5 format=3 uid="uid://c76ek4haptlih"]
 
 [ext_resource type="Script" path="res://EditAll.gd" id="1_tvd7d"]
+[ext_resource type="PackedScene" uid="uid://42oxmd28tyes" path="res://german_text_input.tscn" id="2_2e70b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xgdnd"]
 bg_color = Color(0.901961, 0, 0.243137, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bem58"]
+bg_color = Color(0.694118, 0, 0.180392, 1)
 
 [node name="EditAll" type="Control"]
 layout_mode = 3
@@ -50,6 +54,7 @@ text = "Stats:"
 horizontal_alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -74,19 +79,25 @@ layout_mode = 2
 theme_override_constants/separation = 5
 alignment = 1
 
+[node name="Index" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/WordsList/NewWord/HBoxContainer"]
+layout_mode = 2
+text = "123"
+
 [node name="DE" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/WordsList/NewWord/HBoxContainer"]
 layout_mode = 2
 text = "DE:"
 
-[node name="German" type="TextEdit" parent="MarginContainer/VBoxContainer/ScrollContainer/WordsList/NewWord/HBoxContainer"]
+[node name="German" parent="MarginContainer/VBoxContainer/ScrollContainer/WordsList/NewWord/HBoxContainer" instance=ExtResource("2_2e70b")]
 layout_mode = 2
 size_flags_horizontal = 3
+z_to_y = false
+ae_to_umlaut = false
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/WordsList/NewWord/HBoxContainer"]
 layout_mode = 2
 text = "ENG:"
 
-[node name="English" type="TextEdit" parent="MarginContainer/VBoxContainer/ScrollContainer/WordsList/NewWord/HBoxContainer"]
+[node name="English" type="LineEdit" parent="MarginContainer/VBoxContainer/ScrollContainer/WordsList/NewWord/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "
@@ -96,7 +107,7 @@ text = "
 layout_mode = 2
 text = "Weight:"
 
-[node name="Waga" type="TextEdit" parent="MarginContainer/VBoxContainer/ScrollContainer/WordsList/NewWord/HBoxContainer"]
+[node name="Waga" type="LineEdit" parent="MarginContainer/VBoxContainer/ScrollContainer/WordsList/NewWord/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.2
@@ -118,6 +129,7 @@ text = "Wichtig"
 layout_mode = 2
 focus_mode = 0
 theme_override_styles/pressed = SubResource("StyleBoxFlat_xgdnd")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_bem58")
 text = "Delete"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
@@ -129,10 +141,35 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Cancel"
 
+[node name="StepButton" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+action_mode = 1
+item_count = 5
+selected = 2
+popup/item_0/text = "10"
+popup/item_0/id = 0
+popup/item_1/text = "50"
+popup/item_1/id = 1
+popup/item_2/text = "100"
+popup/item_2/id = 2
+popup/item_3/text = "200"
+popup/item_3/id = 3
+popup/item_4/text = "500"
+popup/item_4/id = 4
+
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+action_mode = 1
+
 [node name="Save" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Save"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Cancel" to="." method="_on_cancel_pressed"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/HBoxContainer/StepButton" to="." method="_on_step_button_item_selected"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/StepButton" to="." method="_on_step_button_pressed"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/HBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Save" to="." method="_on_save_pressed"]

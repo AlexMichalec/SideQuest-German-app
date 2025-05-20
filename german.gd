@@ -26,21 +26,28 @@ func _on_forward_pressed():
 	var slownik = []
 	if text_left.size() != text_right.size():
 		print("SPRAWDŹ CZY LICZBA LINII SIĘ ZGADZA!")
+		return
 	for i in range(text_left.size()):
-		slownik.append([text_left[i], text_right[i]])
+		slownik.append([text_left[i].strip_edges(), text_right[i].strip_edges()])
 	slownik.sort_custom(case_insensitive_sort)
+	var previous = ["dsoifjsjf"]
 	for s in slownik:
 		var new_word = %NewWord.duplicate()
 		%ModifyContainer.add_child(new_word)
 		new_word.visible = true
-		new_word.get_node("HBoxContainer/German").text = s[0].strip_edges()
-		new_word.get_node("HBoxContainer/English").text = s[1].strip_edges()
+		new_word.get_node("HBoxContainer/German").text = s[0]
+		new_word.get_node("HBoxContainer/English").text = s[1]
 		if s[0].strip_edges().split(" ").size() >= 3:
 			new_word.get_node("HBoxContainer/Sentence").button_pressed = true
 		if already_in_set(s[0]):
 			new_word.get_node("HBoxContainer/Skip").button_pressed = true
 			new_word.get_node("HBoxContainer/Skip").disabled = true
-			new_word.get_node("HBoxContainer/Skip").tooltip_text = "The word is already in the set!"
+			new_word.get_node("HBoxContainer/Skip").tooltip_text = "It's already in the set!"
+		if previous[0].to_lower() == s[0].to_lower():
+			new_word.get_node("HBoxContainer/Skip").button_pressed = true
+			new_word.get_node("HBoxContainer/Skip").disabled = true
+			new_word.get_node("HBoxContainer/Skip").tooltip_text = "Appeared more than once in the Input!"
+		previous = s
 	%InputContainer.visible = false
 	%ScrollModifyContainer.visible = true
 	%Forward.visible = false
@@ -81,12 +88,31 @@ func _on_finish_pressed():
 		var sentence = record.get_node("HBoxContainer/Sentence").button_pressed
 		var important = record.get_node("HBoxContainer/Important").button_pressed
 		var how_much_do_i_know = 0
-		BIG_SET.append([german, english, sentence, important, how_much_do_i_know])
-		new_words.append([german, english, sentence, important, how_much_do_i_know])
+		var gender = ""
+		if sentence:
+			if not german[-1] in ".?!,":
+				german = german + "."
+			if german[-1] == ",":
+				german[-1] = "."
+			german[0] = german[0].to_upper()
+		else:
+			german = german.rstrip(",.")
+			if german.split(" ")[0].to_upper() in ["DER", "DIE", "DAS"]:
+				german[0] = german[0].to_lower()
+			"""
+			if german.split(" ")[0].to_upper() == "DIE":
+				gender = "female"
+			if german.split(" ")[0].to_upper() == "DAS":
+				gender = "neutral"
+			if german.split(" ")[0].to_upper() == "DER":
+				gender = "male"
+			"""
+		var new_record = {"original":german, "translation":english, "is_sentence":sentence, "weight": how_much_do_i_know}
+	
+		BIG_SET.append(new_record)
+		new_words.append(new_record)
 		record.queue_free()
-	BIG_SET.sort_custom(case_insensitive_sort)
-	for b in BIG_SET:
-		print(b)
+	BIG_SET.sort_custom(case_insensitive_sort_set)
 	
 	%ScrollModifyContainer.visible = false 
 	%WhatNext.visible = true
@@ -96,7 +122,7 @@ func _on_finish_pressed():
 	%LinesCounterLeft.text = ""
 	%LinesCounterRight.text = ""
 	save_array()
-	print(new_words)
+	print(BIG_SET)
 	
 func go_back_to_input():
 	%InputContainer.visible = true 
@@ -106,12 +132,21 @@ func go_back_to_input():
 func case_insensitive_sort(a, b):
 	return a[0].to_lower() < b[0].to_lower()
 	
+func case_insensitive_sort_set(a, b):
+	var a_word : String = a["original"]
+	if not a["is_sentence"] and a_word.split(" ")[0].to_upper() in ["DIE", "DAS", "DER"]:
+		a_word = a_word.right(-4)
+	var b_word = b["original"]
+	if not b["is_sentence"] and b_word.split(" ")[0].to_upper() in ["DIE", "DAS", "DER"]:
+		b_word = b_word.right(-4)
+	return a_word.to_lower() < b_word.to_lower()
+	
 func sortowanie_po_poznaniu(a,b):
 	return a[4] > b[4]
 	
 func already_in_set(word):
 	for record in BIG_SET:
-		if record[0].to_lower() == word.to_lower():
+		if record["original"].to_lower() == word.to_lower():
 			return true
 	return false
 

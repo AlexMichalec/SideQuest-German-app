@@ -5,7 +5,23 @@ var day_of_learning : int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	BIG_SET = load_array()
+		
+	save_array()
+	"""
+	var new_set_array = []
+	for b in BIG_SET:
+		var original = b[0]
+		if original.split(" ")[0].to_upper() in ["DIE", "DAS", "DER"]:
+			original[0] = original[0].to_lower()
+		var new_record = {"original":b[0], "translation":b[1], "weight":b[4], "is_sentence":b[2]}
+		new_set_array.append(new_record)
+	for i in range(30):
+		print(new_set_array[i])
+	BIG_SET = new_set_array
+	save_array()
+	"""
 	#for b in BIG_SET:
 	#	print(b[4]*0.8)
 	#update_day_now()
@@ -26,7 +42,7 @@ func update_weights():
 		print(ratio)
 		if ratio != 1:
 			for b in BIG_SET:
-				b[4] *= ratio
+				b["weight"] *= ratio
 	var save_file = FileAccess.open("user://GermanDate.save", FileAccess.WRITE)
 	save_file.store_32(today)
 	save_file.close()
@@ -65,7 +81,7 @@ func _on_improve_pressed():
 	
 	
 func save_array():
-	var file = FileAccess.open("user://FiszkiGerman.json", FileAccess.WRITE)
+	var file = FileAccess.open("user://FiszkiGerman.json", FileAccess.WRITE) #"user://FiszkiGermanSafe.json",
 	var json_string = JSON.stringify(BIG_SET)  # Convert array to JSON
 	file.store_string(json_string)  # Save to file
 	file.close()

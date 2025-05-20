@@ -111,15 +111,15 @@ func update_solution():
 		if child != %HasloLabel and child != %HasloCrossSample and child != %HasloEmpty:
 			child.queue_free()
 	var new_solution = BIG_ARRAY.pick_random()
-	while new_solution[0].length()>20 or new_solution[0].to_upper() in given_words or not can_be_solution(new_solution[0]):
+	while new_solution["original"].length()>20 or new_solution["original"].to_upper() in given_words or not can_be_solution(new_solution["original"]):
 		new_solution = BIG_ARRAY.pick_random()
 		break_counter += 1
 		if break_counter > 100:
 			%SolutionContainer.visible = false
 			return
-	%HasloLabel.text = new_solution[1] + " = "
+	%HasloLabel.text = new_solution["translation"] + " = "
 	var counter_sol_numbers = 1
-	for n in new_solution[0].to_upper():
+	for n in new_solution["original"].to_upper():
 		if n == " ":
 			var new_break = %HasloEmpty.duplicate()
 			new_break.visible = true
@@ -408,17 +408,22 @@ func load_array():
 
 func choose_new_words():
 	var words_for_crossword = []
-	while words_for_crossword.size() < 10:
+	while words_for_crossword.size() < 20:
 		var new_word = BIG_ARRAY.pick_random()
-		if new_word[0].split(" ").size() > 1:
-			if new_word[0].split(" ").size() == 2 and new_word[0].split(" ")[0].to_upper() in ["DIE", "DAS", "DER"]:
-				new_word[0] = new_word[0].split(" ")[1]
+		if new_word["original"].split(" ").size() > 1:
+			if new_word["original"].split(" ").size() == 2 and new_word["original"].split(" ")[0].to_upper() in ["DIE", "DAS", "DER"]:
+				new_word["original"] = new_word["original"].split(" ")[1]
 			else:
 				continue
-		if new_word in words_for_crossword:
+		var is_okay = true
+		for w in words_for_crossword:
+			if new_word["original"] == w[0]:
+				is_okay = false
+		if not is_okay:
 			continue
-		new_word[0] = new_word[0].to_upper()
-		words_for_crossword.append(new_word)
+		new_word["original"] = new_word["original"].to_upper()
+		var new_array_word = [new_word["original"],new_word["translation"],new_word["is_sentence"],""]
+		words_for_crossword.append(new_array_word)
 	given_words = words_for_crossword
 	return words_for_crossword
 
