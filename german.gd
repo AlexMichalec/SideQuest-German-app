@@ -107,8 +107,9 @@ func _on_finish_pressed():
 			if german.split(" ")[0].to_upper() == "DER":
 				gender = "male"
 			"""
-		var new_record = {"original":german, "translation":english, "is_sentence":sentence, "weight": how_much_do_i_know}
-	
+		
+		var new_record = {"original":german, "translation":english, "is_sentence":sentence, "weight": how_much_do_i_know, "date_added": Time.get_datetime_string_from_system()}
+		
 		BIG_SET.append(new_record)
 		new_words.append(new_record)
 		record.queue_free()
@@ -122,7 +123,9 @@ func _on_finish_pressed():
 	%LinesCounterLeft.text = ""
 	%LinesCounterRight.text = ""
 	save_array()
-	print(BIG_SET)
+	#print(BIG_SET)
+	#for n in new_words:
+	#	print(n)
 	
 func go_back_to_input():
 	%InputContainer.visible = true 

@@ -7,8 +7,7 @@ var day_of_learning : int
 func _ready():
 	
 	BIG_SET = load_array()
-		
-	save_array()
+	
 	"""
 	var new_set_array = []
 	for b in BIG_SET:
@@ -81,7 +80,7 @@ func _on_improve_pressed():
 	
 	
 func save_array():
-	var file = FileAccess.open("user://FiszkiGerman.json", FileAccess.WRITE) #"user://FiszkiGermanSafe.json",
+	var file = FileAccess.open("user://FiszkiGermanSafe.json", FileAccess.WRITE) #"user://FiszkiGermanSafe.json",
 	var json_string = JSON.stringify(BIG_SET)  # Convert array to JSON
 	file.store_string(json_string)  # Save to file
 	file.close()
@@ -131,8 +130,8 @@ func _on_edit_all_closed():
 	%Menus.visible = true
 	%EditAll.visible = false
 	BIG_SET = %EditAll.BIG_SET
-	for i in range(BIG_SET.size()):
-		print(i, " ", BIG_SET[i])
+	#for i in range(BIG_SET.size()):
+	#	print(i, " ", BIG_SET[i])
 	
 	
 
@@ -184,3 +183,31 @@ func _on_crossword_button_pressed():
 func _on_crossword_closed():
 	%Crossword.visible = false
 	%Menus.visible = true
+
+
+func _on_word_editor_closed():
+	%Menus.visible = true
+	%WordEditor.visible = false
+	BIG_SET = %WordEditor.BIG_SET
+
+
+func _on_word_editor_pressed():
+	%Menus.visible = false
+	%MainMenu.visible = true
+	%EditingMenu.visible = false
+	%WordEditor.visible = true
+	%WordEditor.BIG_SET = BIG_SET
+	%WordEditor.start()
+
+
+func _on_browser_closed():
+	%Menus.visible = true
+	%Browser.visible = false
+
+
+func _on_browser_pressed():
+	%Menus.visible = false
+	%MainMenu.visible = true
+	%EditingMenu.visible = false
+	%Browser.visible = true
+	%Browser.start()

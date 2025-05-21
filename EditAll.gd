@@ -173,7 +173,7 @@ func _on_option_button_item_selected(index):
 	%ScrollContainer.scroll_vertical = 0
 	
 func set_default_step():
-	print(BIG_SET.size())
+	#print(BIG_SET.size())
 	if BIG_SET.size() < 80:
 		_on_step_button_item_selected(0)
 	elif BIG_SET.size() < 300:

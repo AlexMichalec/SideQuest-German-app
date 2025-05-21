@@ -23,6 +23,7 @@ func _ready():
 	pass
 	
 func start():
+	BIG_SET = load_array()
 	started = true
 	reset()
 	
@@ -35,10 +36,12 @@ func reset():
 	finished = false
 	var big_set :Array = prepare_set()
 	word_set = []
-	while word_set.size() < min(10, big_set.size()):
+	var break_counter =0
+	while word_set.size() < min(10, big_set.size()) and break_counter < 100:
 		var new_q = big_set.pick_random()
 		if not new_q["is_sentence"] and not new_q in word_set:
 			word_set.append(new_q.duplicate())
+		break_counter += 1
 	question_id = 0
 	done = 0
 	%ScoreLabel.text = "0/" + str(word_set.size())
@@ -153,7 +156,7 @@ func prepare_set():
 				result2.append(r)
 		if end:
 			break
-	print(result2.size())
+	print("prepared", result2.size())
 	return result2
 
 func show_good_answer_correct():
@@ -202,9 +205,10 @@ func start_modifying():
 		%ModifyWordsContainr.add_child(new_record)
 		new_record.get_node("HBoxContainer/German").text = w["original"]
 		new_record.get_node("HBoxContainer/English").text = w["translation"]
-		for b in BIG_SET:
+		for i in range(BIG_SET.size()):
+			var b = BIG_SET[i]
 			if b["original"] == w["original"]:
-				new_record.get_node("HBoxContainer/Index").text = str(BIG_SET.find(b))
+				new_record.get_node("HBoxContainer/Index").text = str(i)
 				new_record.get_node("HBoxContainer/Waga").text = str(b["weight"])
 				new_record.get_node("HBoxContainer/Sentence").button_pressed = b["is_sentence"]
 	editing = true

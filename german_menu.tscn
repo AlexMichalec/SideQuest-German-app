@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://67im38sis6n6"]
+[gd_scene load_steps=14 format=3 uid="uid://67im38sis6n6"]
 
 [ext_resource type="Script" path="res://german_menu.gd" id="1_efs7r"]
 [ext_resource type="PackedScene" uid="uid://clrbqcpm846bw" path="res://abcd_game.tscn" id="2_orjqv"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://dfgpugq072h13" path="res://SpellingGame.tscn" id="5_faymh"]
 [ext_resource type="PackedScene" uid="uid://c0ibistihw7hb" path="res://plate.tscn" id="5_qqbec"]
 [ext_resource type="PackedScene" uid="uid://dgbc5buanapff" path="res://Crossword.tscn" id="6_nraox"]
+[ext_resource type="PackedScene" uid="uid://bq6v2aga6vo1k" path="res://browser.tscn" id="7_aheqn"]
+[ext_resource type="PackedScene" uid="uid://8f5pdkr6352" path="res://word_editor.tscn" id="7_gvutb"]
 
 [sub_resource type="Shader" id="Shader_2o0gt"]
 code = "shader_type canvas_item;
@@ -17,17 +19,17 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ren15"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n074m"]
 resource_local_to_scene = true
 shader = SubResource("Shader_2o0gt")
 shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_i0cae"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_puqcs"]
 resource_local_to_scene = true
 shader = SubResource("Shader_2o0gt")
 shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yp4r4"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xwgud"]
 resource_local_to_scene = true
 shader = SubResource("Shader_2o0gt")
 shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
@@ -160,14 +162,21 @@ focus_mode = 0
 theme_override_font_sizes/font_size = 32
 text = "Cała baza"
 
-[node name="Button2" type="Button" parent="Panel/Menus/EditingMenu"]
+[node name="Browser" type="Button" parent="Panel/Menus/EditingMenu"]
 layout_mode = 2
 size_flags_vertical = 3
 tooltip_text = "Not ready yet"
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
-disabled = true
-text = "Add Genders"
+text = "Wyszukiwarka"
+
+[node name="WordEditor" type="Button" parent="Panel/Menus/EditingMenu"]
+layout_mode = 2
+size_flags_vertical = 3
+tooltip_text = "Not ready yet"
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+text = "Dodaj płeć"
 
 [node name="Button3" type="Button" parent="Panel/Menus/EditingMenu"]
 layout_mode = 2
@@ -177,15 +186,6 @@ focus_mode = 0
 theme_override_font_sizes/font_size = 32
 disabled = true
 text = "Cut Sentences"
-
-[node name="Button4" type="Button" parent="Panel/Menus/EditingMenu"]
-layout_mode = 2
-size_flags_vertical = 3
-tooltip_text = "Not ready yet"
-focus_mode = 0
-theme_override_font_sizes/font_size = 32
-disabled = true
-text = "????"
 
 [node name="Back" type="Button" parent="Panel/Menus/EditingMenu"]
 custom_minimum_size = Vector2(300, 0)
@@ -231,9 +231,20 @@ visible = false
 layout_mode = 2
 anchors_preset = 0
 
+[node name="Browser" parent="Panel" instance=ExtResource("7_aheqn")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+anchors_preset = 0
+
+[node name="WordEditor" parent="Panel" instance=ExtResource("7_gvutb")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
 [node name="Plate" parent="." instance=ExtResource("5_qqbec")]
 visible = false
-material = SubResource("ShaderMaterial_ren15")
+material = SubResource("ShaderMaterial_n074m")
 layout_mode = 0
 offset_left = 60.0
 offset_top = 50.0
@@ -243,7 +254,7 @@ tint = Color(0.137255, 0.137255, 0.141176, 1)
 
 [node name="Plate2" parent="." instance=ExtResource("5_qqbec")]
 visible = false
-material = SubResource("ShaderMaterial_i0cae")
+material = SubResource("ShaderMaterial_puqcs")
 layout_mode = 0
 offset_left = 60.0
 offset_top = 120.0
@@ -253,7 +264,7 @@ tint = Color(0.796078, 0.113725, 0, 1)
 
 [node name="Plate3" parent="." instance=ExtResource("5_qqbec")]
 visible = false
-material = SubResource("ShaderMaterial_yp4r4")
+material = SubResource("ShaderMaterial_xwgud")
 layout_mode = 0
 offset_left = 60.0
 offset_top = 190.0
@@ -270,6 +281,8 @@ tint = Color(0.745098, 0.568627, 0, 1)
 [connection signal="pressed" from="Panel/Menus/GamesMenu/CrosswordButton" to="." method="_on_crossword_button_pressed"]
 [connection signal="pressed" from="Panel/Menus/GamesMenu/Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="Panel/Menus/EditingMenu/EditAllButton" to="." method="_on_edit_all_button_pressed"]
+[connection signal="pressed" from="Panel/Menus/EditingMenu/Browser" to="." method="_on_browser_pressed"]
+[connection signal="pressed" from="Panel/Menus/EditingMenu/WordEditor" to="." method="_on_word_editor_pressed"]
 [connection signal="pressed" from="Panel/Menus/EditingMenu/Back" to="." method="_on_back_pressed"]
 [connection signal="closed" from="Panel/ABCDGame" to="." method="_on_abcd_game_closed"]
 [connection signal="closed" from="Panel/Generator" to="." method="_on_generator_closed"]
@@ -277,3 +290,5 @@ tint = Color(0.745098, 0.568627, 0, 1)
 [connection signal="closed" from="Panel/EditAll" to="." method="_on_edit_all_closed"]
 [connection signal="closed" from="Panel/SpellingGame" to="." method="_on_spelling_game_closed"]
 [connection signal="closed" from="Panel/Crossword" to="." method="_on_crossword_closed"]
+[connection signal="closed" from="Panel/Browser" to="." method="_on_browser_closed"]
+[connection signal="closed" from="Panel/WordEditor" to="." method="_on_word_editor_closed"]

@@ -1,0 +1,220 @@
+[gd_scene load_steps=18 format=3 uid="uid://8f5pdkr6352"]
+
+[ext_resource type="Script" path="res://word_editor.gd" id="1_44elt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_g7ny8"]
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_t8eh5"]
+font_size = 32
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qsmo8"]
+bg_color = Color(0.980392, 0.298039, 0.921569, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qrwp6"]
+bg_color = Color(0.85098, 0, 0.647059, 1)
+
+[sub_resource type="InputEventKey" id="InputEventKey_tnfvq"]
+device = -1
+keycode = 49
+unicode = 49
+
+[sub_resource type="Shortcut" id="Shortcut_b6anj"]
+events = [SubResource("InputEventKey_tnfvq")]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v8sqx"]
+bg_color = Color(0, 0.701961, 0.862745, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l5jlp"]
+bg_color = Color(0, 0.529412, 0.933333, 1)
+
+[sub_resource type="InputEventKey" id="InputEventKey_0m74t"]
+device = -1
+keycode = 50
+unicode = 50
+
+[sub_resource type="Shortcut" id="Shortcut_ob84v"]
+events = [SubResource("InputEventKey_0m74t")]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u4iyk"]
+bg_color = Color(0.8, 0.733333, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y33xg"]
+bg_color = Color(0.768627, 0.560784, 0, 1)
+
+[sub_resource type="InputEventKey" id="InputEventKey_37w28"]
+device = -1
+keycode = 51
+unicode = 51
+
+[sub_resource type="Shortcut" id="Shortcut_6pipp"]
+events = [SubResource("InputEventKey_37w28")]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dsw6e"]
+bg_color = Color(0, 0.713726, 0.407843, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5epjk"]
+bg_color = Color(0, 0.619608, 0.262745, 1)
+
+[node name="WordEditor" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+alignment = 1
+script = ExtResource("1_44elt")
+
+[node name="CheckBox" type="CheckBox" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "only potential nouns"
+
+[node name="Title" type="Label" parent="."]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Word editor"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Counter" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = "21/37"
+horizontal_alignment = 1
+
+[node name="Word" type="Label" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+text = "WORD"
+label_settings = SubResource("LabelSettings_g7ny8")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Translation" type="Label" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "WORD"
+label_settings = SubResource("LabelSettings_t8eh5")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Control2" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="Female" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxFlat_qsmo8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_qrwp6")
+shortcut = SubResource("Shortcut_b6anj")
+text = "FEMALE
+noun"
+
+[node name="Male" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxFlat_v8sqx")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_l5jlp")
+shortcut = SubResource("Shortcut_ob84v")
+text = "MALE
+noun
+"
+
+[node name="Neutral" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxFlat_u4iyk")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_y33xg")
+shortcut = SubResource("Shortcut_6pipp")
+text = "NEUTRAL
+noun"
+
+[node name="Plural" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxFlat_dsw6e")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5epjk")
+text = "PLURAL
+noun"
+
+[node name="Proper" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+text = "PROPER
+noun"
+
+[node name="Verb" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+text = "Verb"
+
+[node name="Adjective" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+text = "Adjective"
+
+[node name="Other" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+text = "Other"
+
+[node name="Sentence" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+text = "Sentence"
+
+[node name="Control" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Undo" type="Button" parent="HBoxContainer2"]
+layout_mode = 2
+disabled = true
+text = "Undo"
+
+[node name="Back" type="Button" parent="HBoxContainer2"]
+layout_mode = 2
+text = "Back to Main Menu"
+
+[node name="Redo" type="Button" parent="HBoxContainer2"]
+layout_mode = 2
+disabled = true
+text = "Redo
+"
+
+[connection signal="toggled" from="CheckBox" to="." method="_on_check_box_toggled"]
+[connection signal="pressed" from="HBoxContainer/Female" to="." method="_on_female_pressed"]
+[connection signal="pressed" from="HBoxContainer/Male" to="." method="_on_male_pressed"]
+[connection signal="pressed" from="HBoxContainer/Neutral" to="." method="_on_neutral_pressed"]
+[connection signal="pressed" from="HBoxContainer/Plural" to="." method="_on_plural_pressed"]
+[connection signal="pressed" from="HBoxContainer/Proper" to="." method="_on_proper_pressed"]
+[connection signal="pressed" from="HBoxContainer/Verb" to="." method="_on_verb_pressed"]
+[connection signal="pressed" from="HBoxContainer/Adjective" to="." method="_on_adjective_pressed"]
+[connection signal="pressed" from="HBoxContainer/Other" to="." method="_on_other_pressed"]
+[connection signal="pressed" from="HBoxContainer/Sentence" to="." method="_on_sentence_pressed"]
+[connection signal="pressed" from="HBoxContainer2/Back" to="." method="_on_back_pressed"]
