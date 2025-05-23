@@ -19,17 +19,17 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_n074m"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tgh64"]
 resource_local_to_scene = true
 shader = SubResource("Shader_2o0gt")
 shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_puqcs"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6yqm0"]
 resource_local_to_scene = true
 shader = SubResource("Shader_2o0gt")
 shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xwgud"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4duhj"]
 resource_local_to_scene = true
 shader = SubResource("Shader_2o0gt")
 shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
@@ -244,7 +244,7 @@ layout_mode = 1
 
 [node name="Plate" parent="." instance=ExtResource("5_qqbec")]
 visible = false
-material = SubResource("ShaderMaterial_n074m")
+material = SubResource("ShaderMaterial_tgh64")
 layout_mode = 0
 offset_left = 60.0
 offset_top = 50.0
@@ -254,7 +254,7 @@ tint = Color(0.137255, 0.137255, 0.141176, 1)
 
 [node name="Plate2" parent="." instance=ExtResource("5_qqbec")]
 visible = false
-material = SubResource("ShaderMaterial_puqcs")
+material = SubResource("ShaderMaterial_6yqm0")
 layout_mode = 0
 offset_left = 60.0
 offset_top = 120.0
@@ -264,7 +264,7 @@ tint = Color(0.796078, 0.113725, 0, 1)
 
 [node name="Plate3" parent="." instance=ExtResource("5_qqbec")]
 visible = false
-material = SubResource("ShaderMaterial_xwgud")
+material = SubResource("ShaderMaterial_4duhj")
 layout_mode = 0
 offset_left = 60.0
 offset_top = 190.0

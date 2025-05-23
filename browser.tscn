@@ -1,6 +1,41 @@
-[gd_scene load_steps=2 format=3 uid="uid://bq6v2aga6vo1k"]
+[gd_scene load_steps=7 format=3 uid="uid://bq6v2aga6vo1k"]
 
 [ext_resource type="Script" path="res://browser.gd" id="1_eb3dy"]
+[ext_resource type="PackedScene" uid="uid://42oxmd28tyes" path="res://german_text_input.tscn" id="2_chpsg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kykw0"]
+content_margin_left = 8.0
+content_margin_top = 2.0
+content_margin_right = 8.0
+content_margin_bottom = 2.0
+bg_color = Color(0.47451, 0.00392157, 0.933333, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.764706)
+shadow_size = 2
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a8uxg"]
+content_margin_left = 8.0
+content_margin_top = 2.0
+content_margin_right = 8.0
+content_margin_bottom = 2.0
+bg_color = Color(0.27451, 0.0588235, 0.737255, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.764706)
+shadow_size = 2
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jto50"]
+font_size = 24
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ta1h"]
+bg_color = Color(0.6, 0.6, 0.6, 0.211765)
 
 [node name="Browser" type="VBoxContainer"]
 anchors_preset = 15
@@ -35,93 +70,166 @@ theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 30
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
+[node name="BrowsingContainer" type="MarginContainer" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 10
+
+[node name="BrowsingPanel" type="Panel" parent="MarginContainer/BrowsingContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="RecordLists" type="VBoxContainer" parent="MarginContainer/ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/BrowsingContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 10
+
+[node name="BrowsingContainerInner" type="ScrollContainer" parent="MarginContainer/BrowsingContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="RecordLists" type="VBoxContainer" parent="MarginContainer/BrowsingContainer/MarginContainer/BrowsingContainerInner"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_constants/separation = 10
 
-[node name="SampleRecord" type="HBoxContainer" parent="MarginContainer/ScrollContainer/RecordLists"]
+[node name="SampleRecord" type="HBoxContainer" parent="MarginContainer/BrowsingContainer/MarginContainer/BrowsingContainerInner/RecordLists"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
-size_flags_horizontal = 4
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Original" type="RichTextLabel" parent="MarginContainer/ScrollContainer/RecordLists/SampleRecord"]
+[node name="Original" type="RichTextLabel" parent="MarginContainer/BrowsingContainer/MarginContainer/BrowsingContainerInner/RecordLists/SampleRecord"]
 layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
 bbcode_enabled = true
-text = "[right][bgcolor=red]znalezione [/bgcolor][/right]"
+text = "[right][bgcolor=red]znalezione [/bgcolor"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[node name="Break" type="Label" parent="MarginContainer/ScrollContainer/RecordLists/SampleRecord"]
+[node name="Break" type="Label" parent="MarginContainer/BrowsingContainer/MarginContainer/BrowsingContainerInner/RecordLists/SampleRecord"]
 layout_mode = 2
 text = "-"
 vertical_alignment = 1
 
-[node name="Translation" type="RichTextLabel" parent="MarginContainer/ScrollContainer/RecordLists/SampleRecord"]
+[node name="Translation" type="RichTextLabel" parent="MarginContainer/BrowsingContainer/MarginContainer/BrowsingContainerInner/RecordLists/SampleRecord"]
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
 bbcode_enabled = true
 text = "Translation"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[node name="Button" type="Button" parent="MarginContainer/ScrollContainer/RecordLists/SampleRecord"]
+[node name="Button" type="Button" parent="MarginContainer/BrowsingContainer/MarginContainer/BrowsingContainerInner/RecordLists/SampleRecord"]
 layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_kykw0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_a8uxg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a8uxg")
 text = "Edit"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="EditingContainer" type="MarginContainer" parent="MarginContainer"]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 20
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Panel" type="Panel" parent="MarginContainer/EditingContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/EditingContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/EditingContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_constants/separation = 5
+
+[node name="Label" type="Label" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer"]
 layout_mode = 2
 text = "Edit Window:"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="Control" type="Control" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="OriginalContainer" type="HBoxContainer" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer/OriginalContainer"]
+layout_mode = 2
+text = "Original:"
+label_settings = SubResource("LabelSettings_jto50")
+
+[node name="OriginalEdit" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer/OriginalContainer" instance=ExtResource("2_chpsg")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+
+[node name="Translation Container" type="HBoxContainer" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer/Translation Container"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Translation"
+
+[node name="TranslationEdit" type="LineEdit" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer/Translation Container"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
+
+[node name="BasicBox" type="HBoxContainer" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Original:"
-
-[node name="OriginalEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Translation"
-
-[node name="TranslationEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-text = "Weight:"
-
-[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-
-[node name="CheckButton" type="CheckButton" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="SentenceEdit" type="CheckButton" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer/BasicBox"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Sentence"
 
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="Label" type="Label" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer/BasicBox"]
+layout_mode = 2
+text = "Weight:"
+
+[node name="WeightEdit" type="LineEdit" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer/BasicBox"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="WordContainer" type="HBoxContainer" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer/WordContainer"]
 layout_mode = 2
 text = "Speech part: "
 
-[node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="PartOfSpeech" type="OptionButton" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer/WordContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 action_mode = 1
 item_count = 4
@@ -134,14 +242,212 @@ popup/item_2/id = 2
 popup/item_3/text = "Other"
 popup/item_3/id = 3
 
-[node name="Button" type="Button" parent="."]
+[node name="NounContainer" type="HBoxContainer" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="PluralButton" type="CheckButton" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer/NounContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Plural"
+
+[node name="ProperButton" type="CheckButton" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer/NounContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Proper"
+
+[node name="Label3" type="Label" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer/NounContainer"]
+layout_mode = 2
+text = "Gender: "
+
+[node name="GenderButton" type="OptionButton" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer/NounContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+action_mode = 1
+item_count = 3
+allow_reselect = true
+popup/item_0/text = "Female"
+popup/item_0/id = 0
+popup/item_1/text = "Male"
+popup/item_1/id = 1
+popup/item_2/text = "Neutral"
+popup/item_2/id = 2
+
+[node name="Control2" type="Control" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer"]
+layout_mode = 2
+
+[node name="Added" type="Label" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Added: "
+
+[node name="Control" type="Control" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Modified" type="Label" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Modified:"
+
+[node name="Control2" type="Control" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Control3" type="Control" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="Control4" type="Control" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer2"]
+layout_mode = 2
+text = "Categories:"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Panel" type="Panel" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer2/MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1ta1h")
+
+[node name="ScrollCategoriesBox" type="ScrollContainer" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer2/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CategoriesContainer" type="VBoxContainer" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer2/MarginContainer/ScrollCategoriesBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MainCat" type="CheckButton" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer2/MarginContainer/ScrollCategoriesBox/CategoriesContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = "Main Category"
+
+[node name="CheckButton2" type="CheckButton" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer2/MarginContainer/ScrollCategoriesBox/CategoriesContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "Animals"
+
+[node name="CheckButton3" type="CheckButton" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer2/MarginContainer/ScrollCategoriesBox/CategoriesContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "Groceries"
+
+[node name="CheckButton4" type="CheckButton" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer2/MarginContainer/ScrollCategoriesBox/CategoriesContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "Work Life"
+
+[node name="CheckButton5" type="CheckButton" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer2/MarginContainer/ScrollCategoriesBox/CategoriesContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "Everyday talk"
+
+[node name="CheckButton6" type="CheckButton" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer2/MarginContainer/ScrollCategoriesBox/CategoriesContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "Anatomy"
+
+[node name="CheckButton7" type="CheckButton" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer2/MarginContainer/ScrollCategoriesBox/CategoriesContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "Tokyo Ghoul"
+
+[node name="CheckButton8" type="CheckButton" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer2/MarginContainer/ScrollCategoriesBox/CategoriesContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "Youtube"
+
+[node name="CheckButton9" type="CheckButton" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer2/MarginContainer/ScrollCategoriesBox/CategoriesContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "Songs"
+
+[node name="CheckButton10" type="CheckButton" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer2/MarginContainer/ScrollCategoriesBox/CategoriesContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "I don't know"
+
+[node name="CheckButton11" type="CheckButton" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer2/MarginContainer/ScrollCategoriesBox/CategoriesContainer"]
+layout_mode = 2
+focus_mode = 0
+text = "Archive"
+
+[node name="Button" type="Button" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 4
+text = "Modify Categories!"
+
+[node name="Control" type="Control" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer2"]
+custom_minimum_size = Vector2(30, 10)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer2"]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Back" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 20
 text = "Back To Main Menu"
+
+[node name="Cancel" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Cancel"
+
+[node name="Save" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Save"
 
 [node name="Control2" type="Control" parent="."]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 
 [connection signal="text_changed" from="LineEdit" to="." method="_on_line_edit_text_changed"]
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="toggled" from="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer/BasicBox/SentenceEdit" to="." method="_on_sentence_edit_toggled"]
+[connection signal="item_selected" from="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer/WordContainer/PartOfSpeech" to="." method="_on_part_of_speech_item_selected"]
+[connection signal="toggled" from="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer/NounContainer/PluralButton" to="." method="_on_plural_button_toggled"]
+[connection signal="toggled" from="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer/NounContainer/ProperButton" to="." method="_on_proper_button_toggled"]
+[connection signal="item_selected" from="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3/VBoxContainer/NounContainer/GenderButton" to="." method="_on_gender_button_item_selected"]
+[connection signal="pressed" from="HBoxContainer/Back" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/Cancel" to="." method="_on_cancel_pressed"]
+[connection signal="pressed" from="HBoxContainer/Save" to="." method="_on_save_pressed"]
