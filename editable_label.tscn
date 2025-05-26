@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkvmhg6xmpk1x"]
+
+[ext_resource type="Script" path="res://EditableLabel.gd" id="1_qg4s4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vutrj"]
+resource_local_to_scene = true
+font_size = 48
+
+[node name="EditableLabel" type="Label"]
+offset_right = 40.0
+offset_bottom = 23.0
+mouse_filter = 1
+theme_override_font_sizes/font_size = 32
+text = "Sample Text"
+label_settings = SubResource("LabelSettings_vutrj")
+horizontal_alignment = 1
+script = ExtResource("1_qg4s4")
+
+[node name="Button" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 2.0
+offset_top = -1.0
+offset_right = 36.0
+offset_bottom = 24.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 12
+text = "EDIT"
+
+[node name="LineEdit" type="LineEdit" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 40
+alignment = 1
+expand_to_text_length = true
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="text_submitted" from="LineEdit" to="." method="_on_line_edit_text_submitted"]

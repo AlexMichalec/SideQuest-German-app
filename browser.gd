@@ -58,21 +58,35 @@ func _on_line_edit_text_changed(new_text):
 		if new_text.to_lower() in b["original"].to_lower() or new_text.to_lower() in b["translation"].to_lower():
 			var new_record = %SampleRecord.duplicate()
 			var o_text = b["original"]
+			if o_text.length()>40:
+				var counter = round(o_text.length()/2)
+				while o_text[counter] != " ":
+					counter += 1
+				o_text[counter] = "\n"
+				o_text = "[right]" + o_text
 			if b["original"].to_lower().contains(new_text.to_lower()):
 				var index = b["original"].to_lower().find(new_text.to_lower())
 				o_text = o_text.insert(index + new_text.length(),"[/bgcolor]")
 				o_text = o_text.insert(index,"[bgcolor=black]")
 				#print(o_text)
+			
 			var t_text = b["translation"]
+			if t_text.length()>40:
+				var counter = round(t_text.length()/2)
+				while t_text[counter] != " ":
+					counter += 1
+				t_text[counter] = "\n"
 			if b["translation"].to_lower().contains(new_text.to_lower()):
 				var index = b["translation"].to_lower().find(new_text.to_lower())
 				t_text = t_text.insert(index + new_text.length(),"[/bgcolor]")
 				t_text = t_text.insert(index,"[bgcolor=black]")
 				#print(t_text)
+			
 			new_record.get_node("Original").text = o_text
 			new_record.get_node("Translation").text = t_text
-			new_record.get_node("Button").pressed.connect(show_edit_window)
-			new_record.get_node("Button").pressed.connect(func():fill_editor_window(b))
+			new_record.get_node("Translation/Button").pressed.connect(show_edit_window)
+			new_record.get_node("Translation/Button").pressed.connect(func():fill_editor_window(b))
+			new_record.get_node("Translation/Button").position.x +=  60
 			new_record.visible = true
 			%RecordLists.add_child(new_record)
 			
@@ -138,6 +152,10 @@ func fill_editor_window(word : Dictionary):
 
 func _on_button_pressed():
 	save_array()
+	$LineEdit.text = ""
+	for child in %RecordLists.get_children():
+		if child != %SampleRecord:
+			child.queue_free()
 	closed.emit()
 
 

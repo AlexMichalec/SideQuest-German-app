@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dgbc5buanapff"]
+[gd_scene load_steps=9 format=3 uid="uid://dgbc5buanapff"]
 
 [ext_resource type="Script" path="res://Crossword.gd" id="1_7dihb"]
 [ext_resource type="PackedScene" uid="uid://dlvl6kdhvx0ai" path="res://crossword_button.tscn" id="1_ptl07"]
+[ext_resource type="PackedScene" uid="uid://dkvmhg6xmpk1x" path="res://editable_label.tscn" id="2_yssxb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jb6vw"]
 font_size = 48
@@ -12,6 +13,12 @@ font_size = 24
 [sub_resource type="LabelSettings" id="LabelSettings_5jdvi"]
 font_size = 20
 font_color = Color(0, 0.807843, 0.290196, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_yre2s"]
+resource_local_to_scene = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_7dwmh"]
+resource_local_to_scene = true
 
 [node name="Control" type="VBoxContainer"]
 anchors_preset = 15
@@ -79,8 +86,27 @@ theme_override_colors/font_color = Color(1, 0.392157, 0.32549, 1)
 theme_override_font_sizes/font_size = 20
 text = "Horizontal:"
 
-[node name="HorizontalSample" type="Label" parent="HBoxContainer2/HorLegend"]
+[node name="HorizontalSample" parent="HBoxContainer2/HorLegend" instance=ExtResource("2_yssxb")]
 unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+label_settings = SubResource("LabelSettings_yre2s")
+
+[node name="Button" parent="HBoxContainer2/HorLegend/HorizontalSample" index="0"]
+anchors_preset = 0
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = -38.0
+offset_top = 0.0
+offset_right = -4.0
+offset_bottom = 25.0
+grow_horizontal = 1
+
+[node name="LineEdit" parent="HBoxContainer2/HorLegend/HorizontalSample" index="1"]
+theme_override_font_sizes/font_size = 14
+
+[node name="HorizontalSampleOld" type="Label" parent="HBoxContainer2/HorLegend"]
 visible = false
 layout_mode = 2
 text = "1. "
@@ -1302,11 +1328,15 @@ theme_override_colors/font_color = Color(0.592157, 0.72549, 0.996078, 1)
 theme_override_font_sizes/font_size = 20
 text = "Vertical:"
 
-[node name="VerticalSample" type="Label" parent="HBoxContainer2/VerLegend"]
+[node name="VerticalSample" parent="HBoxContainer2/VerLegend" instance=ExtResource("2_yssxb")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
-text = "Verical:"
+size_flags_horizontal = 4
+label_settings = SubResource("LabelSettings_7dwmh")
+
+[node name="LineEdit" parent="HBoxContainer2/VerLegend/VerticalSample" index="1"]
+theme_override_font_sizes/font_size = 14
 
 [node name="Control" type="Control" parent="HBoxContainer2"]
 custom_minimum_size = Vector2(20, 0)
@@ -1390,8 +1420,13 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "CHECK CROSSWORD"
 
+[connection signal="text_edited" from="HBoxContainer2/HorLegend/HorizontalSample" to="." method="_on_horizontal_sample_text_edited"]
+[connection signal="text_edited" from="HBoxContainer2/VerLegend/VerticalSample" to="." method="_on_vertical_sample_text_edited"]
 [connection signal="pressed" from="HBoxContainer3/ShowTips" to="." method="_on_show_tips_pressed"]
 [connection signal="pressed" from="HBoxContainer/new_crossword" to="." method="_on_new_crossword_pressed"]
 [connection signal="pressed" from="HBoxContainer/back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="HBoxContainer/new_words" to="." method="_on_new_words_pressed"]
 [connection signal="pressed" from="HBoxContainer/check_crossword" to="." method="_on_check_crossword_pressed"]
+
+[editable path="HBoxContainer2/HorLegend/HorizontalSample"]
+[editable path="HBoxContainer2/VerLegend/VerticalSample"]

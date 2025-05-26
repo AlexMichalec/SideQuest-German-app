@@ -48,6 +48,8 @@ func new_question():
 			%Tip.text = "Copy the word!"
 			points = 4
 		%Question.text = new_q["original"]
+		%Question.editable = true
+		%Tip.editable = false
 		correct_answer = new_q["original"]
 		given_tip = new_q["translation"]
 		is_sentence = new_q["is_sentence"]
@@ -57,6 +59,8 @@ func new_question():
 		%Tip.text = "Write it in German!"
 		%Question.text = new_q["translation"]
 		correct_answer = new_q["original"]
+		%Question.editable = true
+		%Tip.editable = false
 		given_tip = ""
 		tip_array = []
 		for c in correct_answer:
@@ -70,6 +74,8 @@ func new_question():
 		while not new_q["is_sentence"]:
 			new_q = BIG_SET.pick_random()
 		%Tip.text = "Fill the gap!"
+		%Question.editable = false
+		%Tip.editable = false
 		correct_sentence = new_q["original"]
 		var word_array = new_q["original"].split(" ")
 		var chosen_index = randi_range(0,word_array.size()-1)
@@ -85,8 +91,10 @@ func new_question():
 		%Question.text = " ".join(word_array)
 		points = min(10,correct_answer.length() * 2)
 		given_tip = new_q["translation"]
+		wrap_question()
 		await get_tree().create_timer(2).timeout
 		%Tip.text = given_tip
+		%Tip.editable = true
 		"""
 		tip_array = []
 		for c in correct_answer:
@@ -97,10 +105,20 @@ func new_question():
 		tip_array[0] = "_"
 		"""
 		is_sentence = false
-	#print(%Question.text.length())
-	#if %Question.text.length() > 50:
-	#	%Question.label_settings.font_size = 36
-		#%Answer.theme_override_font_sizes.font_size = 36
+	if question_type !=3:
+		wrap_question()
+	
+func wrap_question():
+	print(%Question.text.length())
+	if %Question.text.length() > 40:
+		var break_index = round(%Question.text.length()/2)
+		while %Question.text[break_index] != " "  and break_index < %Question.text.length():
+			break_index += 1
+		if break_index < %Question.text.length():
+			print("INSERT")
+			%Question.text = %Question.text.insert(break_index, " \n ")
+			
+
 func check():
 	var wait_time = max(1,float(correct_answer.length())/10) 
 	if question_type in [1,2]:
@@ -172,6 +190,8 @@ func _on_answer_text_submitted(_new_text):
 
 
 func _on_tip_button_pressed():
+	if question_type == 1:
+		%Tip.editable = true
 	if question_type == 2:
 		add_tip()
 	if question_type == 3 and %Tip.text == given_tip:
@@ -344,3 +364,32 @@ func _on_previous_button_pressed():
 		%PrevContainer.visible = false
 		%Score.visible = true
 		%QuestionContainer.visible = true
+
+
+func _on_question_text_edited(old_text, new_text):
+	var is_okay = false
+	if question_type == 1:
+		for b in BIG_SET:
+			if b["original"] == old_text:
+				b["original"] = new_text 
+				is_okay = true
+	elif question_type == 2:
+		for b in BIG_SET:
+			if b["translation"] == old_text:
+				b["translation"] = new_text 
+				is_okay = true
+	if is_okay:
+		save_array()
+
+
+
+func _on_tip_text_edited(old_text, new_text):
+	var is_okay = false
+	for b in BIG_SET:
+		if b["translation"] == old_text:
+			b["translation"] = new_text 
+			is_okay = true
+			print(b)
+
+	if is_okay:
+		save_array()

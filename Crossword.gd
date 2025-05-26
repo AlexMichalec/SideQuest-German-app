@@ -540,3 +540,33 @@ func show_words_points():
 			while x+1 < buttons_array.size() and buttons_array[x+1][y].square_type == "white":
 				x += 1
 			buttons_array[x][y].show_score_vertical(word[5])
+
+func save_array():
+	var file = FileAccess.open("user://FiszkiGerman.json", FileAccess.WRITE)
+	var json_string = JSON.stringify(BIG_ARRAY)  # Convert array to JSON
+	file.store_string(json_string)  # Save to file
+	file.close()
+	
+func edit_translation(old_text, new_text):
+	while old_text[0] in "0123456789":
+		old_text = old_text.right(-1)
+	old_text = old_text.right(-2)	
+	print(old_text)
+	var is_okay = false
+	for b in BIG_ARRAY:
+		if b["translation"] == old_text:
+			b["translation"] = new_text 
+			is_okay = true
+			print(b)
+			return
+	if is_okay:
+		save_array()
+		
+	
+
+func _on_horizontal_sample_text_edited(old_text, new_text):
+	edit_translation(old_text, new_text)
+
+
+func _on_vertical_sample_text_edited(old_text, new_text):
+	edit_translation(old_text, new_text)

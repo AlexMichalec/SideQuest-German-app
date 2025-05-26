@@ -1,15 +1,18 @@
-[gd_scene load_steps=10 format=3 uid="uid://dfgpugq072h13"]
+[gd_scene load_steps=11 format=3 uid="uid://dfgpugq072h13"]
 
 [ext_resource type="PackedScene" uid="uid://42oxmd28tyes" path="res://german_text_input.tscn" id="1_36b10"]
 [ext_resource type="Script" path="res://SpellingGame.gd" id="1_c6cya"]
+[ext_resource type="PackedScene" uid="uid://dkvmhg6xmpk1x" path="res://editable_label.tscn" id="2_p2cs1"]
 [ext_resource type="FontFile" uid="uid://duod5phe1frai" path="res://Fonts/Bright DEMO.otf" id="3_nlop1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_eridn"]
 font_size = 24
 
-[sub_resource type="LabelSettings" id="LabelSettings_jwb8p"]
+[sub_resource type="LabelSettings" id="LabelSettings_kqd3f"]
+font_size = 18
 
-[sub_resource type="LabelSettings" id="LabelSettings_fmtjf"]
+[sub_resource type="LabelSettings" id="LabelSettings_al3kj"]
+resource_local_to_scene = true
 font_size = 48
 
 [sub_resource type="LabelSettings" id="LabelSettings_8eyba"]
@@ -82,20 +85,20 @@ layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Tip" type="Label" parent="QuestionContainer/VBoxContainer"]
+[node name="Tip" parent="QuestionContainer/VBoxContainer" instance=ExtResource("2_p2cs1")]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Don't forget Unlauts!"
-label_settings = SubResource("LabelSettings_jwb8p")
-horizontal_alignment = 1
+size_flags_horizontal = 4
+label_settings = SubResource("LabelSettings_kqd3f")
 
-[node name="Question" type="Label" parent="QuestionContainer/VBoxContainer"]
+[node name="LineEdit" parent="QuestionContainer/VBoxContainer/Tip" index="1"]
+theme_override_font_sizes/font_size = 16
+
+[node name="Question" parent="QuestionContainer/VBoxContainer" instance=ExtResource("2_p2cs1")]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Die Katze"
-label_settings = SubResource("LabelSettings_fmtjf")
-horizontal_alignment = 1
-autowrap_mode = 2
+size_flags_horizontal = 4
+label_settings = SubResource("LabelSettings_al3kj")
 
 [node name="Answer" parent="QuestionContainer/VBoxContainer" instance=ExtResource("1_36b10")]
 unique_name_in_owner = true
@@ -268,6 +271,8 @@ layout_mode = 2
 
 [connection signal="pressed" from="HBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="text_edited" from="QuestionContainer/VBoxContainer/Tip" to="." method="_on_tip_text_edited"]
+[connection signal="text_edited" from="QuestionContainer/VBoxContainer/Question" to="." method="_on_question_text_edited"]
 [connection signal="text_submitted" from="QuestionContainer/VBoxContainer/Answer" to="." method="_on_answer_text_submitted"]
 [connection signal="pressed" from="QuestionContainer/VBoxContainer/HBoxContainer/SkipButton" to="." method="_on_skip_button_pressed"]
 [connection signal="pressed" from="QuestionContainer/VBoxContainer/HBoxContainer/TipButton" to="." method="_on_tip_button_pressed"]
@@ -280,3 +285,5 @@ layout_mode = 2
 [connection signal="pressed" from="SettingsContainer/HBoxContainer/VBoxContainer2/right_umlaufts" to="." method="_on_right_umlaufts_pressed"]
 [connection signal="pressed" from="SettingsContainer/SaveButton" to="." method="_on_save_button_pressed"]
 [connection signal="pressed" from="PreviousButton" to="." method="_on_previous_button_pressed"]
+
+[editable path="QuestionContainer/VBoxContainer/Tip"]
