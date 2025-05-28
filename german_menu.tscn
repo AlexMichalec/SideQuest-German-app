@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://67im38sis6n6"]
+[gd_scene load_steps=15 format=3 uid="uid://67im38sis6n6"]
 
 [ext_resource type="Script" path="res://german_menu.gd" id="1_efs7r"]
 [ext_resource type="PackedScene" uid="uid://clrbqcpm846bw" path="res://abcd_game.tscn" id="2_orjqv"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dgbc5buanapff" path="res://Crossword.tscn" id="6_nraox"]
 [ext_resource type="PackedScene" uid="uid://bq6v2aga6vo1k" path="res://browser.tscn" id="7_aheqn"]
 [ext_resource type="PackedScene" uid="uid://8f5pdkr6352" path="res://word_editor.tscn" id="7_gvutb"]
+[ext_resource type="PackedScene" uid="uid://dkej2utekbbmg" path="res://gender_game.tscn" id="8_jc0tv"]
 
 [sub_resource type="Shader" id="Shader_2o0gt"]
 code = "shader_type canvas_item;
@@ -19,17 +20,17 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0ikyj"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1513q"]
 resource_local_to_scene = true
 shader = SubResource("Shader_2o0gt")
 shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dpjrs"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v0jxn"]
 resource_local_to_scene = true
 shader = SubResource("Shader_2o0gt")
 shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_we0mk"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j1ntq"]
 resource_local_to_scene = true
 shader = SubResource("Shader_2o0gt")
 shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
@@ -130,13 +131,12 @@ focus_mode = 0
 theme_override_font_sizes/font_size = 32
 text = "Czas na Krzyżówkę!"
 
-[node name="Button4" type="Button" parent="Panel/Menus/GamesMenu"]
+[node name="GendersButton" type="Button" parent="Panel/Menus/GamesMenu"]
 layout_mode = 2
 size_flags_vertical = 3
 tooltip_text = "Not ready yet"
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
-disabled = true
 text = "Genders"
 
 [node name="Back" type="Button" parent="Panel/Menus/GamesMenu"]
@@ -237,6 +237,12 @@ visible = false
 layout_mode = 2
 anchors_preset = 0
 
+[node name="GenderGame" parent="Panel" instance=ExtResource("8_jc0tv")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+anchors_preset = 0
+
 [node name="WordEditor" parent="Panel" instance=ExtResource("7_gvutb")]
 unique_name_in_owner = true
 visible = false
@@ -244,7 +250,7 @@ layout_mode = 1
 
 [node name="Plate" parent="." instance=ExtResource("5_qqbec")]
 visible = false
-material = SubResource("ShaderMaterial_0ikyj")
+material = SubResource("ShaderMaterial_1513q")
 layout_mode = 0
 offset_left = 60.0
 offset_top = 50.0
@@ -254,7 +260,7 @@ tint = Color(0.137255, 0.137255, 0.141176, 1)
 
 [node name="Plate2" parent="." instance=ExtResource("5_qqbec")]
 visible = false
-material = SubResource("ShaderMaterial_dpjrs")
+material = SubResource("ShaderMaterial_v0jxn")
 layout_mode = 0
 offset_left = 60.0
 offset_top = 120.0
@@ -264,7 +270,7 @@ tint = Color(0.796078, 0.113725, 0, 1)
 
 [node name="Plate3" parent="." instance=ExtResource("5_qqbec")]
 visible = false
-material = SubResource("ShaderMaterial_we0mk")
+material = SubResource("ShaderMaterial_j1ntq")
 layout_mode = 0
 offset_left = 60.0
 offset_top = 190.0
@@ -279,6 +285,7 @@ tint = Color(0.745098, 0.568627, 0, 1)
 [connection signal="pressed" from="Panel/Menus/GamesMenu/ABCD_Button" to="." method="_on_abcd_button_pressed"]
 [connection signal="pressed" from="Panel/Menus/GamesMenu/SpellingButton" to="." method="_on_spelling_button_pressed"]
 [connection signal="pressed" from="Panel/Menus/GamesMenu/CrosswordButton" to="." method="_on_crossword_button_pressed"]
+[connection signal="pressed" from="Panel/Menus/GamesMenu/GendersButton" to="." method="_on_genders_button_pressed"]
 [connection signal="pressed" from="Panel/Menus/GamesMenu/Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="Panel/Menus/EditingMenu/EditAllButton" to="." method="_on_edit_all_button_pressed"]
 [connection signal="pressed" from="Panel/Menus/EditingMenu/Browser" to="." method="_on_browser_pressed"]
@@ -291,4 +298,5 @@ tint = Color(0.745098, 0.568627, 0, 1)
 [connection signal="closed" from="Panel/SpellingGame" to="." method="_on_spelling_game_closed"]
 [connection signal="closed" from="Panel/Crossword" to="." method="_on_crossword_closed"]
 [connection signal="closed" from="Panel/Browser" to="." method="_on_browser_closed"]
+[connection signal="closed" from="Panel/GenderGame" to="." method="_on_gender_game_closed"]
 [connection signal="closed" from="Panel/WordEditor" to="." method="_on_word_editor_closed"]

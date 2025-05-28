@@ -15,6 +15,10 @@ run/main_scene="res://german_menu.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Utility="*res://Global/Utility.gd"
+
 [input]
 
 1={

@@ -57,6 +57,8 @@ func prepare_set():
 
 func next_word(first_time=false):
 	if not first_time:
+		var current_word = BIG_SET[words_set[current_index]]
+		current_word["date_modified"] = Time.get_datetime_string_from_system()
 		done += 1
 		current_index += 1
 	%Counter.text = str(done)+"/"+str(total)

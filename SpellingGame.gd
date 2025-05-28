@@ -279,6 +279,11 @@ func half_correct():
 
 
 func _on_exit_pressed():
+	%PreviousButton.text = "Previous Questions"
+	%PrevContainer.visible = false
+	%Score.visible = true
+	%QuestionContainer.visible = true
+	%SettingsContainer.visible = false
 	closed.emit()
 
 
@@ -388,6 +393,7 @@ func _on_tip_text_edited(old_text, new_text):
 	for b in BIG_SET:
 		if b["translation"] == old_text:
 			b["translation"] = new_text 
+			b["date_modified"] = Time.get_datetime_string_from_system()
 			is_okay = true
 			print(b)
 

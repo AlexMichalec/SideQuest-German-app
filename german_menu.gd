@@ -211,3 +211,16 @@ func _on_browser_pressed():
 	%EditingMenu.visible = false
 	%Browser.visible = true
 	%Browser.start()
+
+
+func _on_genders_button_pressed():
+	%Menus.visible = false
+	%MainMenu.visible = true
+	%GamesMenu.visible = false
+	%GenderGame.visible = true
+	%GenderGame.start()
+
+
+func _on_gender_game_closed():
+	%Menus.visible = true
+	%GenderGame.visible = false

@@ -1,0 +1,437 @@
+[gd_scene load_steps=28 format=3 uid="uid://dkej2utekbbmg"]
+
+[ext_resource type="Script" path="res://gender_game.gd" id="1_1s8no"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ufga6"]
+bg_color = Color(0.513726, 0.454902, 0.356863, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pfhfj"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_3a475"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_r5p2o"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_btwc3"]
+font_size = 72
+
+[sub_resource type="LabelSettings" id="LabelSettings_om1aq"]
+font_size = 24
+font_color = Color(1, 1, 1, 0.560784)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3p4ld"]
+content_margin_top = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(0.811765, 0.0117647, 0.839216, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gmr3w"]
+content_margin_top = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(0.756863, 0, 0.603922, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ppql"]
+content_margin_top = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(0, 0.537255, 0.819608, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gq6hb"]
+content_margin_top = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(0, 0.4, 0.937255, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1idba"]
+content_margin_top = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(0.670588, 0.490196, 0.164706, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pjmu6"]
+content_margin_top = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(0.827451, 0.376471, 0.00784314, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eexlv"]
+content_margin_left = 10.0
+content_margin_top = 3.0
+content_margin_right = 10.0
+content_margin_bottom = 3.0
+bg_color = Color(0.333333, 0.235294, 0.137255, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nnwbf"]
+content_margin_left = 10.0
+content_margin_top = 3.0
+content_margin_right = 10.0
+content_margin_bottom = 3.0
+bg_color = Color(0.466667, 0.337255, 0.207843, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rtu1h"]
+content_margin_left = 10.0
+content_margin_top = 3.0
+content_margin_right = 10.0
+content_margin_bottom = 3.0
+bg_color = Color(0.466667, 0.337255, 0.207843, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="InputEventKey" id="InputEventKey_h41h4"]
+device = -1
+keycode = 49
+unicode = 49
+
+[sub_resource type="Shortcut" id="Shortcut_hislj"]
+events = [SubResource("InputEventKey_h41h4")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_espk7"]
+device = -1
+keycode = 50
+unicode = 50
+
+[sub_resource type="Shortcut" id="Shortcut_pqwgt"]
+events = [SubResource("InputEventKey_espk7")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_iwwki"]
+device = -1
+keycode = 51
+unicode = 51
+
+[sub_resource type="Shortcut" id="Shortcut_vkbj3"]
+events = [SubResource("InputEventKey_iwwki")]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d6n7q"]
+content_margin_left = 10.0
+content_margin_top = 3.0
+content_margin_right = 10.0
+content_margin_bottom = 3.0
+bg_color = Color(0.8, 0, 0.796078, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gaiy2"]
+content_margin_left = 10.0
+content_margin_top = 3.0
+content_margin_right = 10.0
+content_margin_bottom = 3.0
+bg_color = Color(0, 0.470588, 0.854902, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lnix0"]
+content_margin_left = 10.0
+content_margin_top = 3.0
+content_margin_right = 10.0
+content_margin_bottom = 3.0
+bg_color = Color(0.815686, 0.541176, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g5oxb"]
+content_margin_left = 10.0
+content_margin_top = 3.0
+content_margin_right = 10.0
+content_margin_bottom = 3.0
+bg_color = Color(0.466667, 0.337255, 0.207843, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sxktf"]
+content_margin_left = 10.0
+content_margin_top = 3.0
+content_margin_right = 10.0
+content_margin_bottom = 3.0
+bg_color = Color(0.466667, 0.337255, 0.207843, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="GenderGame" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 2.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ufga6")
+script = ExtResource("1_1s8no")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_top = 51.0
+offset_right = 1152.0
+offset_bottom = 597.0
+alignment = 1
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Gender Game"
+label_settings = SubResource("LabelSettings_pfhfj")
+horizontal_alignment = 1
+
+[node name="Score" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "21/37"
+label_settings = SubResource("LabelSettings_3a475")
+horizontal_alignment = 1
+
+[node name="SettingsContainer" type="VBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 350)
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/SettingsContainer"]
+layout_mode = 2
+text = "Number of questions:"
+label_settings = SubResource("LabelSettings_r5p2o")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/SettingsContainer"]
+layout_mode = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/SettingsContainer/HBoxContainer"]
+layout_mode = 2
+text = "10"
+
+[node name="Label2" type="Label" parent="VBoxContainer/SettingsContainer/HBoxContainer"]
+layout_mode = 2
+text = "15"
+
+[node name="Label3" type="Label" parent="VBoxContainer/SettingsContainer/HBoxContainer"]
+layout_mode = 2
+text = "20"
+
+[node name="Label4" type="Label" parent="VBoxContainer/SettingsContainer/HBoxContainer"]
+layout_mode = 2
+text = "30"
+
+[node name="Label5" type="Label" parent="VBoxContainer/SettingsContainer/HBoxContainer"]
+layout_mode = 2
+text = "All"
+
+[node name="QueNumSlider" type="HSlider" parent="VBoxContainer/SettingsContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+max_value = 4.0
+tick_count = 5
+
+[node name="Margin" type="Control" parent="VBoxContainer/SettingsContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="KeepWords" type="CheckButton" parent="VBoxContainer/SettingsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.921569, 0.921569, 0.921569, 1)
+theme_override_font_sizes/font_size = 22
+text = "Keep seen words:"
+
+[node name="QuestionContainer" type="VBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 350)
+layout_mode = 2
+alignment = 1
+
+[node name="Control2" type="Control" parent="VBoxContainer/QuestionContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="Original" type="Label" parent="VBoxContainer/QuestionContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Question"
+label_settings = SubResource("LabelSettings_btwc3")
+horizontal_alignment = 1
+
+[node name="Translation" type="Label" parent="VBoxContainer/QuestionContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Translation"
+label_settings = SubResource("LabelSettings_om1aq")
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="VBoxContainer/QuestionContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="ScrollResuts" type="ScrollContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 340)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollResuts"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="FemaleContainer" type="VBoxContainer" parent="VBoxContainer/ScrollResuts/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="FemaleSample" type="Button" parent="VBoxContainer/ScrollResuts/HBoxContainer/FemaleContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_3p4ld")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gmr3w")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gmr3w")
+text = "die Sample"
+
+[node name="MaleContainer" type="VBoxContainer" parent="VBoxContainer/ScrollResuts/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="MaleSample" type="Button" parent="VBoxContainer/ScrollResuts/HBoxContainer/MaleContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_5ppql")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gq6hb")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gq6hb")
+text = "der Sample"
+
+[node name="NeutralContainer" type="VBoxContainer" parent="VBoxContainer/ScrollResuts/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="NeutralSample" type="Button" parent="VBoxContainer/ScrollResuts/HBoxContainer/NeutralContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_1idba")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pjmu6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pjmu6")
+text = "das Sample"
+
+[node name="finish_buttons" type="HBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Show_questions" type="Button" parent="VBoxContainer/finish_buttons"]
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_eexlv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nnwbf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rtu1h")
+shortcut = SubResource("Shortcut_hislj")
+text = "Show 	Questions"
+
+[node name="Settings" type="Button" parent="VBoxContainer/finish_buttons"]
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_eexlv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nnwbf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rtu1h")
+shortcut = SubResource("Shortcut_pqwgt")
+text = "Settings"
+
+[node name="One_more_time" type="Button" parent="VBoxContainer/finish_buttons"]
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_eexlv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nnwbf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rtu1h")
+shortcut = SubResource("Shortcut_vkbj3")
+text = "One more time!"
+
+[node name="answer_buttons" type="HBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Female" type="Button" parent="VBoxContainer/answer_buttons"]
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_eexlv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_d6n7q")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_d6n7q")
+shortcut = SubResource("Shortcut_hislj")
+text = "die"
+
+[node name="Male" type="Button" parent="VBoxContainer/answer_buttons"]
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_eexlv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gaiy2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gaiy2")
+shortcut = SubResource("Shortcut_pqwgt")
+text = "der"
+
+[node name="Neutral" type="Button" parent="VBoxContainer/answer_buttons"]
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_eexlv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lnix0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lnix0")
+shortcut = SubResource("Shortcut_vkbj3")
+text = "das
+"
+
+[node name="Control3" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Back" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_eexlv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_g5oxb")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_sxktf")
+text = "Back to Menu"
+
+[connection signal="drag_ended" from="VBoxContainer/SettingsContainer/QueNumSlider" to="." method="_on_que_num_slider_drag_ended"]
+[connection signal="toggled" from="VBoxContainer/SettingsContainer/KeepWords" to="." method="_on_keep_words_toggled"]
+[connection signal="pressed" from="VBoxContainer/finish_buttons/Show_questions" to="." method="_on_show_questions_pressed"]
+[connection signal="pressed" from="VBoxContainer/finish_buttons/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="VBoxContainer/finish_buttons/One_more_time" to="." method="_on_one_more_time_pressed"]
+[connection signal="pressed" from="VBoxContainer/answer_buttons/Female" to="." method="_on_female_pressed"]
+[connection signal="pressed" from="VBoxContainer/answer_buttons/Male" to="." method="_on_male_pressed"]
+[connection signal="pressed" from="VBoxContainer/answer_buttons/Neutral" to="." method="_on_neutral_pressed"]
+[connection signal="pressed" from="VBoxContainer/Back" to="." method="_on_back_pressed"]
