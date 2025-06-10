@@ -1,0 +1,200 @@
+[gd_scene load_steps=7 format=3 uid="uid://cudn804q62uca"]
+
+[ext_resource type="Script" path="res://CutSentences.gd" id="1_q72de"]
+[ext_resource type="PackedScene" uid="uid://42oxmd28tyes" path="res://german_text_input.tscn" id="2_xofdy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cugt8"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_mi0vb"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="InputEventKey" id="InputEventKey_8tj48"]
+device = -1
+keycode = 32
+unicode = 32
+
+[sub_resource type="Shortcut" id="Shortcut_ulqyo"]
+events = [SubResource("InputEventKey_mi0vb"), SubResource("InputEventKey_8tj48")]
+
+[node name="CutSentences" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_q72de")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="GameName" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Cut the Sentences!"
+horizontal_alignment = 1
+
+[node name="Progress" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "1/132"
+horizontal_alignment = 1
+
+[node name="Margin" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="SimilarWordsLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = " "
+horizontal_alignment = 1
+
+[node name="SimilarWordsList" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = " "
+horizontal_alignment = 1
+
+[node name="Margin2" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="WordEditContainer" type="HBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+alignment = 1
+
+[node name="HBoxContainer" type="VBoxContainer" parent="VBoxContainer/WordEditContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+
+[node name="OriginalEdit" parent="VBoxContainer/WordEditContainer/HBoxContainer" instance=ExtResource("2_xofdy")]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Original"
+
+[node name="TranslationEdit" type="LineEdit" parent="VBoxContainer/WordEditContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Translation"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/WordEditContainer"]
+layout_mode = 2
+
+[node name="Female" type="Button" parent="VBoxContainer/WordEditContainer/VBoxContainer"]
+layout_mode = 2
+text = "Female Noun"
+
+[node name="Verb" type="Button" parent="VBoxContainer/WordEditContainer/VBoxContainer"]
+layout_mode = 2
+text = "Verb"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/WordEditContainer"]
+layout_mode = 2
+
+[node name="Male" type="Button" parent="VBoxContainer/WordEditContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Male Noun"
+
+[node name="Adjective" type="Button" parent="VBoxContainer/WordEditContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Adjective"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/WordEditContainer"]
+layout_mode = 2
+
+[node name="Neutral" type="Button" parent="VBoxContainer/WordEditContainer/VBoxContainer3"]
+layout_mode = 2
+text = "Neutral Noun"
+
+[node name="Other" type="Button" parent="VBoxContainer/WordEditContainer/VBoxContainer3"]
+layout_mode = 2
+text = "Other"
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="VBoxContainer/WordEditContainer"]
+layout_mode = 2
+
+[node name="Proper" type="Button" parent="VBoxContainer/WordEditContainer/VBoxContainer4"]
+layout_mode = 2
+text = "Proper Noun"
+
+[node name="Cancel" type="Button" parent="VBoxContainer/WordEditContainer/VBoxContainer4"]
+layout_mode = 2
+text = "Cancel
+"
+
+[node name="SentenceContainer" type="HBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="SampleLabel" type="Label" parent="VBoxContainer/SentenceContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "SAMPLE"
+
+[node name="SampleButton" type="Button" parent="VBoxContainer/SentenceContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_colors/font_disabled_color = Color(0.929412, 0.929412, 0.929412, 1)
+theme_override_font_sizes/font_size = 32
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_cugt8")
+text = "TEXT"
+
+[node name="SentenceTranslation" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Translation"
+horizontal_alignment = 1
+
+[node name="Margin3" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Menu" type="Button" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+text = "Back to Menu"
+
+[node name="NextSentence" type="Button" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+shortcut = SubResource("Shortcut_ulqyo")
+text = "Next Sentence"
+
+[connection signal="pressed" from="VBoxContainer/WordEditContainer/VBoxContainer/Female" to="." method="_on_female_pressed"]
+[connection signal="pressed" from="VBoxContainer/WordEditContainer/VBoxContainer/Verb" to="." method="_on_verb_pressed"]
+[connection signal="pressed" from="VBoxContainer/WordEditContainer/VBoxContainer2/Male" to="." method="_on_male_pressed"]
+[connection signal="pressed" from="VBoxContainer/WordEditContainer/VBoxContainer2/Adjective" to="." method="_on_adjective_pressed"]
+[connection signal="pressed" from="VBoxContainer/WordEditContainer/VBoxContainer3/Neutral" to="." method="_on_neutral_pressed"]
+[connection signal="pressed" from="VBoxContainer/WordEditContainer/VBoxContainer3/Other" to="." method="_on_other_pressed"]
+[connection signal="pressed" from="VBoxContainer/WordEditContainer/VBoxContainer4/Proper" to="." method="_on_proper_pressed"]
+[connection signal="pressed" from="VBoxContainer/WordEditContainer/VBoxContainer4/Cancel" to="." method="_on_cancel_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/NextSentence" to="." method="_on_next_sentence_pressed"]

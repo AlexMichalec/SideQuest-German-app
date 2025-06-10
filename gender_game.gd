@@ -14,6 +14,10 @@ func _ready():
 	BIG_ARRAY = Utility.load_array()
 	if get_tree().current_scene == self:
 		start()
+	for b in BIG_ARRAY:
+		if b.has("gender") and not b["part_of_speech"] == "noun":
+			b
+			print(b["original"], " - ", b["translation"])
 
 func start():
 	load_settings()
@@ -27,7 +31,7 @@ func prepare_set():
 		reset_done()
 	gender_set = []
 	for b in BIG_ARRAY:
-		if b.has("gender") and not b["is_sentence"]:
+		if b.has("gender") and not b["is_sentence"] and b.has("part_of_speech") and b["part_of_speech"] == "noun":
 			gender_set.append(b)
 	print(gender_set.size())
 	gender_set.shuffle()
@@ -123,6 +127,7 @@ func _on_settings_pressed():
 	%QuestionContainer.visible = false
 	%SettingsContainer.visible = true
 
+
 func _on_one_more_time_pressed():
 	%ScrollResuts.visible = false
 	%SettingsContainer.visible = false
@@ -132,7 +137,9 @@ func _on_one_more_time_pressed():
 	settings_not_saved = false
 	prepare_set()
 	new_question()
-
+	%Show_questions.visible = true
+	%Settings.visible = true
+	%Settings2.visible = true
 
 func _on_back_pressed():
 	%ScrollResuts.visible = false
@@ -218,3 +225,16 @@ func save_settings():
 	var json_string = JSON.stringify(settings)  # Convert array to JSON
 	file.store_string(json_string)  # Save to file
 	file.close()
+
+
+func _on_settings_2_pressed():
+	%QuestionContainer.visible = false
+	%SettingsContainer.visible = true
+	%answer_buttons.visible = false
+	%Settings2.visible = false
+	%save_settings_button.visible = true
+	
+
+
+func _on_save_settings_button_pressed():
+	%save_settings_button.visible = false

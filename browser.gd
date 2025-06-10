@@ -1,6 +1,8 @@
 extends VBoxContainer
 var BIG_SET : Array
 var current_record : Dictionary
+
+@export_enum("raz","ddwa", "trzy") var costam
 signal closed
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,6 +12,7 @@ func _ready():
 
 func start():
 	BIG_SET = load_array()
+	$LineEdit.grab_focus()
 
 
 
@@ -44,7 +47,7 @@ func _on_line_edit_text_changed(new_text):
 	for child in %RecordLists.get_children():
 		if child != %SampleRecord:
 			child.queue_free()
-	if new_text.length() < 2:
+	if new_text.length() < 3:
 		return
 	"""
 	for c in new_text:

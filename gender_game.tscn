@@ -341,12 +341,12 @@ text = "das Sample"
 
 [node name="finish_buttons" type="HBoxContainer" parent="VBoxContainer"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
 [node name="Show_questions" type="Button" parent="VBoxContainer/finish_buttons"]
+unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
@@ -357,6 +357,7 @@ shortcut = SubResource("Shortcut_hislj")
 text = "Show 	Questions"
 
 [node name="Settings" type="Button" parent="VBoxContainer/finish_buttons"]
+unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
@@ -367,6 +368,7 @@ shortcut = SubResource("Shortcut_pqwgt")
 text = "Settings"
 
 [node name="One_more_time" type="Button" parent="VBoxContainer/finish_buttons"]
+unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
@@ -375,6 +377,19 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_nnwbf")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_rtu1h")
 shortcut = SubResource("Shortcut_vkbj3")
 text = "One more time!"
+
+[node name="save_settings_button" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_eexlv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nnwbf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rtu1h")
+shortcut = SubResource("Shortcut_vkbj3")
+text = "Save and go back to game!"
 
 [node name="answer_buttons" type="HBoxContainer" parent="VBoxContainer"]
 unique_name_in_owner = true
@@ -417,7 +432,12 @@ text = "das
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
-[node name="Back" type="Button" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Back" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 focus_mode = 0
@@ -426,12 +446,25 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_g5oxb")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_sxktf")
 text = "Back to Menu"
 
+[node name="Settings2" type="Button" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_eexlv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_g5oxb")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_sxktf")
+text = "Settings"
+
 [connection signal="drag_ended" from="VBoxContainer/SettingsContainer/QueNumSlider" to="." method="_on_que_num_slider_drag_ended"]
 [connection signal="toggled" from="VBoxContainer/SettingsContainer/KeepWords" to="." method="_on_keep_words_toggled"]
 [connection signal="pressed" from="VBoxContainer/finish_buttons/Show_questions" to="." method="_on_show_questions_pressed"]
 [connection signal="pressed" from="VBoxContainer/finish_buttons/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="VBoxContainer/finish_buttons/One_more_time" to="." method="_on_one_more_time_pressed"]
+[connection signal="pressed" from="VBoxContainer/save_settings_button" to="." method="_on_one_more_time_pressed"]
+[connection signal="pressed" from="VBoxContainer/save_settings_button" to="." method="_on_save_settings_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/answer_buttons/Female" to="." method="_on_female_pressed"]
 [connection signal="pressed" from="VBoxContainer/answer_buttons/Male" to="." method="_on_male_pressed"]
 [connection signal="pressed" from="VBoxContainer/answer_buttons/Neutral" to="." method="_on_neutral_pressed"]
-[connection signal="pressed" from="VBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Settings2" to="." method="_on_settings_2_pressed"]

@@ -11,7 +11,7 @@ font_size = 24
 [sub_resource type="LabelSettings" id="LabelSettings_kqd3f"]
 font_size = 18
 
-[sub_resource type="LabelSettings" id="LabelSettings_t1ot5"]
+[sub_resource type="LabelSettings" id="LabelSettings_sdc1h"]
 resource_local_to_scene = true
 font_size = 48
 
@@ -98,7 +98,7 @@ theme_override_font_sizes/font_size = 16
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
-label_settings = SubResource("LabelSettings_t1ot5")
+label_settings = SubResource("LabelSettings_sdc1h")
 
 [node name="Answer" parent="QuestionContainer/VBoxContainer" instance=ExtResource("1_36b10")]
 unique_name_in_owner = true
@@ -164,18 +164,21 @@ label_settings = SubResource("LabelSettings_8bbqq")
 [node name="CopyButton" type="CheckButton" parent="SettingsContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_mode = 0
 theme_override_font_sizes/font_size = 18
 text = " Copy"
 
 [node name="TranslateButton" type="CheckButton" parent="SettingsContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_mode = 0
 theme_override_font_sizes/font_size = 18
 text = " Translate"
 
 [node name="FillButton" type="CheckButton" parent="SettingsContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_mode = 0
 theme_override_font_sizes/font_size = 18
 text = " Fill a gap"
 
@@ -190,18 +193,21 @@ label_settings = SubResource("LabelSettings_8bbqq")
 [node name="z_to_y" type="CheckButton" parent="SettingsContainer/HBoxContainer/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_mode = 0
 theme_override_font_sizes/font_size = 18
 text = "   z -> y"
 
 [node name="ae_to_a" type="CheckButton" parent="SettingsContainer/HBoxContainer/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_mode = 0
 theme_override_font_sizes/font_size = 18
 text = "   ae -> ä"
 
 [node name="right_umlaufts" type="CheckButton" parent="SettingsContainer/HBoxContainer/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_mode = 0
 theme_override_font_sizes/font_size = 18
 text = "   ' -> ä"
 
@@ -210,6 +216,7 @@ custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
 [node name="SaveButton" type="Button" parent="SettingsContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 24

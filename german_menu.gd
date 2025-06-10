@@ -224,3 +224,17 @@ func _on_genders_button_pressed():
 func _on_gender_game_closed():
 	%Menus.visible = true
 	%GenderGame.visible = false
+
+
+func _on_cut_sentences_closed():
+	%Menus.visible = true
+	%CutSentences.visible = false
+
+
+func _on_cut_sentences_pressed():
+	%Menus.visible = false
+	%MainMenu.visible = true
+	%EditingMenu.visible = false
+	%CutSentences.visible = true
+	%CutSentences.start()
+
