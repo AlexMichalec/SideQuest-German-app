@@ -8,6 +8,7 @@ func _ready():
 	
 	BIG_SET = load_array()
 	
+	
 	"""
 	var new_set_array = []
 	for b in BIG_SET:
@@ -238,3 +239,43 @@ func _on_cut_sentences_pressed():
 	%CutSentences.visible = true
 	%CutSentences.start()
 
+func update_disabled_buttons():
+	if BIG_SET.size() == 0:
+		%Learn.disabled = true
+		%Learn.tooltip_text = "Baza słów jest pusta"
+		%Improve.disabled = true
+		%Improve.tooltip_text = "Baza słów jest pusta"
+	else:
+		%Learn.disabled = false
+		%Learn.tooltip_text = ""
+		%Improve.disabled = false
+		%Improve.tooltip_text = ""
+		var words_amount = 0
+		var sentences_amount = 0
+		for b in BIG_SET:
+			if b["is_sentence"]:
+				sentences_amount += 1
+			else:
+				words_amount += 1
+		
+		%ABCD_Button.disabled = words_amount < 10
+		%ABCD_BUtton.tooltip_text = "Potrzebujesz min. 10 słów by uruchomić tę grę" if words_amount < 10 else ""
+		
+		
+func load_basic_base():
+	if not FileAccess.file_exists("BasicBase.json"):
+		print("File not found!")
+		return []
+	
+	var file = FileAccess.open("BasicBase.json", FileAccess.READ)
+	var json_string = file.get_as_text()  # Read the file content
+	file.close()
+	
+	var json = JSON.parse_string(json_string)  # Convert JSON back to array
+	return json if json is Array else []
+	
+func save_basic_base():
+	var file = FileAccess.open("BasicBase.json", FileAccess.WRITE)
+	var json_string = JSON.stringify(BIG_SET)  # Convert array to JSON
+	file.store_string(json_string)  # Save to file
+	file.close()

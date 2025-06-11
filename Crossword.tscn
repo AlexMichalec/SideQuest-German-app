@@ -14,10 +14,10 @@ font_size = 24
 font_size = 20
 font_color = Color(0, 0.807843, 0.290196, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_qpfap"]
+[sub_resource type="LabelSettings" id="LabelSettings_e0kj0"]
 resource_local_to_scene = true
 
-[sub_resource type="LabelSettings" id="LabelSettings_nyrof"]
+[sub_resource type="LabelSettings" id="LabelSettings_h4gmi"]
 resource_local_to_scene = true
 
 [node name="Control" type="VBoxContainer"]
@@ -91,7 +91,7 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 size_flags_horizontal = 4
-label_settings = SubResource("LabelSettings_qpfap")
+label_settings = SubResource("LabelSettings_e0kj0")
 
 [node name="Button" parent="HBoxContainer2/HorLegend/HorizontalSample" index="0"]
 anchors_preset = 0
@@ -1333,7 +1333,7 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 size_flags_horizontal = 4
-label_settings = SubResource("LabelSettings_nyrof")
+label_settings = SubResource("LabelSettings_h4gmi")
 
 [node name="LineEdit" parent="HBoxContainer2/VerLegend/VerticalSample" index="1"]
 theme_override_font_sizes/font_size = 14

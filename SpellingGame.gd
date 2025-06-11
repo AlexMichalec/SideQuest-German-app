@@ -515,3 +515,18 @@ func save_settings():
 	var json_string = JSON.stringify(settings)  # Convert array to JSON
 	file.store_string(json_string)  # Save to file
 	file.close()
+
+
+func _on_today_pressed():
+	BIG_SET = Filter.by_date(load_array(),0)
+	new_question()
+
+
+func _on_this_week_pressed():
+	var week_ago = Time.get_datetime_dict_from_system()
+	BIG_SET = Filter.by_date(load_array(), 0, "",week_ago)
+
+
+func _on_all_time_pressed():
+	BIG_SET = load_array()
+	new_question()

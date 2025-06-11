@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dfgpugq072h13"]
+[gd_scene load_steps=12 format=3 uid="uid://dfgpugq072h13"]
 
 [ext_resource type="PackedScene" uid="uid://42oxmd28tyes" path="res://german_text_input.tscn" id="1_36b10"]
 [ext_resource type="Script" path="res://SpellingGame.gd" id="1_c6cya"]
@@ -11,7 +11,7 @@ font_size = 24
 [sub_resource type="LabelSettings" id="LabelSettings_kqd3f"]
 font_size = 18
 
-[sub_resource type="LabelSettings" id="LabelSettings_sdc1h"]
+[sub_resource type="LabelSettings" id="LabelSettings_xywpd"]
 resource_local_to_scene = true
 font_size = 48
 
@@ -21,6 +21,8 @@ font_size = 48
 
 [sub_resource type="LabelSettings" id="LabelSettings_8bbqq"]
 font_size = 22
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_umojb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wnf45"]
 font_size = 24
@@ -98,7 +100,7 @@ theme_override_font_sizes/font_size = 16
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
-label_settings = SubResource("LabelSettings_sdc1h")
+label_settings = SubResource("LabelSettings_xywpd")
 
 [node name="Answer" parent="QuestionContainer/VBoxContainer" instance=ExtResource("1_36b10")]
 unique_name_in_owner = true
@@ -154,6 +156,7 @@ theme_override_constants/separation = 60
 alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SettingsContainer/HBoxContainer"]
+custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
 
 [node name="Label" type="Label" parent="SettingsContainer/HBoxContainer/VBoxContainer"]
@@ -183,6 +186,7 @@ theme_override_font_sizes/font_size = 18
 text = " Fill a gap"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="SettingsContainer/HBoxContainer"]
+custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
 
 [node name="Label" type="Label" parent="SettingsContainer/HBoxContainer/VBoxContainer2"]
@@ -210,6 +214,41 @@ layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 18
 text = "   ' -> ä"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="SettingsContainer/HBoxContainer"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SettingsContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "Date Range:"
+label_settings = SubResource("LabelSettings_8bbqq")
+
+[node name="today" type="CheckButton" parent="SettingsContainer/HBoxContainer/VBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 18
+button_group = SubResource("ButtonGroup_umojb")
+text = "   Today"
+
+[node name="this_week" type="CheckButton" parent="SettingsContainer/HBoxContainer/VBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 18
+disabled = true
+button_group = SubResource("ButtonGroup_umojb")
+text = "   This  week"
+
+[node name="all_time" type="CheckButton" parent="SettingsContainer/HBoxContainer/VBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 18
+button_pressed = true
+button_group = SubResource("ButtonGroup_umojb")
+text = "   Whole Range"
 
 [node name="Control" type="Control" parent="SettingsContainer"]
 custom_minimum_size = Vector2(0, 50)
@@ -290,6 +329,9 @@ layout_mode = 2
 [connection signal="pressed" from="SettingsContainer/HBoxContainer/VBoxContainer2/z_to_y" to="." method="_on_z_to_y_pressed"]
 [connection signal="pressed" from="SettingsContainer/HBoxContainer/VBoxContainer2/ae_to_a" to="." method="_on_ae_to_a_pressed"]
 [connection signal="pressed" from="SettingsContainer/HBoxContainer/VBoxContainer2/right_umlaufts" to="." method="_on_right_umlaufts_pressed"]
+[connection signal="pressed" from="SettingsContainer/HBoxContainer/VBoxContainer3/today" to="." method="_on_today_pressed"]
+[connection signal="pressed" from="SettingsContainer/HBoxContainer/VBoxContainer3/this_week" to="." method="_on_this_week_pressed"]
+[connection signal="pressed" from="SettingsContainer/HBoxContainer/VBoxContainer3/all_time" to="." method="_on_all_time_pressed"]
 [connection signal="pressed" from="SettingsContainer/SaveButton" to="." method="_on_save_button_pressed"]
 [connection signal="pressed" from="PreviousButton" to="." method="_on_previous_button_pressed"]
 

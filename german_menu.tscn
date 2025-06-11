@@ -21,17 +21,17 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xdfre"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pq6cn"]
 resource_local_to_scene = true
 shader = SubResource("Shader_2o0gt")
 shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_de5fr"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ncbvg"]
 resource_local_to_scene = true
 shader = SubResource("Shader_2o0gt")
 shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1l4qs"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b52qv"]
 resource_local_to_scene = true
 shader = SubResource("Shader_2o0gt")
 shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
@@ -82,6 +82,7 @@ theme_override_font_sizes/font_size = 32
 text = "Nowe Słownictwo"
 
 [node name="Learn" type="Button" parent="Panel/Menus/MainMenu"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 focus_mode = 0
@@ -89,6 +90,7 @@ theme_override_font_sizes/font_size = 32
 text = "Ucz się!"
 
 [node name="Improve" type="Button" parent="Panel/Menus/MainMenu"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 focus_mode = 0
@@ -110,6 +112,7 @@ theme_override_constants/separation = 20
 alignment = 1
 
 [node name="ABCD_Button" type="Button" parent="Panel/Menus/GamesMenu"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 focus_mode = 0
@@ -256,7 +259,7 @@ layout_mode = 1
 
 [node name="Plate" parent="." instance=ExtResource("5_qqbec")]
 visible = false
-material = SubResource("ShaderMaterial_xdfre")
+material = SubResource("ShaderMaterial_pq6cn")
 layout_mode = 0
 offset_left = 60.0
 offset_top = 50.0
@@ -266,7 +269,7 @@ tint = Color(0.137255, 0.137255, 0.141176, 1)
 
 [node name="Plate2" parent="." instance=ExtResource("5_qqbec")]
 visible = false
-material = SubResource("ShaderMaterial_de5fr")
+material = SubResource("ShaderMaterial_ncbvg")
 layout_mode = 0
 offset_left = 60.0
 offset_top = 120.0
@@ -276,7 +279,7 @@ tint = Color(0.796078, 0.113725, 0, 1)
 
 [node name="Plate3" parent="." instance=ExtResource("5_qqbec")]
 visible = false
-material = SubResource("ShaderMaterial_1l4qs")
+material = SubResource("ShaderMaterial_b52qv")
 layout_mode = 0
 offset_left = 60.0
 offset_top = 190.0
