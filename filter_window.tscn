@@ -1,0 +1,251 @@
+[gd_scene load_steps=12 format=3 uid="uid://cauqasinasbt8"]
+
+[ext_resource type="Script" path="res://filter_window.gd" id="1_ulnmd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1gg3o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_77v1x"]
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.219608, 0.262745, 0.32549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mwp7o"]
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.231373, 0.345098, 0.45098, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1fdwi"]
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.243137, 0.439216, 0.694118, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jj87u"]
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.160784, 0.160784, 0.160784, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8aqco"]
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.121569, 0.121569, 0.121569, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_phbce"]
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.160784, 0.160784, 0.160784, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.917647, 0.917647, 0.917647, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dfc2u"]
+content_margin_left = 14.0
+content_margin_top = 10.0
+content_margin_right = 14.0
+content_margin_bottom = 10.0
+bg_color = Color(0.109804, 0.109804, 0.109804, 1)
+border_width_left = 4
+border_width_top = 3
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u1a41"]
+content_margin_left = 14.0
+content_margin_top = 10.0
+content_margin_right = 14.0
+content_margin_bottom = 10.0
+bg_color = Color(0.168627, 0.168627, 0.168627, 1)
+border_width_left = 4
+border_width_top = 3
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ubj16"]
+content_margin_left = 14.0
+content_margin_top = 10.0
+content_margin_right = 14.0
+content_margin_bottom = 10.0
+bg_color = Color(0.262745, 0.262745, 0.262745, 1)
+border_width_left = 4
+border_width_top = 3
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="FilterWindow" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1gg3o")
+script = ExtResource("1_ulnmd")
+
+[node name="MainContainer" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="CloseButton" type="Button" parent="MainContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 20
+text = "x"
+
+[node name="Label" type="Label" parent="MainContainer"]
+layout_mode = 2
+text = "Filter by:"
+
+[node name="Button" type="Button" parent="MainContainer"]
+layout_mode = 2
+text = "Date"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainContainer"]
+layout_mode = 2
+
+[node name="AllDateButton" type="Button" parent="MainContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0.835294, 1, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.835294, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0.835294, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0.835294, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_77v1x")
+theme_override_styles/hover = SubResource("StyleBoxFlat_mwp7o")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1fdwi")
+text = "ALL"
+
+[node name="NoneDateButton" type="Button" parent="MainContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0.835294, 1, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.835294, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0.835294, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0.835294, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_77v1x")
+theme_override_styles/hover = SubResource("StyleBoxFlat_mwp7o")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1fdwi")
+text = "NONE"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MainContainer"]
+layout_mode = 2
+
+[node name="TodayButton" type="Button" parent="MainContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0.835294, 1, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.835294, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0.835294, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0.835294, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_77v1x")
+theme_override_styles/hover = SubResource("StyleBoxFlat_mwp7o")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1fdwi")
+text = "Today"
+
+[node name="WeekButton" type="Button" parent="MainContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0.835294, 1, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.835294, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0.835294, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0.835294, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_77v1x")
+theme_override_styles/hover = SubResource("StyleBoxFlat_mwp7o")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1fdwi")
+text = "Last Week"
+
+[node name="MonthButton" type="Button" parent="MainContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0.835294, 1, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.835294, 1, 1)
+theme_override_colors/font_hover_color = Color(0, 0.835294, 1, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0.835294, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_77v1x")
+theme_override_styles/hover = SubResource("StyleBoxFlat_mwp7o")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_1fdwi")
+text = "Last Month"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MainContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DateButtonContainer" type="VBoxContainer" parent="MainContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DateButtonSample" type="Button" parent="MainContainer/ScrollContainer/DateButtonContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_jj87u")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8aqco")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_phbce")
+toggle_mode = true
+text = "DATE, words, words, words"
+
+[node name="BIG_ARRAY_LABEL" type="RichTextLabel" parent="MainContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="OpenButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -13.5
+offset_top = -130.0
+offset_right = 13.5
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_dfc2u")
+theme_override_styles/hover = SubResource("StyleBoxFlat_u1a41")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ubj16")
+text = "F
+I
+L
+T
+E
+R"
+
+[connection signal="pressed" from="MainContainer/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="MainContainer/HBoxContainer/AllDateButton" to="." method="_on_all_date_button_pressed"]
+[connection signal="pressed" from="MainContainer/HBoxContainer/NoneDateButton" to="." method="_on_none_date_button_pressed"]
+[connection signal="pressed" from="MainContainer/HBoxContainer2/TodayButton" to="." method="_on_today_button_pressed"]
+[connection signal="pressed" from="MainContainer/HBoxContainer2/WeekButton" to="." method="_on_week_button_pressed"]
+[connection signal="pressed" from="MainContainer/HBoxContainer2/MonthButton" to="." method="_on_month_button_pressed"]
+[connection signal="pressed" from="MainContainer/ScrollContainer/DateButtonContainer/DateButtonSample" to="." method="_on_date_button_sample_pressed"]
+[connection signal="pressed" from="OpenButton" to="." method="_on_open_button_pressed"]

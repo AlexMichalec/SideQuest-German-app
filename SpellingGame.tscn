@@ -11,7 +11,7 @@ font_size = 24
 [sub_resource type="LabelSettings" id="LabelSettings_kqd3f"]
 font_size = 18
 
-[sub_resource type="LabelSettings" id="LabelSettings_xywpd"]
+[sub_resource type="LabelSettings" id="LabelSettings_0gxr4"]
 resource_local_to_scene = true
 font_size = 48
 
@@ -100,7 +100,7 @@ theme_override_font_sizes/font_size = 16
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
-label_settings = SubResource("LabelSettings_xywpd")
+label_settings = SubResource("LabelSettings_0gxr4")
 
 [node name="Answer" parent="QuestionContainer/VBoxContainer" instance=ExtResource("1_36b10")]
 unique_name_in_owner = true
@@ -237,7 +237,6 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 18
-disabled = true
 button_group = SubResource("ButtonGroup_umojb")
 text = "   This  week"
 
@@ -282,21 +281,27 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="PrevQuestion" type="Label" parent="PrevContainer/PreviousContainer/PrevList"]
+[node name="PrevQuestion" type="RichTextLabel" parent="PrevContainer/PreviousContainer/PrevList"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
-text = "Previous Question"
-label_settings = SubResource("LabelSettings_wnf45")
-horizontal_alignment = 1
+size_flags_horizontal = 4
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[color=\"green\"]Pre[/color]vious Question"
+fit_content = true
+autowrap_mode = 0
 
-[node name="PrevAnswer" type="Label" parent="PrevContainer/PreviousContainer/PrevList"]
+[node name="PrevAnswer" type="RichTextLabel" parent="PrevContainer/PreviousContainer/PrevList"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
-text = "Your Answer"
-label_settings = SubResource("LabelSettings_wnf45")
-horizontal_alignment = 1
+size_flags_horizontal = 4
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[color=\"red\"]Y[/color]our Answer"
+fit_content = true
+autowrap_mode = 0
 
 [node name="PrevBlank" type="Label" parent="PrevContainer/PreviousContainer/PrevList"]
 unique_name_in_owner = true

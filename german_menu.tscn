@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://67im38sis6n6"]
+[gd_scene load_steps=17 format=3 uid="uid://67im38sis6n6"]
 
 [ext_resource type="Script" path="res://german_menu.gd" id="1_efs7r"]
 [ext_resource type="PackedScene" uid="uid://clrbqcpm846bw" path="res://abcd_game.tscn" id="2_orjqv"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://8f5pdkr6352" path="res://word_editor.tscn" id="7_gvutb"]
 [ext_resource type="PackedScene" uid="uid://dkej2utekbbmg" path="res://gender_game.tscn" id="8_jc0tv"]
 [ext_resource type="PackedScene" uid="uid://cudn804q62uca" path="res://cut_sentences.tscn" id="9_rhh1r"]
+[ext_resource type="PackedScene" uid="uid://cauqasinasbt8" path="res://filter_window.tscn" id="11_t0i00"]
 
 [sub_resource type="Shader" id="Shader_2o0gt"]
 code = "shader_type canvas_item;
@@ -21,17 +22,17 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pq6cn"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hjt3k"]
 resource_local_to_scene = true
 shader = SubResource("Shader_2o0gt")
 shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ncbvg"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qjyih"]
 resource_local_to_scene = true
 shader = SubResource("Shader_2o0gt")
 shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_b52qv"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ky2jq"]
 resource_local_to_scene = true
 shader = SubResource("Shader_2o0gt")
 shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
@@ -68,20 +69,25 @@ offset_bottom = 240.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MainMenu" type="VBoxContainer" parent="Panel/Menus"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/Menus"]
+layout_mode = 2
+
+[node name="MainMenu" type="VBoxContainer" parent="Panel/Menus/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="NewWords" type="Button" parent="Panel/Menus/MainMenu"]
+[node name="NewWords" type="Button" parent="Panel/Menus/HBoxContainer/MainMenu"]
 layout_mode = 2
 size_flags_vertical = 3
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
 text = "Nowe Słownictwo"
 
-[node name="Learn" type="Button" parent="Panel/Menus/MainMenu"]
+[node name="Learn" type="Button" parent="Panel/Menus/HBoxContainer/MainMenu"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -89,7 +95,7 @@ focus_mode = 0
 theme_override_font_sizes/font_size = 32
 text = "Ucz się!"
 
-[node name="Improve" type="Button" parent="Panel/Menus/MainMenu"]
+[node name="Improve" type="Button" parent="Panel/Menus/HBoxContainer/MainMenu"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -97,21 +103,23 @@ focus_mode = 0
 theme_override_font_sizes/font_size = 32
 text = "Popraw Bazę"
 
-[node name="Quit" type="Button" parent="Panel/Menus/MainMenu"]
+[node name="Quit" type="Button" parent="Panel/Menus/HBoxContainer/MainMenu"]
 layout_mode = 2
 size_flags_vertical = 3
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
 text = "Wyjdź"
 
-[node name="GamesMenu" type="VBoxContainer" parent="Panel/Menus"]
+[node name="GamesMenu" type="VBoxContainer" parent="Panel/Menus/HBoxContainer"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="ABCD_Button" type="Button" parent="Panel/Menus/GamesMenu"]
+[node name="ABCD_Button" type="Button" parent="Panel/Menus/HBoxContainer/GamesMenu"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -119,7 +127,7 @@ focus_mode = 0
 theme_override_font_sizes/font_size = 32
 text = "ABCD"
 
-[node name="SpellingButton" type="Button" parent="Panel/Menus/GamesMenu"]
+[node name="SpellingButton" type="Button" parent="Panel/Menus/HBoxContainer/GamesMenu"]
 layout_mode = 2
 size_flags_vertical = 3
 tooltip_text = "Not ready yet"
@@ -127,7 +135,7 @@ focus_mode = 0
 theme_override_font_sizes/font_size = 32
 text = "Ćwicz pisownię!"
 
-[node name="CrosswordButton" type="Button" parent="Panel/Menus/GamesMenu"]
+[node name="CrosswordButton" type="Button" parent="Panel/Menus/HBoxContainer/GamesMenu"]
 layout_mode = 2
 size_flags_vertical = 3
 tooltip_text = "Not ready yet"
@@ -135,7 +143,7 @@ focus_mode = 0
 theme_override_font_sizes/font_size = 32
 text = "Czas na Krzyżówkę!"
 
-[node name="GendersButton" type="Button" parent="Panel/Menus/GamesMenu"]
+[node name="GendersButton" type="Button" parent="Panel/Menus/HBoxContainer/GamesMenu"]
 layout_mode = 2
 size_flags_vertical = 3
 tooltip_text = "Not ready yet"
@@ -143,7 +151,7 @@ focus_mode = 0
 theme_override_font_sizes/font_size = 32
 text = "Genders"
 
-[node name="Back" type="Button" parent="Panel/Menus/GamesMenu"]
+[node name="Back" type="Button" parent="Panel/Menus/HBoxContainer/GamesMenu"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -152,21 +160,23 @@ size_flags_stretch_ratio = 0.5
 theme_override_font_sizes/font_size = 20
 text = "Wróc do menu głównego"
 
-[node name="EditingMenu" type="VBoxContainer" parent="Panel/Menus"]
+[node name="EditingMenu" type="VBoxContainer" parent="Panel/Menus/HBoxContainer"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="EditAllButton" type="Button" parent="Panel/Menus/EditingMenu"]
+[node name="EditAllButton" type="Button" parent="Panel/Menus/HBoxContainer/EditingMenu"]
 layout_mode = 2
 size_flags_vertical = 3
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
 text = "Cała baza"
 
-[node name="Browser" type="Button" parent="Panel/Menus/EditingMenu"]
+[node name="Browser" type="Button" parent="Panel/Menus/HBoxContainer/EditingMenu"]
 layout_mode = 2
 size_flags_vertical = 3
 tooltip_text = "Not ready yet"
@@ -174,7 +184,7 @@ focus_mode = 0
 theme_override_font_sizes/font_size = 32
 text = "Wyszukiwarka"
 
-[node name="WordEditor" type="Button" parent="Panel/Menus/EditingMenu"]
+[node name="WordEditor" type="Button" parent="Panel/Menus/HBoxContainer/EditingMenu"]
 layout_mode = 2
 size_flags_vertical = 3
 tooltip_text = "Not ready yet"
@@ -182,7 +192,7 @@ focus_mode = 0
 theme_override_font_sizes/font_size = 32
 text = "Dodaj płeć"
 
-[node name="CutSentences" type="Button" parent="Panel/Menus/EditingMenu"]
+[node name="CutSentences" type="Button" parent="Panel/Menus/HBoxContainer/EditingMenu"]
 layout_mode = 2
 size_flags_vertical = 3
 tooltip_text = "Not ready yet"
@@ -190,7 +200,7 @@ focus_mode = 0
 theme_override_font_sizes/font_size = 32
 text = "Cut Sentences"
 
-[node name="Back" type="Button" parent="Panel/Menus/EditingMenu"]
+[node name="Back" type="Button" parent="Panel/Menus/HBoxContainer/EditingMenu"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -257,9 +267,19 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 1
 
+[node name="FilterWindow" parent="Panel" instance=ExtResource("11_t0i00")]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+offset_left = -169.0
+offset_top = 4.0
+offset_right = -169.0
+offset_bottom = 4.0
+grow_horizontal = 0
+
 [node name="Plate" parent="." instance=ExtResource("5_qqbec")]
 visible = false
-material = SubResource("ShaderMaterial_pq6cn")
+material = SubResource("ShaderMaterial_hjt3k")
 layout_mode = 0
 offset_left = 60.0
 offset_top = 50.0
@@ -269,7 +289,7 @@ tint = Color(0.137255, 0.137255, 0.141176, 1)
 
 [node name="Plate2" parent="." instance=ExtResource("5_qqbec")]
 visible = false
-material = SubResource("ShaderMaterial_ncbvg")
+material = SubResource("ShaderMaterial_qjyih")
 layout_mode = 0
 offset_left = 60.0
 offset_top = 120.0
@@ -279,7 +299,7 @@ tint = Color(0.796078, 0.113725, 0, 1)
 
 [node name="Plate3" parent="." instance=ExtResource("5_qqbec")]
 visible = false
-material = SubResource("ShaderMaterial_b52qv")
+material = SubResource("ShaderMaterial_ky2jq")
 layout_mode = 0
 offset_left = 60.0
 offset_top = 190.0
@@ -287,20 +307,20 @@ offset_right = 108.0
 offset_bottom = 238.0
 tint = Color(0.745098, 0.568627, 0, 1)
 
-[connection signal="pressed" from="Panel/Menus/MainMenu/NewWords" to="." method="_on_new_words_pressed"]
-[connection signal="pressed" from="Panel/Menus/MainMenu/Learn" to="." method="_on_learn_pressed"]
-[connection signal="pressed" from="Panel/Menus/MainMenu/Improve" to="." method="_on_improve_pressed"]
-[connection signal="pressed" from="Panel/Menus/MainMenu/Quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="Panel/Menus/GamesMenu/ABCD_Button" to="." method="_on_abcd_button_pressed"]
-[connection signal="pressed" from="Panel/Menus/GamesMenu/SpellingButton" to="." method="_on_spelling_button_pressed"]
-[connection signal="pressed" from="Panel/Menus/GamesMenu/CrosswordButton" to="." method="_on_crossword_button_pressed"]
-[connection signal="pressed" from="Panel/Menus/GamesMenu/GendersButton" to="." method="_on_genders_button_pressed"]
-[connection signal="pressed" from="Panel/Menus/GamesMenu/Back" to="." method="_on_back_pressed"]
-[connection signal="pressed" from="Panel/Menus/EditingMenu/EditAllButton" to="." method="_on_edit_all_button_pressed"]
-[connection signal="pressed" from="Panel/Menus/EditingMenu/Browser" to="." method="_on_browser_pressed"]
-[connection signal="pressed" from="Panel/Menus/EditingMenu/WordEditor" to="." method="_on_word_editor_pressed"]
-[connection signal="pressed" from="Panel/Menus/EditingMenu/CutSentences" to="." method="_on_cut_sentences_pressed"]
-[connection signal="pressed" from="Panel/Menus/EditingMenu/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Panel/Menus/HBoxContainer/MainMenu/NewWords" to="." method="_on_new_words_pressed"]
+[connection signal="pressed" from="Panel/Menus/HBoxContainer/MainMenu/Learn" to="." method="_on_learn_pressed"]
+[connection signal="pressed" from="Panel/Menus/HBoxContainer/MainMenu/Improve" to="." method="_on_improve_pressed"]
+[connection signal="pressed" from="Panel/Menus/HBoxContainer/MainMenu/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Panel/Menus/HBoxContainer/GamesMenu/ABCD_Button" to="." method="_on_abcd_button_pressed"]
+[connection signal="pressed" from="Panel/Menus/HBoxContainer/GamesMenu/SpellingButton" to="." method="_on_spelling_button_pressed"]
+[connection signal="pressed" from="Panel/Menus/HBoxContainer/GamesMenu/CrosswordButton" to="." method="_on_crossword_button_pressed"]
+[connection signal="pressed" from="Panel/Menus/HBoxContainer/GamesMenu/GendersButton" to="." method="_on_genders_button_pressed"]
+[connection signal="pressed" from="Panel/Menus/HBoxContainer/GamesMenu/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Panel/Menus/HBoxContainer/EditingMenu/EditAllButton" to="." method="_on_edit_all_button_pressed"]
+[connection signal="pressed" from="Panel/Menus/HBoxContainer/EditingMenu/Browser" to="." method="_on_browser_pressed"]
+[connection signal="pressed" from="Panel/Menus/HBoxContainer/EditingMenu/WordEditor" to="." method="_on_word_editor_pressed"]
+[connection signal="pressed" from="Panel/Menus/HBoxContainer/EditingMenu/CutSentences" to="." method="_on_cut_sentences_pressed"]
+[connection signal="pressed" from="Panel/Menus/HBoxContainer/EditingMenu/Back" to="." method="_on_back_pressed"]
 [connection signal="closed" from="Panel/ABCDGame" to="." method="_on_abcd_game_closed"]
 [connection signal="closed" from="Panel/Generator" to="." method="_on_generator_closed"]
 [connection signal="test_words" from="Panel/Generator" to="." method="_on_generator_test_words"]

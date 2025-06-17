@@ -35,6 +35,8 @@ func new_question():
 	%Score.text = str(score) + " points"
 	points = 10
 	%Answer.text = ""
+	if question_types.size() == 0:
+		question_types = [1, 2, 3]
 	var q_type = question_types.pick_random()
 	question_type = q_type
 	print("q", question_types," qq", question_type)
@@ -417,9 +419,9 @@ func _on_right_umlaufts_pressed():
 func add_question_to_previous():
 	var new_q = %PrevQuestion.duplicate()
 	new_q.visible = true
-	new_q.text = "Q:  " + correct_answer
+	new_q.text = "[font_size=12]Correct answer:[/font_size]  " + check_misspelling(correct_answer,%Answer.text, true)#correct_answer
 	var new_a = %PrevAnswer.duplicate()
-	new_a.text = "A:  " + %Answer.text
+	new_a.text = "[font_size=12]Your answer:[/font_size]  " + check_misspelling(%Answer.text, correct_answer, false)
 	new_a.visible = true
 	var new_b = %PrevBlank.duplicate()
 	new_b.visible = true
@@ -431,7 +433,37 @@ func add_question_to_previous():
 	%PrevList.move_child(new_q,0)
 	
 
-
+func check_misspelling(answer:String, correct:String, blue:bool):
+	if answer.length() > 20:
+		var a_array = answer.split(" ")
+		var c_array = correct.split(" ")
+		if a_array.size() == c_array.size() and a_array.size()>1:
+			var final_result = ""
+			for i in range(a_array.size()):
+				final_result = final_result + " " + check_misspelling(a_array[i], c_array[i], blue)
+			return final_result
+	var error_color = "[color=\"red\"]" if not blue else "[color=\"#00a5fe\"]"
+	var good_color = "[color=\"white\"]" if blue else "[color=\"light_green\"]"
+	var correct_array = []
+	for i in range(answer.length()):
+		if i >= correct.length():
+			correct_array.append(false)
+			continue
+		correct_array.append(answer[i] == correct[i])
+	for i in range(min(correct.length(),answer.length())):
+		if correct[-i] == answer[-i]:
+			correct_array[-i] =true
+	var current_bool = correct_array[0]
+	var result = good_color if correct_array[0] else error_color
+	for i in range(correct_array.size()):
+		if current_bool != correct_array[i]:
+			result = result + "[/color]"
+			current_bool = correct_array[i]
+			result = result + (good_color if correct_array[i] else error_color)
+		result = result + answer[i]
+	result = result + "[/color]"
+	return result
+		
 
 func _on_previous_button_pressed():
 	if not %PrevContainer.visible:
@@ -523,8 +555,31 @@ func _on_today_pressed():
 
 
 func _on_this_week_pressed():
-	var week_ago = Time.get_datetime_dict_from_system()
+	var week_ago = date_week_ago()
+	print(week_ago)
+	var is_okay = true
+	#for b in Filter.by_date(load_array(), 0, "",week_ago):
+	#	print(b["original"], " ", b["date_added"])
 	BIG_SET = Filter.by_date(load_array(), 0, "",week_ago)
+	
+
+
+func date_week_ago():
+	var week_ago = Time.get_datetime_dict_from_system()
+	
+	if week_ago["day"] >= 8:
+		week_ago["day"] -= 7
+	elif week_ago["month"] not in [1,3]:
+		week_ago["month"] -= 1
+		week_ago["day"] += (31 if week_ago["month"] in [1,3,5,7,8,10,12] else 30) - 7
+	elif week_ago["month"] == 3:
+		week_ago["month"] -= 1
+		week_ago["day"] += (28 if week_ago["year"] % 4 !=0 else 29) - 7
+	else:
+		week_ago["year"] -= 1
+		week_ago["month"] = 12
+		week_ago["day"] += 31 - 7
+	return Time.get_datetime_string_from_datetime_dict(week_ago, false)
 
 
 func _on_all_time_pressed():
