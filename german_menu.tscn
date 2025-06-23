@@ -22,17 +22,17 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hjt3k"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_voc2d"]
 resource_local_to_scene = true
 shader = SubResource("Shader_2o0gt")
 shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qjyih"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jvaei"]
 resource_local_to_scene = true
 shader = SubResource("Shader_2o0gt")
 shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ky2jq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l3uke"]
 resource_local_to_scene = true
 shader = SubResource("Shader_2o0gt")
 shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
@@ -136,6 +136,7 @@ theme_override_font_sizes/font_size = 32
 text = "Ćwicz pisownię!"
 
 [node name="CrosswordButton" type="Button" parent="Panel/Menus/HBoxContainer/GamesMenu"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 tooltip_text = "Not ready yet"
@@ -268,6 +269,7 @@ visible = false
 layout_mode = 1
 
 [node name="FilterWindow" parent="Panel" instance=ExtResource("11_t0i00")]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
@@ -279,7 +281,7 @@ grow_horizontal = 0
 
 [node name="Plate" parent="." instance=ExtResource("5_qqbec")]
 visible = false
-material = SubResource("ShaderMaterial_hjt3k")
+material = SubResource("ShaderMaterial_voc2d")
 layout_mode = 0
 offset_left = 60.0
 offset_top = 50.0
@@ -289,7 +291,7 @@ tint = Color(0.137255, 0.137255, 0.141176, 1)
 
 [node name="Plate2" parent="." instance=ExtResource("5_qqbec")]
 visible = false
-material = SubResource("ShaderMaterial_qjyih")
+material = SubResource("ShaderMaterial_jvaei")
 layout_mode = 0
 offset_left = 60.0
 offset_top = 120.0
@@ -299,7 +301,7 @@ tint = Color(0.796078, 0.113725, 0, 1)
 
 [node name="Plate3" parent="." instance=ExtResource("5_qqbec")]
 visible = false
-material = SubResource("ShaderMaterial_ky2jq")
+material = SubResource("ShaderMaterial_l3uke")
 layout_mode = 0
 offset_left = 60.0
 offset_top = 190.0
@@ -331,3 +333,4 @@ tint = Color(0.745098, 0.568627, 0, 1)
 [connection signal="closed" from="Panel/GenderGame" to="." method="_on_gender_game_closed"]
 [connection signal="closed" from="Panel/CutSentences" to="." method="_on_cut_sentences_closed"]
 [connection signal="closed" from="Panel/WordEditor" to="." method="_on_word_editor_closed"]
+[connection signal="edited" from="Panel/FilterWindow" to="." method="_on_filter_window_edited"]

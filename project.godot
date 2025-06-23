@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Utility="*res://Global/Utility.gd"
 Filter="*res://Global/Filter.gd"
+Base="*res://Global/Base.gd"
 
 [input]
 

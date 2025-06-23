@@ -1,31 +1,28 @@
 extends Control
 signal closed
-var BIG_SET : Array
 var day_of_learning : int
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
-	BIG_SET = load_array()
+	#BIG_SET = Utility.load_array()
+	#print(BIG_SET.size())
 	
-	
-	"""
-	var new_set_array = []
-	for b in BIG_SET:
-		var original = b[0]
-		if original.split(" ")[0].to_upper() in ["DIE", "DAS", "DER"]:
-			original[0] = original[0].to_lower()
-		var new_record = {"original":b[0], "translation":b[1], "weight":b[4], "is_sentence":b[2]}
-		new_set_array.append(new_record)
-	for i in range(30):
-		print(new_set_array[i])
-	BIG_SET = new_set_array
-	save_array()
-	"""
 	#for b in BIG_SET:
 	#	print(b[4]*0.8)
 	#update_day_now()
 	update_weights()
+	update_disabled_buttons()
+	
+	#TEST
+	var cos = []
+	var cos2 = []
+	var sth = {"name":"Janusz", "Surname": "XXXXX"}
+	cos.append(sth)
+	cos2.append(sth)
+	print("test ", cos.size(), " ", cos2.size())
+	cos2.erase(sth)
+	print("test ", cos.size(), " ", cos2.size())
 
 func update_weights():
 	var today = round(Time.get_unix_time_from_system()/(60*60*24))
@@ -41,7 +38,7 @@ func update_weights():
 		print("Ratio")
 		print(ratio)
 		if ratio != 1:
-			for b in BIG_SET:
+			for b in Base.BIG_ARRAY:
 				b["weight"] *= ratio
 	var save_file = FileAccess.open("user://GermanDate.save", FileAccess.WRITE)
 	save_file.store_32(today)
@@ -62,6 +59,7 @@ func _on_back_pressed():
 	%MainMenu.visible = true 
 	%GamesMenu.visible = false
 	%EditingMenu.visible = false
+	%FilterWindow.visible = true
 
 
 func _on_quit_pressed():
@@ -73,30 +71,14 @@ func _on_quit_pressed():
 func _on_learn_pressed():
 	%MainMenu.visible = false
 	%GamesMenu.visible = true
+	%FilterWindow.visible = false
 
 
 func _on_improve_pressed():
 	%MainMenu.visible = false
 	%EditingMenu.visible = true
+	%FilterWindow.visible = false
 	
-	
-func save_array():
-	var file = FileAccess.open("user://FiszkiGermanSafe.json", FileAccess.WRITE) #"user://FiszkiGermanSafe.json",
-	var json_string = JSON.stringify(BIG_SET)  # Convert array to JSON
-	file.store_string(json_string)  # Save to file
-	file.close()
-	
-func load_array():
-	if not FileAccess.file_exists("user://FiszkiGerman.json"):
-		print("File not found!")
-		return []
-	
-	var file = FileAccess.open("user://FiszkiGerman.json", FileAccess.READ)
-	var json_string = file.get_as_text()  # Read the file content
-	file.close()
-	
-	var json = JSON.parse_string(json_string)  # Convert JSON back to array
-	return json if json is Array else []
 
 
 
@@ -114,7 +96,6 @@ func _on_abcd_button_pressed():
 	%GamesMenu.visible = false
 	%ABCDGame.visible = true
 	%ABCDGame.training_on_new_words = false
-	%ABCDGame.BIG_SET = BIG_SET
 	%ABCDGame.start()
 
 
@@ -123,16 +104,12 @@ func _on_edit_all_button_pressed():
 	%MainMenu.visible = true
 	%EditingMenu.visible = false
 	%EditAll.visible = true
-	%EditAll.BIG_SET = BIG_SET
 	%EditAll.start()
 
 
 func _on_edit_all_closed():
 	%Menus.visible = true
 	%EditAll.visible = false
-	BIG_SET = %EditAll.BIG_SET
-	#for i in range(BIG_SET.size()):
-	#	print(i, " ", BIG_SET[i])
 	
 	
 
@@ -140,7 +117,6 @@ func _on_edit_all_closed():
 func _on_new_words_pressed():
 	%Menus.visible = false
 	%Generator.visible = true
-	%Generator.BIG_SET = BIG_SET
 	%Generator.new_words = []
 
 
@@ -163,7 +139,6 @@ func _on_spelling_button_pressed():
 	%MainMenu.visible = true
 	%GamesMenu.visible = false
 	%SpellingGame.visible = true
-	%SpellingGame.BIG_SET = BIG_SET
 	%SpellingGame.start()
 
 
@@ -189,7 +164,6 @@ func _on_crossword_closed():
 func _on_word_editor_closed():
 	%Menus.visible = true
 	%WordEditor.visible = false
-	BIG_SET = %WordEditor.BIG_SET
 
 
 func _on_word_editor_pressed():
@@ -197,7 +171,6 @@ func _on_word_editor_pressed():
 	%MainMenu.visible = true
 	%EditingMenu.visible = false
 	%WordEditor.visible = true
-	%WordEditor.BIG_SET = BIG_SET
 	%WordEditor.start()
 
 
@@ -240,7 +213,7 @@ func _on_cut_sentences_pressed():
 	%CutSentences.start()
 
 func update_disabled_buttons():
-	if BIG_SET.size() == 0:
+	if Base.SMALL_ARRAY.size() == 0:
 		%Learn.disabled = true
 		%Learn.tooltip_text = "Baza słów jest pusta"
 		%Improve.disabled = true
@@ -252,30 +225,31 @@ func update_disabled_buttons():
 		%Improve.tooltip_text = ""
 		var words_amount = 0
 		var sentences_amount = 0
-		for b in BIG_SET:
+		for b in Base.SMALL_ARRAY:
 			if b["is_sentence"]:
 				sentences_amount += 1
 			else:
 				words_amount += 1
 		
 		%ABCD_Button.disabled = words_amount < 10
-		%ABCD_BUtton.tooltip_text = "Potrzebujesz min. 10 słów by uruchomić tę grę" if words_amount < 10 else ""
+		%ABCD_Button.tooltip_text = "Potrzebujesz min. 10 słów by uruchomić tę grę" if words_amount < 10 else ""
+		
+		var crossword_counter = 0
+		for s in Base.SMALL_ARRAY:
+			if s["is_sentence"]:
+				continue
+			if not " " in s["original"] or (s["original"].split(" ").size()<=2 and s["original"].left(3).to_lower() in ["die", "der", "das"]):
+				crossword_counter += 1
+		
+		if crossword_counter > 30:
+			%CrosswordButton.disabled = false
+			%CrosswordButton.tooltip_text = ""
+		else:
+			%CrosswordButton.disabled = true
+			%CrosswordButton.tooltip_text = "Za mało haseł do krzyżówki"
 		
 		
-func load_basic_base():
-	if not FileAccess.file_exists("BasicBase.json"):
-		print("File not found!")
-		return []
-	
-	var file = FileAccess.open("BasicBase.json", FileAccess.READ)
-	var json_string = file.get_as_text()  # Read the file content
-	file.close()
-	
-	var json = JSON.parse_string(json_string)  # Convert JSON back to array
-	return json if json is Array else []
-	
-func save_basic_base():
-	var file = FileAccess.open("BasicBase.json", FileAccess.WRITE)
-	var json_string = JSON.stringify(BIG_SET)  # Convert array to JSON
-	file.store_string(json_string)  # Save to file
-	file.close()
+
+
+func _on_filter_window_edited():
+	update_disabled_buttons()

@@ -4,7 +4,6 @@ var correct_sentence = ""
 var question_type = 0
 var given_tip = ""
 var tip_array = []
-var BIG_SET: Array
 var is_sentence = false
 var score = 0
 var points = 0
@@ -16,7 +15,6 @@ signal closed
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	BIG_SET = load_array()
 	load_settings()
 	new_question()
 	
@@ -30,7 +28,7 @@ func _process(delta):
 	pass
 
 func new_question():
-	if BIG_SET.size()==0:
+	if Base.SMALL_ARRAY.size()==0:
 		return
 	%Score.text = str(score) + " points"
 	points = 10
@@ -40,7 +38,7 @@ func new_question():
 	var q_type = question_types.pick_random()
 	question_type = q_type
 	print("q", question_types," qq", question_type)
-	var new_q = BIG_SET.pick_random()
+	var new_q = Base.SMALL_ARRAY.pick_random()
 	var gap_id = -1
 	print(" ")
 	for q in questions_to_repeat:
@@ -71,8 +69,13 @@ func new_question():
 		given_tip = new_q["translation"]
 		is_sentence = new_q["is_sentence"]
 	elif q_type == 2:
-		while new_q["is_sentence"]:
-			new_q = BIG_SET.pick_random()
+		var loop_counter = 0
+		while new_q["is_sentence"] and loop_counter < 100:
+			new_q = Base.SMALL_ARRAY.pick_random()
+			loop_counter += 1
+		if loop_counter >= 100:
+			new_question()
+			return
 		current_record = new_q
 		%Tip.text = "Write it in German!"
 		%Question.text = new_q["translation"]
@@ -89,8 +92,13 @@ func new_question():
 		tip_array[0] = "_"
 		is_sentence = false
 	elif q_type == 3:
-		while not new_q["is_sentence"]:
-			new_q = BIG_SET.pick_random()
+		var loop_counter = 0
+		while not new_q["is_sentence"] and loop_counter < 100:
+			new_q = Base.SMALL_ARRAY.pick_random()
+			loop_counter += 1
+		if loop_counter == 100:
+			new_question()
+			return
 		current_record = new_q
 		%Tip.text = "Fill the gap!"
 		%Question.editable = false
@@ -198,23 +206,6 @@ func add_to_repeat():
 		questions_to_repeat[-1].append(gap_id)
 	questions_to_repeat.sort()
 
-func load_array():
-	if not FileAccess.file_exists("user://FiszkiGerman.json"):
-		print("File not found!")
-		return []
-	
-	var file = FileAccess.open("user://FiszkiGerman.json", FileAccess.READ)
-	var json_string = file.get_as_text()  # Read the file content
-	file.close()
-	
-	var json = JSON.parse_string(json_string)  # Convert JSON back to array
-	return json if json is Array else []
-
-func save_array():
-	var file = FileAccess.open("user://FiszkiGerman.json", FileAccess.WRITE)
-	var json_string = JSON.stringify(BIG_SET)  # Convert array to JSON
-	file.store_string(json_string)  # Save to file
-	file.close()
 
 
 func _on_check_button_pressed():
@@ -434,6 +425,8 @@ func add_question_to_previous():
 	
 
 func check_misspelling(answer:String, correct:String, blue:bool):
+	if answer.length() == 0 or correct.length() == 0:
+		return
 	if answer.length() > 20:
 		var a_array = answer.split(" ")
 		var c_array = correct.split(" ")
@@ -482,23 +475,23 @@ func _on_previous_button_pressed():
 func _on_question_text_edited(old_text, new_text):
 	var is_okay = false
 	if question_type == 1:
-		for b in BIG_SET:
+		for b in Base.BIG_ARRAY:
 			if b["original"] == old_text:
 				b["original"] = new_text 
 				is_okay = true
 	elif question_type == 2:
-		for b in BIG_SET:
+		for b in Base.BIG_ARRAY:
 			if b["translation"] == old_text:
 				b["translation"] = new_text 
 				is_okay = true
 	if is_okay:
-		save_array()
+		Base.save()
 
 
 
 func _on_tip_text_edited(old_text, new_text):
 	var is_okay = false
-	for b in BIG_SET:
+	for b in Base.BIG_ARRAY:
 		if b["translation"] == old_text:
 			b["translation"] = new_text 
 			b["date_modified"] = Time.get_datetime_string_from_system()
@@ -506,7 +499,7 @@ func _on_tip_text_edited(old_text, new_text):
 			#print(b)
 
 	if is_okay:
-		save_array()
+		Base.save()
 		
 		
 func load_settings():
@@ -550,7 +543,7 @@ func save_settings():
 
 
 func _on_today_pressed():
-	BIG_SET = Filter.by_date(load_array(),0)
+#	BIG_SET = Filter.by_date(0)
 	new_question()
 
 
@@ -560,7 +553,7 @@ func _on_this_week_pressed():
 	var is_okay = true
 	#for b in Filter.by_date(load_array(), 0, "",week_ago):
 	#	print(b["original"], " ", b["date_added"])
-	BIG_SET = Filter.by_date(load_array(), 0, "",week_ago)
+#	BIG_SET = Filter.by_date( 0, "",week_ago)
 	
 
 
@@ -583,5 +576,5 @@ func date_week_ago():
 
 
 func _on_all_time_pressed():
-	BIG_SET = load_array()
+#	BIG_SET = load_array()
 	new_question()

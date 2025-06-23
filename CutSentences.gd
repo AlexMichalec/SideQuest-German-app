@@ -1,5 +1,4 @@
 extends Control
-var BIG_ARRAY : Array
 var existing_words: Array
 var ignored_words: Array
 var sentence_array: Array
@@ -10,11 +9,9 @@ signal closed
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
-	BIG_ARRAY = Utility.load_array()
 	start()
 	
 func start():
-	BIG_ARRAY = Utility.load_array()
 	current_index = 0
 	prepare_arrays()
 	prepare_sentence(sentence_array[0]["original"], sentence_array[0]["translation"])
@@ -26,7 +23,7 @@ func prepare_arrays():
 		ignored_words = [".","...","?","!",","]
 		ignored_words.append_array(["und", "was", "wie", "wo","ich","ist", "ein", "eine", "einen", "einem", "die", "das", "der", "des", "dem", "den", "ich", "du", "er", "sie", "es", "wir", "ihr"])
 	existing_words = []
-	for b in BIG_ARRAY:
+	for b in Base.BIG_ARRAY:
 		if b["is_sentence"]:
 			if not b.get("already_cut", false):
 				sentence_array.append(b)
@@ -152,11 +149,11 @@ func hide_word_edit():
 
 
 func set_already_cut(sentence):
-	for b in BIG_ARRAY:
+	for b in Base.BIG_ARRAY:
 		if b == sentence:
 			b["already_cut"] = true
 			print("OK")
-			Utility.save_array(BIG_ARRAY)
+			Base.save()
 			return true
 	return false
 
@@ -206,10 +203,10 @@ func add_word_to_database(word_type):
 		"gender": gender
 	}
 	print(new_record)
-	BIG_ARRAY.append(new_record)
+	Base.BIG_ARRAY.append(new_record)
 	%SimilarWordsLabel.text = " "
 	hide_word_edit()
-	Utility.save_array(BIG_ARRAY)
+	Base.save()
 	%SimilarWordsLabel.text = "Added:"
 	%SimilarWordsList.text = word + " - " + translation
 	await get_tree().create_timer(2).timeout
@@ -253,7 +250,6 @@ func _on_proper_pressed():
 func _on_next_sentence_pressed():
 	set_already_cut(sentence_array[current_index])
 	current_index += 1
-	print(BIG_ARRAY[-1])
 	while not prepare_sentence(sentence_array[current_index]["original"],sentence_array[current_index]["translation"]) :
 		set_already_cut(sentence_array[current_index])
 		current_index += 1

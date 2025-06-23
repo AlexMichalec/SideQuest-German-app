@@ -1,5 +1,4 @@
 extends VBoxContainer
-var BIG_SET : Array
 var current_record : Dictionary
 
 @export_enum("raz","ddwa", "trzy") var costam
@@ -11,7 +10,6 @@ func _ready():
 		
 
 func start():
-	BIG_SET = load_array()
 	$LineEdit.grab_focus()
 
 
@@ -21,24 +19,6 @@ func start():
 func _process(delta):
 	pass
 	
-
-func load_array():
-	if not FileAccess.file_exists("user://FiszkiGerman.json"):
-		print("File not found!")
-		return []
-	
-	var file = FileAccess.open("user://FiszkiGerman.json", FileAccess.READ)
-	var json_string = file.get_as_text()  # Read the file content
-	file.close()
-	
-	var json = JSON.parse_string(json_string)  # Convert JSON back to array
-	return json if json is Array else []
-
-func save_array():
-	var file = FileAccess.open("user://FiszkiGerman.json", FileAccess.WRITE)
-	var json_string = JSON.stringify(BIG_SET)  # Convert array to JSON
-	file.store_string(json_string)  # Save to file
-	file.close()
 
 
 
@@ -57,7 +37,7 @@ func _on_line_edit_text_changed(new_text):
 		new_record.visible = true
 		%RecordLists.add_child(new_record)
 	"""
-	for b in BIG_SET:
+	for b in Base.BIG_ARRAY:
 		if new_text.to_lower() in b["original"].to_lower() or new_text.to_lower() in b["translation"].to_lower():
 			var new_record = %SampleRecord.duplicate()
 			var o_text = b["original"]
@@ -154,7 +134,7 @@ func fill_editor_window(word : Dictionary):
 
 
 func _on_button_pressed():
-	save_array()
+	Base.save()
 	$LineEdit.text = ""
 	for child in %RecordLists.get_children():
 		if child != %SampleRecord:

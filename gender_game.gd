@@ -1,5 +1,4 @@
 extends Panel
-var BIG_ARRAY :Array
 var gender_set :Array
 var showing_answer = false
 var score = 0
@@ -11,10 +10,9 @@ var settings_not_saved = false
 signal closed
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	BIG_ARRAY = Utility.load_array()
 	if get_tree().current_scene == self:
 		start()
-	for b in BIG_ARRAY:
+	for b in Base.BIG_ARRAY:
 		if b.has("gender") and not b["part_of_speech"] == "noun":
 			b
 			print(b["original"], " - ", b["translation"])
@@ -30,7 +28,7 @@ func prepare_set():
 	if not keep_seen_words:
 		reset_done()
 	gender_set = []
-	for b in BIG_ARRAY:
+	for b in Base.BIG_ARRAY:
 		if b.has("gender") and not b["is_sentence"] and b.has("part_of_speech") and b["part_of_speech"] == "noun":
 			gender_set.append(b)
 	print(gender_set.size())

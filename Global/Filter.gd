@@ -1,11 +1,13 @@
 extends Node
 
-func by_date(BIG_ARRAY : Array = Utility.load_array(), index:int = 0, date_string:String = "", to_date:String = "", show_whole = false):
+
+func by_date(index:int = 0, date_string:String = "", to_date:String = "", show_whole = false):
+	var BIG = Base.load_array()
 	var dates_array = []
-	BIG_ARRAY.sort_custom(date_sort)
-	var temp_date = BIG_ARRAY[0]["date_added"].left(10)
+	BIG.sort_custom(date_sort)
+	var temp_date = BIG[0]["date_added"].left(10)
 	dates_array.append([temp_date])
-	for b in BIG_ARRAY:
+	for b in BIG:
 		if b["date_added"].left(10) == temp_date:
 			dates_array[-1].append(b)
 		else:

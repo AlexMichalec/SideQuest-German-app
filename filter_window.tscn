@@ -1,8 +1,23 @@
-[gd_scene load_steps=12 format=3 uid="uid://cauqasinasbt8"]
+[gd_scene load_steps=19 format=3 uid="uid://cauqasinasbt8"]
 
 [ext_resource type="Script" path="res://filter_window.gd" id="1_ulnmd"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1gg3o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sybdm"]
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.258824, 0.0784314, 0.341176, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sxww5"]
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.403922, 0.145098, 0.52549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j5dic"]
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.521569, 0.207843, 0.670588, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_77v1x"]
 content_margin_top = 10.0
@@ -38,6 +53,27 @@ border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
 border_color = Color(0.917647, 0.917647, 0.917647, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_elnh0"]
+content_margin_left = 20.0
+content_margin_top = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.443137, 0.329412, 0.196078, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_clrpt"]
+content_margin_left = 20.0
+content_margin_top = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.568627, 0.431373, 0.266667, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uq2gb"]
+content_margin_left = 20.0
+content_margin_top = 6.0
+content_margin_bottom = 6.0
+bg_color = Color(0.72549, 0.568627, 0.376471, 1)
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_nmgvj"]
+allow_unpress = true
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dfc2u"]
 content_margin_left = 14.0
@@ -110,14 +146,55 @@ text = "x"
 layout_mode = 2
 text = "Filter by:"
 
-[node name="Button" type="Button" parent="MainContainer"]
-layout_mode = 2
-text = "Date"
-
 [node name="HBoxContainer" type="HBoxContainer" parent="MainContainer"]
 layout_mode = 2
 
-[node name="AllDateButton" type="Button" parent="MainContainer/HBoxContainer"]
+[node name="DateButton" type="Button" parent="MainContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.882353, 0.0941176, 0.568627, 1)
+theme_override_colors/font_pressed_color = Color(0.882353, 0.0941176, 0.568627, 1)
+theme_override_colors/font_hover_color = Color(0.882353, 0.0941176, 0.568627, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_sybdm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sxww5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_j5dic")
+text = "Date"
+
+[node name="CategoriesButton" type="Button" parent="MainContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.882353, 0.0941176, 0.568627, 1)
+theme_override_colors/font_pressed_color = Color(0.882353, 0.0941176, 0.568627, 1)
+theme_override_colors/font_hover_color = Color(0.882353, 0.0941176, 0.568627, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_sybdm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sxww5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_j5dic")
+text = "Categories
+"
+
+[node name="OtherButton" type="Button" parent="MainContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.882353, 0.0941176, 0.568627, 1)
+theme_override_colors/font_pressed_color = Color(0.882353, 0.0941176, 0.568627, 1)
+theme_override_colors/font_hover_color = Color(0.882353, 0.0941176, 0.568627, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_sybdm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_sxww5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_j5dic")
+text = "Other"
+
+[node name="DatesContainer" type="VBoxContainer" parent="MainContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainContainer/DatesContainer"]
+layout_mode = 2
+
+[node name="AllDateButton" type="Button" parent="MainContainer/DatesContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -131,7 +208,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_mwp7o")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_1fdwi")
 text = "ALL"
 
-[node name="NoneDateButton" type="Button" parent="MainContainer/HBoxContainer"]
+[node name="NoneDateButton" type="Button" parent="MainContainer/DatesContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -145,10 +222,10 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_mwp7o")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_1fdwi")
 text = "NONE"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MainContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MainContainer/DatesContainer"]
 layout_mode = 2
 
-[node name="TodayButton" type="Button" parent="MainContainer/HBoxContainer2"]
+[node name="TodayButton" type="Button" parent="MainContainer/DatesContainer/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -162,7 +239,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_mwp7o")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_1fdwi")
 text = "Today"
 
-[node name="WeekButton" type="Button" parent="MainContainer/HBoxContainer2"]
+[node name="WeekButton" type="Button" parent="MainContainer/DatesContainer/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -176,7 +253,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_mwp7o")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_1fdwi")
 text = "Last Week"
 
-[node name="MonthButton" type="Button" parent="MainContainer/HBoxContainer2"]
+[node name="MonthButton" type="Button" parent="MainContainer/DatesContainer/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -190,16 +267,16 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_mwp7o")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_1fdwi")
 text = "Last Month"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MainContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MainContainer/DatesContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="DateButtonContainer" type="VBoxContainer" parent="MainContainer/ScrollContainer"]
+[node name="DateButtonContainer" type="VBoxContainer" parent="MainContainer/DatesContainer/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="DateButtonSample" type="Button" parent="MainContainer/ScrollContainer/DateButtonContainer"]
+[node name="DateButtonSample" type="Button" parent="MainContainer/DatesContainer/ScrollContainer/DateButtonContainer"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
@@ -209,6 +286,122 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_8aqco")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_phbce")
 toggle_mode = true
 text = "DATE, words, words, words"
+
+[node name="CategoriesContainer" type="VBoxContainer" parent="MainContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="OtherContainer" type="VBoxContainer" parent="MainContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="OnlyWords" type="CheckBox" parent="MainContainer/OtherContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_constants/h_separation = 9
+theme_override_styles/normal = SubResource("StyleBoxFlat_elnh0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_clrpt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_uq2gb")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_uq2gb")
+button_group = SubResource("ButtonGroup_nmgvj")
+text = "Only Words"
+
+[node name="OnlyNouns" type="CheckBox" parent="MainContainer/OtherContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_constants/h_separation = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_elnh0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_clrpt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_uq2gb")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_uq2gb")
+button_group = SubResource("ButtonGroup_nmgvj")
+text = "Only Nouns"
+
+[node name="OnlyAdjectives" type="CheckBox" parent="MainContainer/OtherContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_constants/h_separation = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_elnh0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_clrpt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_uq2gb")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_uq2gb")
+button_group = SubResource("ButtonGroup_nmgvj")
+text = "Only Adjectives"
+
+[node name="OnlyVerbs" type="CheckBox" parent="MainContainer/OtherContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_constants/h_separation = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_elnh0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_clrpt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_uq2gb")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_uq2gb")
+button_group = SubResource("ButtonGroup_nmgvj")
+text = "Only Verbs"
+
+[node name="OnlyLongWords" type="CheckBox" parent="MainContainer/OtherContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+theme_override_constants/h_separation = 9
+theme_override_styles/normal = SubResource("StyleBoxFlat_elnh0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_clrpt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_uq2gb")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_uq2gb")
+button_group = SubResource("ButtonGroup_nmgvj")
+text = "Only Long Words"
+
+[node name="LongWordButtons" type="Control" parent="MainContainer/OtherContainer/OnlyLongWords"]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = -64.0
+offset_top = -1.0
+offset_right = -24.0
+offset_bottom = 39.0
+
+[node name="Less" type="Button" parent="MainContainer/OtherContainer/OnlyLongWords/LongWordButtons"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 267.0
+offset_top = 3.0
+offset_right = 293.0
+offset_bottom = 34.0
+focus_mode = 0
+text = " < "
+
+[node name="LWLabel" type="Label" parent="MainContainer/OtherContainer/OnlyLongWords/LongWordButtons"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 297.0
+offset_top = 8.0
+offset_right = 337.0
+offset_bottom = 34.0
+text = "12"
+
+[node name="More" type="Button" parent="MainContainer/OtherContainer/OnlyLongWords/LongWordButtons"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 324.0
+offset_top = 3.0
+offset_right = 350.0
+offset_bottom = 34.0
+focus_mode = 0
+text = " > "
+
+[node name="OnlySentences" type="CheckBox" parent="MainContainer/OtherContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_constants/h_separation = 9
+theme_override_styles/normal = SubResource("StyleBoxFlat_elnh0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_clrpt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_uq2gb")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_uq2gb")
+button_group = SubResource("ButtonGroup_nmgvj")
+text = "Only  Sentences"
 
 [node name="BIG_ARRAY_LABEL" type="RichTextLabel" parent="MainContainer"]
 unique_name_in_owner = true
@@ -242,10 +435,21 @@ E
 R"
 
 [connection signal="pressed" from="MainContainer/CloseButton" to="." method="_on_close_button_pressed"]
-[connection signal="pressed" from="MainContainer/HBoxContainer/AllDateButton" to="." method="_on_all_date_button_pressed"]
-[connection signal="pressed" from="MainContainer/HBoxContainer/NoneDateButton" to="." method="_on_none_date_button_pressed"]
-[connection signal="pressed" from="MainContainer/HBoxContainer2/TodayButton" to="." method="_on_today_button_pressed"]
-[connection signal="pressed" from="MainContainer/HBoxContainer2/WeekButton" to="." method="_on_week_button_pressed"]
-[connection signal="pressed" from="MainContainer/HBoxContainer2/MonthButton" to="." method="_on_month_button_pressed"]
-[connection signal="pressed" from="MainContainer/ScrollContainer/DateButtonContainer/DateButtonSample" to="." method="_on_date_button_sample_pressed"]
+[connection signal="pressed" from="MainContainer/HBoxContainer/DateButton" to="." method="_on_date_button_pressed"]
+[connection signal="pressed" from="MainContainer/HBoxContainer/CategoriesButton" to="." method="_on_categories_button_pressed"]
+[connection signal="pressed" from="MainContainer/HBoxContainer/OtherButton" to="." method="_on_other_button_pressed"]
+[connection signal="pressed" from="MainContainer/DatesContainer/HBoxContainer/AllDateButton" to="." method="_on_all_date_button_pressed"]
+[connection signal="pressed" from="MainContainer/DatesContainer/HBoxContainer/NoneDateButton" to="." method="_on_none_date_button_pressed"]
+[connection signal="pressed" from="MainContainer/DatesContainer/HBoxContainer2/TodayButton" to="." method="_on_today_button_pressed"]
+[connection signal="pressed" from="MainContainer/DatesContainer/HBoxContainer2/WeekButton" to="." method="_on_week_button_pressed"]
+[connection signal="pressed" from="MainContainer/DatesContainer/HBoxContainer2/MonthButton" to="." method="_on_month_button_pressed"]
+[connection signal="pressed" from="MainContainer/DatesContainer/ScrollContainer/DateButtonContainer/DateButtonSample" to="." method="_on_date_button_sample_pressed"]
+[connection signal="toggled" from="MainContainer/OtherContainer/OnlyWords" to="." method="_on_only_words_toggled"]
+[connection signal="toggled" from="MainContainer/OtherContainer/OnlyNouns" to="." method="_on_only_nouns_toggled"]
+[connection signal="toggled" from="MainContainer/OtherContainer/OnlyAdjectives" to="." method="_on_only_adjectives_toggled"]
+[connection signal="toggled" from="MainContainer/OtherContainer/OnlyVerbs" to="." method="_on_only_verbs_toggled"]
+[connection signal="toggled" from="MainContainer/OtherContainer/OnlyLongWords" to="." method="_on_only_long_words_toggled"]
+[connection signal="pressed" from="MainContainer/OtherContainer/OnlyLongWords/LongWordButtons/Less" to="." method="_on_less_pressed"]
+[connection signal="pressed" from="MainContainer/OtherContainer/OnlyLongWords/LongWordButtons/More" to="." method="_on_more_pressed"]
+[connection signal="toggled" from="MainContainer/OtherContainer/OnlySentences" to="." method="_on_only_sentences_toggled"]
 [connection signal="pressed" from="OpenButton" to="." method="_on_open_button_pressed"]

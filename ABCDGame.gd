@@ -6,8 +6,6 @@ var good_answer_id: int
 var done :int
 var finished = false
 var answers_from_the_same_deck = false
-var BIG_SET: Array
-var TEST_SET: Array
 var runda = 1
 var progressed_words = []
 var editing = false
@@ -18,19 +16,15 @@ signal closed
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if get_tree().current_scene == self:
-		BIG_SET = load_array()
 		start()
 	pass
 	
 func start():
-	BIG_SET = load_array()
 	started = true
 	reset()
 	
 
 func reset():
-	if not training_on_new_words:
-		TEST_SET = BIG_SET
 	progressed_words = []
 	runda = 1
 	finished = false
@@ -79,9 +73,9 @@ func next_question():
 		if answers_from_the_same_deck:
 			new_a = word_set.pick_random()["translation"]
 		else:
-			var new_aa = TEST_SET.pick_random()
+			var new_aa = Base.SMALL_ARRAY.pick_random()
 			while new_aa["is_sentence"]:
-				new_aa = TEST_SET.pick_random()
+				new_aa = Base.SMALL_ARRAY.pick_random()
 			new_a = new_aa["translation"]
 		if not new_a in answers:
 			answers.append(new_a)
@@ -97,16 +91,16 @@ func add_progress():
 		if w in progressed_words or not w["is_sentence"]:
 			continue
 		var index = 0
-		for b in TEST_SET:
+		for b in Base.SMALL_ARRAY:
 			if b["original"] == w["original"]:
 				b["weight"] = min(10, w["weight"]+ 4/runda)
 		if training_on_new_words:
-			for b in BIG_SET:
+			for b in Base.BIG_ARRAY:
 				if b["original"] == w["original"]:
 					b["weight"] = min(4, w["weight"]+ 2/runda)
 		progressed_words.append(w)
 	runda += 1
-	save_array()
+	Base.save()
 				
 
 func check(x:int):
@@ -143,7 +137,7 @@ func check(x:int):
 
 func prepare_set():
 	var result = []
-	for b in TEST_SET:
+	for b in Base.SMALL_ARRAY:
 		if b["is_sentence"]:
 			continue
 		result.append(b)
@@ -181,11 +175,11 @@ func finale():
 	finished = true
 	%QuestionLabel.text = "GOOD JOB! :D"
 	var temp:float = 0
-	for b in TEST_SET:
+	for b in Base.SMALL_ARRAY:
 		if not b["is_sentence"]:
 			temp += b["weight"]
 	var words_max:float = 0
-	for b in TEST_SET:
+	for b in Base.SMALL_ARRAY:
 		if not b["is_sentence"]:
 			words_max += 10
 	var percent : float = (temp/words_max) * 100.0
@@ -205,8 +199,8 @@ func start_modifying():
 		%ModifyWordsContainr.add_child(new_record)
 		new_record.get_node("HBoxContainer/German").text = w["original"]
 		new_record.get_node("HBoxContainer/English").text = w["translation"]
-		for i in range(BIG_SET.size()):
-			var b = BIG_SET[i]
+		for i in range(Base.BIG_ARRAY.size()):
+			var b = Base.BIG_ARRAY[i]
 			if b["original"] == w["original"]:
 				new_record.get_node("HBoxContainer/Index").text = str(i)
 				new_record.get_node("HBoxContainer/Waga").text = str(b["weight"])
@@ -239,15 +233,14 @@ func save_edited():
 		if record.get_node("HBoxContainer/German").text == "":
 			continue
 		var index = int(record.get_node("HBoxContainer/Index").text)
-		BIG_SET[index]["original"]=record.get_node("HBoxContainer/German").text
-		BIG_SET[index]["translation"]=record.get_node("HBoxContainer/English").text
-		BIG_SET[index]["weight"]=int(record.get_node("HBoxContainer/Waga").text)
-		BIG_SET[index]["is_sentence"]=record.get_node("HBoxContainer/Sentence").button_pressed
+		Base.BIG_ARRAY[index]["original"]=record.get_node("HBoxContainer/German").text
+		Base.BIG_ARRAY[index]["translation"]=record.get_node("HBoxContainer/English").text
+		Base.BIG_ARRAY[index]["weight"]=int(record.get_node("HBoxContainer/Waga").text)
+		Base.BIG_ARRAY[index]["is_sentence"]=record.get_node("HBoxContainer/Sentence").button_pressed
 		record.queue_free()
 
-	#for b in BIG_SET:
-	#	print(b)
-	save_array()
+	
+	Base.save()
 	finished = true
 	editing = false
 		
@@ -264,20 +257,3 @@ func _on_answer_3_pressed():
 func _on_answer_4_pressed():
 	check(3)
 	
-func load_array():
-	if not FileAccess.file_exists("user://FiszkiGerman.json"):
-		print("File not found!")
-		return []
-	
-	var file = FileAccess.open("user://FiszkiGerman.json", FileAccess.READ)
-	var json_string = file.get_as_text()  # Read the file content
-	file.close()
-	
-	var json = JSON.parse_string(json_string)  # Convert JSON back to array
-	return json if json is Array else []
-
-func save_array():
-	var file = FileAccess.open("user://FiszkiGerman.json", FileAccess.WRITE)
-	var json_string = JSON.stringify(BIG_SET)  # Convert array to JSON
-	file.store_string(json_string)  # Save to file
-	file.close()

@@ -1,5 +1,4 @@
 extends Control
-var BIG_SET :Array
 var new_words : Array
 signal closed
 signal test_words
@@ -8,8 +7,7 @@ signal test_words
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	new_words = []
-	if get_tree().current_scene == self:
-		BIG_SET = load_array()
+	
 
 
 	
@@ -107,13 +105,16 @@ func _on_finish_pressed():
 			if german.split(" ")[0].to_upper() == "DER":
 				gender = "male"
 			"""
-		
+		#var date_old = Time.get_datetime_dict_from_system()
+		#date_old["month"] -= 1
+		#var str_date_old = Time.get_datetime_string_from_datetime_dict(date_old, false)
+		#print(str_date_old)
 		var new_record = {"original":german, "translation":english, "is_sentence":sentence, "weight": how_much_do_i_know, "date_added": Time.get_datetime_string_from_system()}
 		
-		BIG_SET.append(new_record)
+		Base.BIG_ARRAY.append(new_record)
 		new_words.append(new_record)
 		record.queue_free()
-	BIG_SET.sort_custom(case_insensitive_sort_set)
+	Base.BIG_ARRAY.sort_custom(case_insensitive_sort_set)
 	
 	%ScrollModifyContainer.visible = false 
 	%WhatNext.visible = true
@@ -122,10 +123,8 @@ func _on_finish_pressed():
 	%TextRight.text = ""
 	%LinesCounterLeft.text = ""
 	%LinesCounterRight.text = ""
-	save_array()
-	#print(BIG_SET)
-	#for n in new_words:
-	#	print(n)
+	Base.save()
+
 	
 func go_back_to_input():
 	%InputContainer.visible = true 
@@ -148,28 +147,10 @@ func sortowanie_po_poznaniu(a,b):
 	return a[4] > b[4]
 	
 func already_in_set(word):
-	for record in BIG_SET:
+	for record in Base.BIG_ARRAY:
 		if record["original"].to_lower() == word.to_lower():
 			return true
 	return false
-
-func save_array():
-	var file = FileAccess.open("user://FiszkiGerman.json", FileAccess.WRITE)
-	var json_string = JSON.stringify(BIG_SET)  # Convert array to JSON
-	file.store_string(json_string)  # Save to file
-	file.close()
-	
-func load_array():
-	if not FileAccess.file_exists("user://FiszkiGerman.json"):
-		print("File not found!")
-		return []
-	
-	var file = FileAccess.open("user://FiszkiGerman.json", FileAccess.READ)
-	var json_string = file.get_as_text()  # Read the file content
-	file.close()
-	
-	var json = JSON.parse_string(json_string)  # Convert JSON back to array
-	return json if json is Array else []
 
 
 func _on_yes_pressed():

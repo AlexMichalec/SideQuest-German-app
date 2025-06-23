@@ -1,5 +1,4 @@
 extends VBoxContainer
-var BIG_ARRAY : Array
 var given_words :Array
 var buttons_array
 var tip_text = ""
@@ -20,7 +19,6 @@ func start():
 	score = 0
 	%Score.text = "0p"
 	%NewPoints.text = ""
-	BIG_ARRAY = load_array()
 	var words_for_crossword = choose_new_words()
 	make_best_crossword(words_for_crossword)
 	#glue_two_words(words_for_crossword[0][0],words_for_crossword[1][0])
@@ -73,7 +71,7 @@ func check_words_amount():
 	var size_array = []
 	for i in range(100):
 		size_array.append(0)
-	for record in BIG_ARRAY:
+	for record in Base.SMALL_ARRAY:
 		if record[0].split(" ").size()==1:
 			counter1 += 1
 		elif record[0].split(" ").size() == 2 and record[0].split(" ")[0].to_upper() in ["DIE", "DAS", "DER"]:
@@ -110,9 +108,9 @@ func update_solution():
 	for child in %SolutionContainer.get_children():
 		if child != %HasloLabel and child != %HasloCrossSample and child != %HasloEmpty:
 			child.queue_free()
-	var new_solution = BIG_ARRAY.pick_random()
+	var new_solution = Base.SMALL_ARRAY.pick_random()
 	while new_solution["original"].length()>20 or new_solution["original"].to_upper() in given_words or not can_be_solution(new_solution["original"]):
-		new_solution = BIG_ARRAY.pick_random()
+		new_solution = Base.SMALL_ARRAY.pick_random()
 		break_counter += 1
 		if break_counter > 100:
 			%SolutionContainer.visible = false
@@ -392,24 +390,12 @@ func glue_two_words(first_word : String, second_word : String):
 				possible_cross_points.append([i,j])
 
 
-func load_array():
-	if not FileAccess.file_exists("user://FiszkiGerman.json"):
-		print("File not found!")
-		return []
-	
-	var file = FileAccess.open("user://FiszkiGerman.json", FileAccess.READ)
-	var json_string = file.get_as_text()  # Read the file content
-	file.close()
-	
-	var json = JSON.parse_string(json_string)  # Convert JSON back to array
-	return json if json is Array else []
-	
 
 
 func choose_new_words():
 	var words_for_crossword = []
 	while words_for_crossword.size() < 20:
-		var new_word = BIG_ARRAY.pick_random()
+		var new_word = Base.SMALL_ARRAY.pick_random()
 		if new_word["original"].split(" ").size() > 1:
 			if new_word["original"].split(" ").size() == 2 and new_word["original"].split(" ")[0].to_upper() in ["DIE", "DAS", "DER"]:
 				new_word["original"] = new_word["original"].split(" ")[1]
@@ -541,11 +527,6 @@ func show_words_points():
 				x += 1
 			buttons_array[x][y].show_score_vertical(word[5])
 
-func save_array():
-	var file = FileAccess.open("user://FiszkiGerman.json", FileAccess.WRITE)
-	var json_string = JSON.stringify(BIG_ARRAY)  # Convert array to JSON
-	file.store_string(json_string)  # Save to file
-	file.close()
 	
 func edit_translation(old_text, new_text):
 	while old_text[0] in "0123456789":
@@ -553,14 +534,14 @@ func edit_translation(old_text, new_text):
 	old_text = old_text.right(-2)	
 	print(old_text)
 	var is_okay = false
-	for b in BIG_ARRAY:
+	for b in Base.BIG_ARRAY:
 		if b["translation"] == old_text:
 			b["translation"] = new_text 
 			is_okay = true
 			print(b)
 			return
 	if is_okay:
-		save_array()
+		Base.save()
 		
 	
 
