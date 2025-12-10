@@ -4,8 +4,11 @@ var BIG_ARRAY = []
 var SMALL_ARRAY = [] #Po Filtrowaniu
 
 func _ready():
+	unite_bases()
 	BIG_ARRAY = load_array()
 	SMALL_ARRAY = load_array()
+	#save_safe_array()
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -65,3 +68,18 @@ func unite_bases():
 			result.append(a)
 	print(array1.size(), " ", array2.size(), " ", result.size())
 	save_array(result)
+
+func update_safe_array():
+	if not FileAccess.file_exists("user://FiszkiGermanSafe.json"):
+		print("File not found!")
+		return []
+	
+	var file = FileAccess.open("user://FiszkiGermanSafe.json", FileAccess.READ)
+	var json_string = file.get_as_text()  # Read the file content
+	file.close()
+	
+	var json = JSON.parse_string(json_string)  # Convert JSON back to array
+	var result = json if json is Array else []
+	if result.size() < BIG_ARRAY.size():
+		save_safe_array()
+	

@@ -1,16 +1,27 @@
 extends Control
 var current_step = 100
 var to_delete = []
+var change_to_abc = false
+var change_to_date = false
 signal closed
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if get_tree().current_scene == self:
 		start()
+	
 		
 	
 func start():
 	Base.BIG_ARRAY.sort_custom(case_insensitive_sort)
+	#var to_del = []
+	#for i in range(Base.BIG_ARRAY.size()-1):
+	#	if Base.BIG_ARRAY[i]["original"] == Base.BIG_ARRAY[i+1]["original"]:
+	#		to_del.append(Base.BIG_ARRAY[i])
+	#print("do usunięcia: ", to_del.size())
 	to_delete = []
+	#for d in to_del:
+	#	Base.BIG_ARRAY.erase(d)
+	#Base.save()
 	set_default_step()
 	#prepare_option_button()
 	get_stats()
@@ -48,6 +59,7 @@ func get_first_letter(record):
 	return record["original"][0].to_upper()
 
 func close_old_records():
+	var x = %WordsList.get_child_count()
 	for child in %WordsList.get_children():
 		if child == %NewWord:
 			continue
@@ -62,12 +74,17 @@ func close_old_records():
 		elif index in to_delete:
 			to_delete.erase(index)
 		child.queue_free()
+	return
 
 func prepare_records_new(start_id:int, end_id:int):
-#	Base.BIG_ARRAY.sort_custom(case_insensitive_sort)
-#	var doubles = []
-#	var sentences_count = 0
 	close_old_records()
+	if change_to_abc:
+		Base.BIG_ARRAY.sort_custom(case_insensitive_sort)
+		change_to_abc = false
+	if change_to_date:
+		Base.BIG_ARRAY.sort_custom(date_sort)
+		change_to_date = false
+	
 	for i in range(start_id, end_id):
 		var b = Base.BIG_ARRAY[i]
 		var new_record = %NewWord.duplicate()
@@ -79,13 +96,7 @@ func prepare_records_new(start_id:int, end_id:int):
 		new_record.get_node("HBoxContainer/Waga").text = str(b["weight"])
 		new_record.get_node("HBoxContainer/Sentence").button_pressed = b["is_sentence"]
 		new_record.get_node("HBoxContainer/Delete").button_pressed = i in to_delete
-
-#		if b[2]:
-#			sentences_count += 1
-#		new_record.get_node("HBoxContainer/Delete").button_pressed = b[0].to_lower().strip_edges() in doubles
-#		if not b[0].to_lower().strip_edges() in doubles:
-#			doubles.append(b[0].to_lower().strip_edges())
-#	%Stats.text = str(Base.BIG_ARRAY.size()) + ":   Sentences: " + str(sentences_count) + "   Words: " + str(Base.BIG_ARRAY.size() - sentences_count)+"   Doubles:" + str(Base.BIG_ARRAY.size() - doubles.size())
+		new_record.get_node("HBoxContainer/DateLabel").text = b["date_added"].left(10)
 
 func prepare_records_old():
 	Base.BIG_ARRAY.sort_custom(case_insensitive_sort)
@@ -164,3 +175,18 @@ func set_default_step():
 		_on_step_button_item_selected(3)
 	else:
 		_on_step_button_item_selected(4)
+
+
+func _on_sort_button_item_selected(index):
+	if index == 0:
+		change_to_abc = true
+		_on_option_button_item_selected(0)
+
+		
+	elif index == 1:
+		change_to_date = true
+		_on_option_button_item_selected(0)
+
+		
+func date_sort(record_a, record_b):
+	return record_a["date_added"] > record_b["date_added"]

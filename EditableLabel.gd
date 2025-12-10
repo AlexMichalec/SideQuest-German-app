@@ -49,10 +49,12 @@ func _on_mouse_exited():
 
 
 func _on_button_mouse_entered():
+	return		#na póżniej do dodania edity
 	mouse_in = true
 
 
 func _on_button_mouse_exited():
+	return		#na póżniej do dodania edity
 	mouse_in = false
 	if $LineEdit.visible:
 		return

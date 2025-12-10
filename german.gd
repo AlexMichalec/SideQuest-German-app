@@ -124,6 +124,7 @@ func _on_finish_pressed():
 	%LinesCounterLeft.text = ""
 	%LinesCounterRight.text = ""
 	Base.save()
+	Base.update_safe_array()
 
 	
 func go_back_to_input():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c76ek4haptlih"]
+[gd_scene load_steps=6 format=3 uid="uid://c76ek4haptlih"]
 
 [ext_resource type="Script" path="res://EditAll.gd" id="1_tvd7d"]
 [ext_resource type="PackedScene" uid="uid://42oxmd28tyes" path="res://german_text_input.tscn" id="2_2e70b"]
@@ -8,6 +8,9 @@ bg_color = Color(0.901961, 0, 0.243137, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bem58"]
 bg_color = Color(0.694118, 0, 0.180392, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fr8od"]
+font_size = 10
 
 [node name="EditAll" type="Control"]
 layout_mode = 3
@@ -132,6 +135,13 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_xgdnd")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_bem58")
 text = "Delete"
 
+[node name="DateLabel" type="Label" parent="MarginContainer/VBoxContainer/ScrollContainer/WordsList/NewWord/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Added: 12-02-2021"
+label_settings = SubResource("LabelSettings_fr8od")
+vertical_alignment = 2
+
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 1
@@ -140,6 +150,17 @@ alignment = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Cancel"
+
+[node name="SortButton" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+action_mode = 1
+item_count = 2
+selected = 0
+popup/item_0/text = "ABC..."
+popup/item_0/id = 0
+popup/item_1/text = "by Date"
+popup/item_1/id = 1
 
 [node name="StepButton" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
@@ -169,6 +190,8 @@ theme_override_font_sizes/font_size = 24
 text = "Save"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Cancel" to="." method="_on_cancel_pressed"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/HBoxContainer/SortButton" to="." method="_on_sort_button_item_selected"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/SortButton" to="." method="_on_step_button_pressed"]
 [connection signal="item_selected" from="MarginContainer/VBoxContainer/HBoxContainer/StepButton" to="." method="_on_step_button_item_selected"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/StepButton" to="." method="_on_step_button_pressed"]
 [connection signal="item_selected" from="MarginContainer/VBoxContainer/HBoxContainer/OptionButton" to="." method="_on_option_button_item_selected"]

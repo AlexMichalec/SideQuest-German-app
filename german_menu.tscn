@@ -22,17 +22,17 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_voc2d"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_51yhb"]
 resource_local_to_scene = true
 shader = SubResource("Shader_2o0gt")
 shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jvaei"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y3ygs"]
 resource_local_to_scene = true
 shader = SubResource("Shader_2o0gt")
 shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_l3uke"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iemqv"]
 resource_local_to_scene = true
 shader = SubResource("Shader_2o0gt")
 shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
@@ -130,7 +130,6 @@ text = "ABCD"
 [node name="SpellingButton" type="Button" parent="Panel/Menus/HBoxContainer/GamesMenu"]
 layout_mode = 2
 size_flags_vertical = 3
-tooltip_text = "Not ready yet"
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
 text = "Ćwicz pisownię!"
@@ -139,7 +138,6 @@ text = "Ćwicz pisownię!"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-tooltip_text = "Not ready yet"
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
 text = "Czas na Krzyżówkę!"
@@ -147,7 +145,6 @@ text = "Czas na Krzyżówkę!"
 [node name="GendersButton" type="Button" parent="Panel/Menus/HBoxContainer/GamesMenu"]
 layout_mode = 2
 size_flags_vertical = 3
-tooltip_text = "Not ready yet"
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
 text = "Genders"
@@ -281,7 +278,7 @@ grow_horizontal = 0
 
 [node name="Plate" parent="." instance=ExtResource("5_qqbec")]
 visible = false
-material = SubResource("ShaderMaterial_voc2d")
+material = SubResource("ShaderMaterial_51yhb")
 layout_mode = 0
 offset_left = 60.0
 offset_top = 50.0
@@ -291,7 +288,7 @@ tint = Color(0.137255, 0.137255, 0.141176, 1)
 
 [node name="Plate2" parent="." instance=ExtResource("5_qqbec")]
 visible = false
-material = SubResource("ShaderMaterial_jvaei")
+material = SubResource("ShaderMaterial_y3ygs")
 layout_mode = 0
 offset_left = 60.0
 offset_top = 120.0
@@ -301,7 +298,7 @@ tint = Color(0.796078, 0.113725, 0, 1)
 
 [node name="Plate3" parent="." instance=ExtResource("5_qqbec")]
 visible = false
-material = SubResource("ShaderMaterial_l3uke")
+material = SubResource("ShaderMaterial_iemqv")
 layout_mode = 0
 offset_left = 60.0
 offset_top = 190.0

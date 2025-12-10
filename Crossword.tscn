@@ -14,10 +14,10 @@ font_size = 24
 font_size = 20
 font_color = Color(0, 0.807843, 0.290196, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_e0kj0"]
+[sub_resource type="LabelSettings" id="LabelSettings_37y3u"]
 resource_local_to_scene = true
 
-[sub_resource type="LabelSettings" id="LabelSettings_h4gmi"]
+[sub_resource type="LabelSettings" id="LabelSettings_65ngu"]
 resource_local_to_scene = true
 
 [node name="Control" type="VBoxContainer"]
@@ -91,7 +91,7 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 size_flags_horizontal = 4
-label_settings = SubResource("LabelSettings_e0kj0")
+label_settings = SubResource("LabelSettings_37y3u")
 
 [node name="Button" parent="HBoxContainer2/HorLegend/HorizontalSample" index="0"]
 anchors_preset = 0
@@ -1333,7 +1333,7 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 size_flags_horizontal = 4
-label_settings = SubResource("LabelSettings_h4gmi")
+label_settings = SubResource("LabelSettings_65ngu")
 
 [node name="LineEdit" parent="HBoxContainer2/VerLegend/VerticalSample" index="1"]
 theme_override_font_sizes/font_size = 14
@@ -1408,16 +1408,19 @@ text = "TRY ONE MORE TIME"
 
 [node name="back" type="Button" parent="HBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 text = "BACK TO MENU"
 
 [node name="new_words" type="Button" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+focus_mode = 0
 text = "NEW CROSSWORD"
 
 [node name="check_crossword" type="Button" parent="HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+focus_mode = 0
 text = "CHECK CROSSWORD"
 
 [connection signal="text_edited" from="HBoxContainer2/HorLegend/HorizontalSample" to="." method="_on_horizontal_sample_text_edited"]

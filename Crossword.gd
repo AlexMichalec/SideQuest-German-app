@@ -109,13 +109,13 @@ func update_solution():
 		if child != %HasloLabel and child != %HasloCrossSample and child != %HasloEmpty:
 			child.queue_free()
 	var new_solution = Base.SMALL_ARRAY.pick_random()
-	while new_solution["original"].length()>20 or new_solution["original"].to_upper() in given_words or not can_be_solution(new_solution["original"]):
+	while new_solution["original"].length()>20 or not can_be_solution(new_solution["original"]):
 		new_solution = Base.SMALL_ARRAY.pick_random()
 		break_counter += 1
 		if break_counter > 100:
 			%SolutionContainer.visible = false
 			return
-	%HasloLabel.text = new_solution["translation"] + " = "
+	%HasloLabel.text = new_solution["translation"].capitalize() + " = "
 	var counter_sol_numbers = 1
 	for n in new_solution["original"].to_upper():
 		if n == " ":
@@ -162,6 +162,9 @@ func can_be_solution(word:String):
 					how_many_letters_in_crossword += 1
 		if how_many_letters_in_crossword < how_many_letters_in_word:
 			return false
+		for g in given_words:
+			if g[0].to_upper().contains(word.to_upper()) or word.to_upper().contains(g[0].to_upper()):
+				return false
 	return true
 
 func prepare_buttons():
@@ -218,11 +221,6 @@ func manage_focuses(info_points:Array):
 				if i+1 < buttons_array.size() and buttons_array[i+1][j].square_type == "white":
 					buttons_array[i][j].to_down = buttons_array[i+1][j]
 				i += 1
-
-					
-
-
-	
 
 func info_points_sort(point_a:Array, point_b : Array):
 	if point_a[2] and not point_b[2]:
@@ -403,7 +401,7 @@ func choose_new_words():
 				continue
 		var is_okay = true
 		for w in words_for_crossword:
-			if new_word["original"] == w[0]:
+			if new_word["original"].to_upper().contains(w[0]) or w[0].contains(new_word["original"].to_upper()):
 				is_okay = false
 		if not is_okay:
 			continue

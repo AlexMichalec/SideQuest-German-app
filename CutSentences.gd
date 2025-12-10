@@ -14,7 +14,7 @@ func _ready():
 func start():
 	current_index = 0
 	prepare_arrays()
-	prepare_sentence(sentence_array[0]["original"], sentence_array[0]["translation"])
+	#prepare_sentence(sentence_array[0]["original"], sentence_array[0]["translation"])
 	
 func prepare_arrays():
 	sentence_array = []

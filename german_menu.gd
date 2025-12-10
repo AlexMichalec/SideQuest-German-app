@@ -87,6 +87,7 @@ func _on_abcd_game_closed():
 	%MainMenu.visible = true
 	%GamesMenu.visible = false
 	%ABCDGame.visible = false
+	%FilterWindow.visible = true
 	
 
 
@@ -110,6 +111,7 @@ func _on_edit_all_button_pressed():
 func _on_edit_all_closed():
 	%Menus.visible = true
 	%EditAll.visible = false
+	%FilterWindow.visible = true
 	
 	
 
@@ -123,6 +125,7 @@ func _on_new_words_pressed():
 func _on_generator_closed():
 	%Menus.visible = true
 	%Generator.visible = false
+	%FilterWindow.visible = true
 
 
 func _on_generator_test_words():
@@ -145,6 +148,7 @@ func _on_spelling_button_pressed():
 func _on_spelling_game_closed():
 	%Menus.visible = true
 	%SpellingGame.visible = false
+	%FilterWindow.visible = true
 
 
 
@@ -159,11 +163,13 @@ func _on_crossword_button_pressed():
 func _on_crossword_closed():
 	%Crossword.visible = false
 	%Menus.visible = true
+	%FilterWindow.visible = true
 
 
 func _on_word_editor_closed():
 	%Menus.visible = true
 	%WordEditor.visible = false
+	%FilterWindow.visible = true
 
 
 func _on_word_editor_pressed():
@@ -177,6 +183,7 @@ func _on_word_editor_pressed():
 func _on_browser_closed():
 	%Menus.visible = true
 	%Browser.visible = false
+	%FilterWindow.visible = true
 
 
 func _on_browser_pressed():
@@ -198,11 +205,13 @@ func _on_genders_button_pressed():
 func _on_gender_game_closed():
 	%Menus.visible = true
 	%GenderGame.visible = false
+	%FilterWindow.visible = true
 
 
 func _on_cut_sentences_closed():
 	%Menus.visible = true
 	%CutSentences.visible = false
+	%FilterWindow.visible = true
 
 
 func _on_cut_sentences_pressed():
