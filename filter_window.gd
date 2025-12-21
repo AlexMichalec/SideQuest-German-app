@@ -11,6 +11,7 @@ signal edited
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	return
 	date_list =  []
 	categories_list = []
 	other_list = []

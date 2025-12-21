@@ -2,11 +2,15 @@ extends Node
 
 var BIG_ARRAY = []
 var SMALL_ARRAY = [] #Po Filtrowaniu
+var is_genderless = false
+var is_crossword_able = true
 
 func _ready():
 	unite_bases()
 	BIG_ARRAY = load_array()
 	SMALL_ARRAY = load_array()
+	#for i in range(10):
+	#	print(BIG_ARRAY[i])
 	#save_safe_array()
 	
 
@@ -20,7 +24,8 @@ func reload():
 	SMALL_ARRAY = load_array()
 	
 func save():
-	save_array(BIG_ARRAY)
+	pass
+	#save_array(BIG_ARRAY)
 	
 
 func load_array():

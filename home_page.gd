@@ -32,4 +32,3 @@ func _on_show_all_pressed():
 	%ShowDay.button_pressed = false
 	%ShowWeek.button_pressed = false
 	%ShowMonth.button_pressed = false
-

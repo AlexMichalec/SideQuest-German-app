@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cmx8vfjl7gvvw"]
 
-[ext_resource type="Script" path="res://german.gd" id="1_iupop"]
+[ext_resource type="Script" uid="uid://d1weokg38lu2b" path="res://german.gd" id="1_iupop"]
 [ext_resource type="PackedScene" uid="uid://42oxmd28tyes" path="res://german_text_input.tscn" id="2_hfa6b"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fv1e6"]

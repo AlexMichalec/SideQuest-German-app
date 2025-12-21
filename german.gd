@@ -54,6 +54,8 @@ func _on_forward_pressed():
 
 
 func _on_text_left_text_changed():
+	
+	delete_empty_lines(%TextLeft)
 	var number_of_lines = %TextLeft.text.split("\n").size()
 	%LinesCounterLeft.text = str(number_of_lines) + " lines" if number_of_lines > 0 else ""
 	if %LinesCounterLeft.text != %LinesCounterRight.text and %LinesCounterLeft.text != "" and %LinesCounterRight.text != "" :
@@ -63,7 +65,22 @@ func _on_text_left_text_changed():
 		%LinesCounterLeft.label_settings.font_color = Color.WHITE
 		%LinesCounterRight.label_settings.font_color = Color.WHITE
 
+func delete_empty_lines(text_node : TextEdit):
+	var line = text_node.get_caret_line()
+	var column = text_node.get_caret_column()
+	
+	while(text_node.text.contains("\n\n")):
+		text_node.text = text_node.text.replace("\n\n","\n")
+	
+	line = min(line, text_node.get_line_count() - 1)
+	column = min(column, text_node.get_line(line).length())
+
+	text_node.set_caret_line(line)
+	text_node.set_caret_column(column)
+
+
 func _on_text_right_text_changed():
+	delete_empty_lines(%TextRight)
 	var number_of_lines = %TextRight.text.split("\n").size()
 	%LinesCounterRight.text = str(number_of_lines) + " lines" if number_of_lines > 0 else ""
 	if %LinesCounterLeft.text != %LinesCounterRight.text and %LinesCounterLeft.text != "" and %LinesCounterRight.text != "" :

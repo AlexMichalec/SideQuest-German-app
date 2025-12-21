@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c6i2qd67khf6u"]
 
-[ext_resource type="Script" path="res://little_chinese_map.gd" id="1_5xu06"]
+[ext_resource type="Script" uid="uid://jy86hkr84y6j" path="res://little_chinese_map.gd" id="1_5xu06"]
 
 [node name="LittleChineseMap" type="Control"]
 layout_mode = 3

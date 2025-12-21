@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dgbc5buanapff"]
 
-[ext_resource type="Script" path="res://Crossword.gd" id="1_7dihb"]
+[ext_resource type="Script" uid="uid://bjn8cu7v0arwf" path="res://Crossword.gd" id="1_7dihb"]
 [ext_resource type="PackedScene" uid="uid://dlvl6kdhvx0ai" path="res://crossword_button.tscn" id="1_ptl07"]
 [ext_resource type="PackedScene" uid="uid://dkvmhg6xmpk1x" path="res://editable_label.tscn" id="2_yssxb"]
 
@@ -14,10 +14,10 @@ font_size = 24
 font_size = 20
 font_color = Color(0, 0.807843, 0.290196, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_37y3u"]
+[sub_resource type="LabelSettings" id="LabelSettings_ucnsh"]
 resource_local_to_scene = true
 
-[sub_resource type="LabelSettings" id="LabelSettings_65ngu"]
+[sub_resource type="LabelSettings" id="LabelSettings_2p8e5"]
 resource_local_to_scene = true
 
 [node name="Control" type="VBoxContainer"]
@@ -91,7 +91,7 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 size_flags_horizontal = 4
-label_settings = SubResource("LabelSettings_37y3u")
+label_settings = SubResource("LabelSettings_ucnsh")
 
 [node name="Button" parent="HBoxContainer2/HorLegend/HorizontalSample" index="0"]
 anchors_preset = 0
@@ -1333,7 +1333,7 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 size_flags_horizontal = 4
-label_settings = SubResource("LabelSettings_65ngu")
+label_settings = SubResource("LabelSettings_2p8e5")
 
 [node name="LineEdit" parent="HBoxContainer2/VerLegend/VerticalSample" index="1"]
 theme_override_font_sizes/font_size = 14

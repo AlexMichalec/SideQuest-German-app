@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://dfgpugq072h13"]
 
 [ext_resource type="PackedScene" uid="uid://42oxmd28tyes" path="res://german_text_input.tscn" id="1_36b10"]
-[ext_resource type="Script" path="res://SpellingGame.gd" id="1_c6cya"]
+[ext_resource type="Script" uid="uid://dvhof16hkmxq7" path="res://SpellingGame.gd" id="1_c6cya"]
 [ext_resource type="PackedScene" uid="uid://dkvmhg6xmpk1x" path="res://editable_label.tscn" id="2_p2cs1"]
 [ext_resource type="FontFile" uid="uid://duod5phe1frai" path="res://Fonts/Bright DEMO.otf" id="3_nlop1"]
 
@@ -11,7 +11,7 @@ font_size = 24
 [sub_resource type="LabelSettings" id="LabelSettings_kqd3f"]
 font_size = 18
 
-[sub_resource type="LabelSettings" id="LabelSettings_0vorr"]
+[sub_resource type="LabelSettings" id="LabelSettings_13xuq"]
 resource_local_to_scene = true
 font_size = 48
 
@@ -100,7 +100,7 @@ theme_override_font_sizes/font_size = 16
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
-label_settings = SubResource("LabelSettings_0vorr")
+label_settings = SubResource("LabelSettings_13xuq")
 
 [node name="Answer" parent="QuestionContainer/VBoxContainer" instance=ExtResource("1_36b10")]
 unique_name_in_owner = true

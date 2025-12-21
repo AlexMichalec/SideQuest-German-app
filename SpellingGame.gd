@@ -426,7 +426,7 @@ func add_question_to_previous():
 
 func check_misspelling(answer:String, correct:String, blue:bool):
 	if answer.length() == 0 or correct.length() == 0:
-		return
+		return ""
 	if answer.length() > 20:
 		var a_array = answer.split(" ")
 		var c_array = correct.split(" ")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://67im38sis6n6"]
 
-[ext_resource type="Script" path="res://german_menu.gd" id="1_efs7r"]
+[ext_resource type="Script" uid="uid://bik7va2u8onxn" path="res://german_menu.gd" id="1_efs7r"]
 [ext_resource type="PackedScene" uid="uid://clrbqcpm846bw" path="res://abcd_game.tscn" id="2_orjqv"]
 [ext_resource type="PackedScene" uid="uid://cmx8vfjl7gvvw" path="res://german.tscn" id="3_oiy0r"]
 [ext_resource type="PackedScene" uid="uid://c76ek4haptlih" path="res://edit_all.tscn" id="4_pt8fh"]
@@ -22,17 +22,17 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_51yhb"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_34874"]
 resource_local_to_scene = true
 shader = SubResource("Shader_2o0gt")
 shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_y3ygs"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6cmir"]
 resource_local_to_scene = true
 shader = SubResource("Shader_2o0gt")
 shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_iemqv"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i1iri"]
 resource_local_to_scene = true
 shader = SubResource("Shader_2o0gt")
 shader_parameter/given_color = Color(0.180392, 0.203922, 0.215686, 1)
@@ -143,6 +143,7 @@ theme_override_font_sizes/font_size = 32
 text = "Czas na Krzyżówkę!"
 
 [node name="GendersButton" type="Button" parent="Panel/Menus/HBoxContainer/GamesMenu"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 focus_mode = 0
@@ -278,7 +279,7 @@ grow_horizontal = 0
 
 [node name="Plate" parent="." instance=ExtResource("5_qqbec")]
 visible = false
-material = SubResource("ShaderMaterial_51yhb")
+material = SubResource("ShaderMaterial_34874")
 layout_mode = 0
 offset_left = 60.0
 offset_top = 50.0
@@ -288,7 +289,7 @@ tint = Color(0.137255, 0.137255, 0.141176, 1)
 
 [node name="Plate2" parent="." instance=ExtResource("5_qqbec")]
 visible = false
-material = SubResource("ShaderMaterial_y3ygs")
+material = SubResource("ShaderMaterial_6cmir")
 layout_mode = 0
 offset_left = 60.0
 offset_top = 120.0
@@ -298,7 +299,7 @@ tint = Color(0.796078, 0.113725, 0, 1)
 
 [node name="Plate3" parent="." instance=ExtResource("5_qqbec")]
 visible = false
-material = SubResource("ShaderMaterial_iemqv")
+material = SubResource("ShaderMaterial_i1iri")
 layout_mode = 0
 offset_left = 60.0
 offset_top = 190.0

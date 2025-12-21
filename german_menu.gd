@@ -11,18 +11,27 @@ func _ready():
 	#for b in BIG_SET:
 	#	print(b[4]*0.8)
 	#update_day_now()
-	update_weights()
+	#update_weights()
 	update_disabled_buttons()
 	
+	
+	
 	#TEST
-	var cos = []
-	var cos2 = []
-	var sth = {"name":"Janusz", "Surname": "XXXXX"}
-	cos.append(sth)
-	cos2.append(sth)
-	print("test ", cos.size(), " ", cos2.size())
-	cos2.erase(sth)
-	print("test ", cos.size(), " ", cos2.size())
+
+	if Base.is_genderless:
+		%GendersButton.disabled = true
+		%GendersButton.tooltip_text = "Gender Game not available for that Language"
+	else:
+		%GendersButton.disabled = false
+		%GendersButton.tooltip_text = ""
+		
+	if Base.is_crossword_able:
+		%CrosswordButton.disabled = false
+		%CrosswordButton.tooltip_text = ""
+	else:
+		%CrosswordButton.disabled = false
+		%CrosswordButton.tooltip_text = "Crosswords are not available for that Language"
+	
 
 func update_weights():
 	var today = round(Time.get_unix_time_from_system()/(60*60*24))

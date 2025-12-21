@@ -14,6 +14,10 @@ func _ready():
 	#check_words_amount()
 	if get_tree().current_scene == self:
 		start()
+	"""
+	for i in range(20):
+		print(Base.BIG_ARRAY.pick_random())
+		"""
 	
 func start():
 	score = 0
@@ -258,7 +262,13 @@ func make_best_crossword(given_words:Array):
 	show_crossword(final_crossword, final_info_points)
 	tip_text = "Used Words:\n"
 	final_used_words.sort()
+	#print("\n\n\n")
+	#print("GIVEN WORDS: ", given_words, "\n")
+	#print("FINAL USED WORDS: ", final_used_words, "\n")
+	
 	for word in final_used_words:
+		if word.length() == 1:
+			continue
 		tip_text = tip_text + word
 		if word != final_used_words[-1]:
 			tip_text = tip_text + ", "
@@ -280,6 +290,7 @@ func make_crossword(given_words:Array):
 	var first_word = given_words[0]
 	while first_word[0].length() > 12:
 		first_word = given_words.pick_random()[0]
+		
 	info_points.append([0,10,false,1,first_word[1]])
 	words_used.append(first_word[0])
 	for i in range(first_word[0].length()):
@@ -375,6 +386,7 @@ func try_add_word(crossword_array:Array, word:String):
 	
 	
 	return possible_places[0]
+
 func points_sort(array_a, array_b):
 	return array_a[3] > array_b[3]
 	
@@ -386,9 +398,6 @@ func glue_two_words(first_word : String, second_word : String):
 		for j in range(second_word.length()):
 			if first_word[i] == second_word[j]:
 				possible_cross_points.append([i,j])
-
-
-
 
 func choose_new_words():
 	var words_for_crossword = []

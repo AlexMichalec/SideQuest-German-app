@@ -1,0 +1,251 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2k33v17arnso"]
+
+[ext_resource type="Script" uid="uid://cw4v7q5db5ljr" path="res://Intro.gd" id="1_kykee"]
+
+[node name="Intro" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kykee")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Question" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Choose Your Language!"
+horizontal_alignment = 1
+
+[node name="NativeTongue" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="PolishNative" type="Button" parent="Panel/MarginContainer/VBoxContainer/NativeTongue"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Polish"
+
+[node name="EnglishNative" type="Button" parent="Panel/MarginContainer/VBoxContainer/NativeTongue"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "English"
+
+[node name="LanguageContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/LanguageContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LangButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/LanguageContainer/HBoxContainer" groups=["LangButtons"]]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Polish"
+
+[node name="LangButton2" type="Button" parent="Panel/MarginContainer/VBoxContainer/LanguageContainer/HBoxContainer" groups=["LangButtons"]]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "English"
+
+[node name="LangButton3" type="Button" parent="Panel/MarginContainer/VBoxContainer/LanguageContainer/HBoxContainer" groups=["LangButtons"]]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "German"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/LanguageContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LangButton4" type="Button" parent="Panel/MarginContainer/VBoxContainer/LanguageContainer/HBoxContainer2" groups=["LangButtons"]]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Spanish"
+
+[node name="LangButton5" type="Button" parent="Panel/MarginContainer/VBoxContainer/LanguageContainer/HBoxContainer2" groups=["LangButtons"]]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Chinese
+(Mandarin)"
+
+[node name="LangButton6" type="Button" parent="Panel/MarginContainer/VBoxContainer/LanguageContainer/HBoxContainer2" groups=["LangButtons"]]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Not Ready Yet :c"
+disabled = true
+text = "Other"
+
+[node name="StarterBase" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/StarterBase"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="Panel/MarginContainer/VBoxContainer/StarterBase/HBoxContainer" groups=["StartersButtons"]]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+toggle_mode = true
+text = "Greetings"
+
+[node name="Button2" type="Button" parent="Panel/MarginContainer/VBoxContainer/StarterBase/HBoxContainer" groups=["StartersButtons"]]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+toggle_mode = true
+text = "Food"
+
+[node name="Button3" type="Button" parent="Panel/MarginContainer/VBoxContainer/StarterBase/HBoxContainer" groups=["StartersButtons"]]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+toggle_mode = true
+text = "Animals"
+
+[node name="Button4" type="Button" parent="Panel/MarginContainer/VBoxContainer/StarterBase/HBoxContainer" groups=["StartersButtons"]]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+toggle_mode = true
+text = "Professions"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/StarterBase"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="Panel/MarginContainer/VBoxContainer/StarterBase/HBoxContainer2" groups=["StartersButtons"]]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+toggle_mode = true
+text = "Months"
+
+[node name="Button2" type="Button" parent="Panel/MarginContainer/VBoxContainer/StarterBase/HBoxContainer2" groups=["StartersButtons"]]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+toggle_mode = true
+text = "Numbers"
+
+[node name="Button3" type="Button" parent="Panel/MarginContainer/VBoxContainer/StarterBase/HBoxContainer2" groups=["StartersButtons"]]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+toggle_mode = true
+text = "Home Items"
+
+[node name="Button4" type="Button" parent="Panel/MarginContainer/VBoxContainer/StarterBase/HBoxContainer2" groups=["StartersButtons"]]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+toggle_mode = true
+text = "Fruits"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/StarterBase"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="Panel/MarginContainer/VBoxContainer/StarterBase/HBoxContainer3" groups=["StartersButtons"]]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+toggle_mode = true
+text = "Vegetables"
+
+[node name="Button2" type="Button" parent="Panel/MarginContainer/VBoxContainer/StarterBase/HBoxContainer3" groups=["StartersButtons"]]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+toggle_mode = true
+text = "Verbs"
+
+[node name="Button3" type="Button" parent="Panel/MarginContainer/VBoxContainer/StarterBase/HBoxContainer3" groups=["StartersButtons"]]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+toggle_mode = true
+text = "Adjectives"
+
+[node name="Button4" type="Button" parent="Panel/MarginContainer/VBoxContainer/StarterBase/HBoxContainer3" groups=["StartersButtons"]]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+toggle_mode = true
+text = "Clothes"
+
+[node name="BottomContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Back" type="Button" parent="Panel/MarginContainer/VBoxContainer/BottomContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = "BACK"
+
+[node name="All" type="Button" parent="Panel/MarginContainer/VBoxContainer/BottomContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = "ALL
+"
+
+[node name="None" type="Button" parent="Panel/MarginContainer/VBoxContainer/BottomContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = "NONE"
+
+[node name="Save" type="Button" parent="Panel/MarginContainer/VBoxContainer/BottomContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+text = "SAVE"
+
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/NativeTongue/PolishNative" to="." method="_on_polish_native_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/NativeTongue/EnglishNative" to="." method="_on_english_native_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/LanguageContainer/HBoxContainer/LangButton" to="." method="_on_lang_button_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/LanguageContainer/HBoxContainer/LangButton2" to="." method="_on_lang_button_2_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/LanguageContainer/HBoxContainer/LangButton3" to="." method="_on_lang_button_3_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/LanguageContainer/HBoxContainer2/LangButton4" to="." method="_on_lang_button_4_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/LanguageContainer/HBoxContainer2/LangButton5" to="." method="_on_lang_button_5_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/BottomContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/BottomContainer/All" to="." method="_on_all_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/BottomContainer/None" to="." method="_on_none_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/BottomContainer/Save" to="." method="_on_save_pressed"]
