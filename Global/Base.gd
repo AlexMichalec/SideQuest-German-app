@@ -4,6 +4,11 @@ var BIG_ARRAY = []
 var SMALL_ARRAY = [] #Po Filtrowaniu
 var is_genderless = false
 var is_crossword_able = true
+var created_date
+var last_used_date
+var base_name: String
+var language: String
+var native_lang: String
 
 func _ready():
 	unite_bases()

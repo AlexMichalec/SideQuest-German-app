@@ -21,14 +21,9 @@ func _ready():
 	if Base.is_genderless:
 		%GendersButton.disabled = true
 		%GendersButton.tooltip_text = "Gender Game not available for that Language"
-	else:
-		%GendersButton.disabled = false
-		%GendersButton.tooltip_text = ""
+
 		
-	if Base.is_crossword_able:
-		%CrosswordButton.disabled = false
-		%CrosswordButton.tooltip_text = ""
-	else:
+	if not Base.is_crossword_able:
 		%CrosswordButton.disabled = false
 		%CrosswordButton.tooltip_text = "Crosswords are not available for that Language"
 	
@@ -249,8 +244,8 @@ func update_disabled_buttons():
 			else:
 				words_amount += 1
 		
-		%ABCD_Button.disabled = words_amount < 10
-		%ABCD_Button.tooltip_text = "Potrzebujesz min. 10 słów by uruchomić tę grę" if words_amount < 10 else ""
+	#	%ABCD_Button.disabled = words_amount < 10
+	#	%ABCD_Button.tooltip_text = "Potrzebujesz min. 10 słów by uruchomić tę grę" if words_amount < 10 else ""
 		
 		var crossword_counter = 0
 		for s in Base.SMALL_ARRAY:
@@ -271,3 +266,8 @@ func update_disabled_buttons():
 
 func _on_filter_window_edited():
 	update_disabled_buttons()
+
+
+func _on_load_pressed() -> void:
+	Base.save()
+	get_tree().change_scene_to_file("res://loading_base_screen.tscn")

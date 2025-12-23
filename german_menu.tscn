@@ -103,8 +103,22 @@ focus_mode = 0
 theme_override_font_sizes/font_size = 32
 text = "Popraw Bazę"
 
-[node name="Quit" type="Button" parent="Panel/Menus/HBoxContainer/MainMenu"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/Menus/HBoxContainer/MainMenu"]
 layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="Load" type="Button" parent="Panel/Menus/HBoxContainer/MainMenu/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+text = "Inne Bazy"
+
+[node name="Quit" type="Button" parent="Panel/Menus/HBoxContainer/MainMenu/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
@@ -310,7 +324,8 @@ tint = Color(0.745098, 0.568627, 0, 1)
 [connection signal="pressed" from="Panel/Menus/HBoxContainer/MainMenu/NewWords" to="." method="_on_new_words_pressed"]
 [connection signal="pressed" from="Panel/Menus/HBoxContainer/MainMenu/Learn" to="." method="_on_learn_pressed"]
 [connection signal="pressed" from="Panel/Menus/HBoxContainer/MainMenu/Improve" to="." method="_on_improve_pressed"]
-[connection signal="pressed" from="Panel/Menus/HBoxContainer/MainMenu/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Panel/Menus/HBoxContainer/MainMenu/HBoxContainer/Load" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="Panel/Menus/HBoxContainer/MainMenu/HBoxContainer/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="Panel/Menus/HBoxContainer/GamesMenu/ABCD_Button" to="." method="_on_abcd_button_pressed"]
 [connection signal="pressed" from="Panel/Menus/HBoxContainer/GamesMenu/SpellingButton" to="." method="_on_spelling_button_pressed"]
 [connection signal="pressed" from="Panel/Menus/HBoxContainer/GamesMenu/CrosswordButton" to="." method="_on_crossword_button_pressed"]

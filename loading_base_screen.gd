@@ -70,5 +70,23 @@ func _on_delete_button_pressed() -> void:
 		if child == %SampleRecord:
 			continue
 		child.queue_free()
+		
+	# NO I PAMIĘTAJ ŻEBY RZECZYWIŚCIE USUNĄĆ BAZĘ Z PAMIĘCI XD
 
 	
+
+
+func _on_load_button_pressed() -> void:
+	var load_base = bases_array[chosen]
+	Base.BIG_ARRAY = load_base["base_base"]
+	Base.SMALL_ARRAY = Base.BIG_ARRAY
+	Base.base_name = load_base["base_name"]
+	Base.language = load_base["language"]
+	Base.native_lang = load_base["nat_lang"]
+	Base.is_genderless = Base.language == "english"
+	Base.is_crossword_able = Base.language != "chinese"
+	get_tree().change_scene_to_file("res://german_menu.tscn")
+
+
+func _on_new_base_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://intro.tscn")
