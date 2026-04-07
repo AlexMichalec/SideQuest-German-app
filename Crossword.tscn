@@ -85,6 +85,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.392157, 0.32549, 1)
 theme_override_font_sizes/font_size = 20
 text = "Horizontal:"
+horizontal_alignment = 1
 
 [node name="HorizontalSample" parent="HBoxContainer2/HorLegend" instance=ExtResource("2_yssxb")]
 unique_name_in_owner = true
@@ -1327,6 +1328,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.592157, 0.72549, 0.996078, 1)
 theme_override_font_sizes/font_size = 20
 text = "Vertical:"
+horizontal_alignment = 1
 
 [node name="VerticalSample" parent="HBoxContainer2/VerLegend" instance=ExtResource("2_yssxb")]
 unique_name_in_owner = true

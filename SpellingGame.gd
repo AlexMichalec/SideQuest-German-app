@@ -18,17 +18,17 @@ func _ready():
 	load_settings()
 	new_question()
 	
-	
 
 func start():
 	score = 0
+	load_settings()
 	new_question()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
 func new_question():
-	if Base.SMALL_ARRAY.size()==0:
+	if NewUtility.SMALL_ARRAY.size()==0:
 		return
 	%Score.text = str(score) + " points"
 	points = 10
@@ -37,13 +37,8 @@ func new_question():
 		question_types = [1, 2, 3]
 	var q_type = question_types.pick_random()
 	question_type = q_type
-	print("q", question_types," qq", question_type)
-	var new_q = Base.SMALL_ARRAY.pick_random()
+	var new_q = NewUtility.SMALL_ARRAY.pick_random()
 	var gap_id = -1
-	print(" ")
-	for q in questions_to_repeat:
-		print(q[0], "  ", q[1]["original"], "  ", q[2], "  ", "" if q.size() == 3 else q[3])
-	
 	if questions_to_repeat.size()>0 and questions_to_repeat[0][0] <= 0:
 		new_q = questions_to_repeat[0][1]
 		q_type = questions_to_repeat[0][2]
@@ -71,7 +66,7 @@ func new_question():
 	elif q_type == 2:
 		var loop_counter = 0
 		while new_q["is_sentence"] and loop_counter < 100:
-			new_q = Base.SMALL_ARRAY.pick_random()
+			new_q = NewUtility.SMALL_ARRAY.pick_random()
 			loop_counter += 1
 		if loop_counter >= 100:
 			new_question()
@@ -94,7 +89,7 @@ func new_question():
 	elif q_type == 3:
 		var loop_counter = 0
 		while not new_q["is_sentence"] and loop_counter < 100:
-			new_q = Base.SMALL_ARRAY.pick_random()
+			new_q = NewUtility.SMALL_ARRAY.pick_random()
 			loop_counter += 1
 		if loop_counter == 100:
 			new_question()
@@ -141,9 +136,15 @@ func new_question():
 		"""
 		is_sentence = false
 	
+	await get_tree().process_frame
+	get_viewport().gui_release_focus()
+	%Answer.grab_focus()
+	%Answer.caret_column = 0
+	
+	
+	
 	
 func wrap_question():
-	#print(%Question.text.length())
 	if %Question.text.length() > 40:
 		var break_index = round(%Question.text.length()/2)
 		while %Question.text[break_index] != " "  and break_index < %Question.text.length():
@@ -168,12 +169,15 @@ func check():
 	if %Answer.text == correct_answer:
 		%Question.label_settings.font_color = Color.GREEN
 		%Tip.label_settings.font_color = Color.GREEN
+		add_weight(1)
 	elif almost_correct():
+		add_weight(0.8)
 		wait_time += 0.5
 		points = max(0, points-1)
 		%Question.label_settings.font_color = Color.GREEN_YELLOW
 		%Tip.label_settings.font_color = Color.GREEN_YELLOW
 	elif half_correct():
+		add_weight(0.5)
 		wait_time += 1
 		add_to_repeat()
 		points = max(0, points-2)
@@ -214,6 +218,7 @@ func _on_check_button_pressed():
 
 func _on_answer_text_submitted(_new_text):
 	check()
+	
 
 
 func _on_tip_button_pressed():
@@ -317,8 +322,6 @@ func half_correct():
 			temp_corr_ans[i] = "u" #ÄöÖüÜß
 		elif temp_corr_ans[i].to_lower() == "ä":
 			temp_corr_ans[i] = "a" #ÄöÖüÜß
-	#print(temp_ans)
-	#print(temp_corr_ans)
 	if temp_ans.to_lower() == temp_corr_ans.to_lower():
 		%Tip.text = "Remember about Umlauts!" + "\n\n" + %Tip.text
 		return true
@@ -355,7 +358,6 @@ func _on_save_button_pressed():
 			if q[2] not in question_types:
 				questions_to_repeat.erase(q)
 		new_question()
-	print(question_types)
 		
 
 
@@ -398,14 +400,17 @@ func _on_fill_button_pressed():
 
 func _on_z_to_y_pressed():
 	%Answer.z_to_y = %z_to_y.button_pressed
+	NewUtility.z_to_y = %z_to_y.button_pressed
 
 
 func _on_ae_to_a_pressed():
 	%Answer.ae_to_umlaut = %ae_to_a.button_pressed
+	NewUtility.ae_to_umlaut = %ae_to_a.button_pressed
 
 
 func _on_right_umlaufts_pressed():
 	%Answer.right_umlauts = %right_umlaufts.button_pressed
+	NewUtility.right_to_umlaut = %right_umlaufts.button_pressed
 
 func add_question_to_previous():
 	var new_q = %PrevQuestion.duplicate()
@@ -475,23 +480,23 @@ func _on_previous_button_pressed():
 func _on_question_text_edited(old_text, new_text):
 	var is_okay = false
 	if question_type == 1:
-		for b in Base.BIG_ARRAY:
+		for b in NewUtility.BIG_ARRAY:
 			if b["original"] == old_text:
 				b["original"] = new_text 
 				is_okay = true
 	elif question_type == 2:
-		for b in Base.BIG_ARRAY:
+		for b in NewUtility.BIG_ARRAY:
 			if b["translation"] == old_text:
 				b["translation"] = new_text 
 				is_okay = true
 	if is_okay:
-		Base.save()
+		NewUtility.save_array()
 
 
 
 func _on_tip_text_edited(old_text, new_text):
 	var is_okay = false
-	for b in Base.BIG_ARRAY:
+	for b in NewUtility.BIG_ARRAY:
 		if b["translation"] == old_text:
 			b["translation"] = new_text 
 			b["date_modified"] = Time.get_datetime_string_from_system()
@@ -499,47 +504,19 @@ func _on_tip_text_edited(old_text, new_text):
 			#print(b)
 
 	if is_okay:
-		Base.save()
+		NewUtility.save_array()
 		
 		
 func load_settings():
-	if not FileAccess.file_exists("user://GermanSpellingSettings.json"):
-		print("File not found!")
-		%CopyButton.button_pressed = true
-		%TranslateButton.button_pressed = true
-		%FillButton.button_pressed = true 
-		%z_to_y.button_pressed = %Answer.z_to_y
-		%ae_to_a.button_pressed = %Answer.ae_to_umlaut 
-		%right_umlaufts.button_pressed = %Answer.right_umlauts
-		return
-	
-	var file = FileAccess.open("user://GermanSpellingSettings.json", FileAccess.READ)
-	var json_string = file.get_as_text()  # Read the file content
-	file.close()
-	var settings = JSON.parse_string(json_string)  # Convert JSON back to array
-	question_types = settings["question_types"]
-	for i in range(question_types.size()):
-		question_types[i] = int(question_types[i])
-	print("test ", 1 in question_types)
-	%CopyButton.button_pressed = 1 in question_types
-	%TranslateButton.button_pressed = 2 in question_types
-	%FillButton.button_pressed = 3 in question_types
-	%z_to_y.button_pressed = settings["german_keyboard"][0]
-	%ae_to_a.button_pressed = settings["german_keyboard"][1]
-	%right_umlaufts.button_pressed = settings["german_keyboard"][2]
-	%Answer.z_to_y = settings["german_keyboard"][0]
-	%Answer.ae_to_umlaut = settings["german_keyboard"][1]
-	%Answer.right_umlauts = settings["german_keyboard"][2]
+	%CopyButton.button_pressed = NewUtility.spelling_copy
+	%TranslateButton.button_pressed = NewUtility.spelling_translate
+	%FillButton.button_pressed = NewUtility.spelling_fill
+	%z_to_y.button_pressed = NewUtility.z_to_y
+	%ae_to_a.button_pressed = NewUtility.ae_to_umlaut
+	%right_umlaufts.button_pressed = NewUtility.right_to_umlaut
 
 func save_settings():
-	var file = FileAccess.open("user://GermanSpellingSettings.json", FileAccess.WRITE)
-	var settings = {
-		"question_types": question_types,
-		"german_keyboard": [%Answer.z_to_y, %Answer.ae_to_umlaut, %Answer.right_umlauts]
-	}
-	var json_string = JSON.stringify(settings)  # Convert array to JSON
-	file.store_string(json_string)  # Save to file
-	file.close()
+	NewUtility.save_settings()
 
 
 func _on_today_pressed():
@@ -549,7 +526,7 @@ func _on_today_pressed():
 
 func _on_this_week_pressed():
 	var week_ago = date_week_ago()
-	print(week_ago)
+
 	var is_okay = true
 	#for b in Filter.by_date(load_array(), 0, "",week_ago):
 	#	print(b["original"], " ", b["date_added"])
@@ -578,3 +555,20 @@ func date_week_ago():
 func _on_all_time_pressed():
 #	BIG_SET = load_array()
 	new_question()
+	
+func add_weight(weight_ratio:float):
+	var weight_base = [1,4,3][question_type-1]
+	current_record["weight"] = min(10,current_record["weight"] + weight_base*weight_ratio)
+	NewUtility.save_array()
+
+
+func _on_weight_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_date_pressed() -> void:
+	pass # Replace with function body.
+
+
+func _on_random_pressed() -> void:
+	pass # Replace with function body.

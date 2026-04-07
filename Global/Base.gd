@@ -9,11 +9,15 @@ var last_used_date
 var base_name: String
 var language: String
 var native_lang: String
+var z_to_y = true
+var right_to_umlaut = true
+var ae_to_umlaut = false
 
 func _ready():
-	unite_bases()
-	BIG_ARRAY = load_array()
-	SMALL_ARRAY = load_array()
+	print(load_safe_array())
+	#unite_bases()
+	#BIG_ARRAY = load_array()
+	#SMALL_ARRAY = load_array()
 	#for i in range(10):
 	#	print(BIG_ARRAY[i])
 	#save_safe_array()
@@ -30,7 +34,7 @@ func reload():
 	
 func save():
 	pass
-	#save_array(BIG_ARRAY)
+	save_array(BIG_ARRAY)
 	
 
 func load_array():
@@ -76,7 +80,6 @@ func unite_bases():
 	for a in array2:
 		if not a in result:
 			result.append(a)
-	print(array1.size(), " ", array2.size(), " ", result.size())
 	save_array(result)
 
 func update_safe_array():

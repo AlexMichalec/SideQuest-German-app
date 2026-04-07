@@ -11,7 +11,7 @@ func _ready():
 	recolor()
 	%AnimationPlayer.play("RESET")
 	scale = Vector2(2,2)
-	print(size)
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

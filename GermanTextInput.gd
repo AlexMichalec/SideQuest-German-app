@@ -16,6 +16,9 @@ func _process(delta):
 
 func _on_text_changed(new_text):
 	if german_key_board:
+		z_to_y = NewUtility.z_to_y
+		ae_to_umlaut = NewUtility.ae_to_umlaut
+		right_umlauts = NewUtility.right_to_umlaut	
 		var saved_caret_column = caret_column
 		if text =="":
 			return

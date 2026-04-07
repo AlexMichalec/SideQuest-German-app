@@ -1,14 +1,14 @@
 [gd_scene load_steps=7 format=3 uid="uid://bq6v2aga6vo1k"]
 
-[ext_resource type="Script" path="res://browser.gd" id="1_eb3dy"]
+[ext_resource type="Script" uid="uid://v2pjeixtpe1y" path="res://browser.gd" id="1_eb3dy"]
 [ext_resource type="PackedScene" uid="uid://42oxmd28tyes" path="res://german_text_input.tscn" id="2_chpsg"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kykw0"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a8uxg"]
 content_margin_left = 8.0
 content_margin_top = 2.0
 content_margin_right = 8.0
 content_margin_bottom = 2.0
-bg_color = Color(0.47451, 0.00392157, 0.933333, 1)
+bg_color = Color(0.27451, 0.0588235, 0.737255, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -17,12 +17,12 @@ shadow_color = Color(0, 0, 0, 0.764706)
 shadow_size = 2
 shadow_offset = Vector2(2, 2)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a8uxg"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kykw0"]
 content_margin_left = 8.0
 content_margin_top = 2.0
 content_margin_right = 8.0
 content_margin_bottom = 2.0
-bg_color = Color(0.27451, 0.0588235, 0.737255, 1)
+bg_color = Color(0.47451, 0.00392157, 0.933333, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -145,9 +145,9 @@ offset_bottom = 13.5
 grow_horizontal = 0
 grow_vertical = 2
 size_flags_horizontal = 0
-theme_override_styles/normal = SubResource("StyleBoxFlat_kykw0")
 theme_override_styles/hover = SubResource("StyleBoxFlat_a8uxg")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_a8uxg")
+theme_override_styles/normal = SubResource("StyleBoxFlat_kykw0")
 text = "Edit"
 
 [node name="EditingContainer" type="MarginContainer" parent="MarginContainer"]
@@ -278,8 +278,8 @@ text = "Gender: "
 unique_name_in_owner = true
 layout_mode = 2
 action_mode = 1
-item_count = 3
 allow_reselect = true
+item_count = 3
 popup/item_0/text = "Female"
 popup/item_0/id = 0
 popup/item_1/text = "Male"
@@ -323,10 +323,12 @@ custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 
 [node name="VSeparator" type="VSeparator" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3"]
+visible = false
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/EditingContainer/MarginContainer/HBoxContainer3"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 

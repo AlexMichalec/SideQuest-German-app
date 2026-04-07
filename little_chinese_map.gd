@@ -47,9 +47,6 @@ func _on_submit_more_pressed():
 	var original_array = %OrginalMore.text.split("\n")
 	var translation_array = %TranslationMore.text.split("\n")
 	var pinyin_array = %PinYinMore.text.split("\n")
-	if original_array.size() != translation_array.size():
-		print("Nierówna ilość wierszy!!")
-		return
 	for i in range(original_array.size()):
 		if original_array[i] == "" or translation_array[i] == "":
 			continue

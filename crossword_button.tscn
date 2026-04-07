@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dlvl6kdhvx0ai"]
 
-[ext_resource type="Script" path="res://crossword_button.gd" id="1_6fbsh"]
+[ext_resource type="Script" uid="uid://wi7ox7xy0b8s" path="res://crossword_button.gd" id="1_6fbsh"]
 [ext_resource type="PackedScene" uid="uid://42oxmd28tyes" path="res://german_text_input.tscn" id="1_imltw"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i2t5s"]
@@ -105,16 +105,14 @@ horizontal_alignment = 2
 [node name="Input" parent="." instance=ExtResource("1_imltw")]
 unique_name_in_owner = true
 layout_mode = 1
-theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/caret_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_constants/minimum_character_width = 1
 theme_override_font_sizes/font_size = 20
-theme_override_styles/normal = SubResource("StyleBoxEmpty_i2t5s")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_i2t5s")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_i2t5s")
 alignment = 1
 context_menu_enabled = false
-z_to_y = false
-ae_to_umlaut = false
 
 [connection signal="focus_entered" from="Input" to="." method="_on_input_focus_entered"]
 [connection signal="text_changed" from="Input" to="." method="_on_input_text_changed"]

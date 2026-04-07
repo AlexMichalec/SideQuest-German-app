@@ -1,9 +1,6 @@
-[gd_scene load_steps=28 format=3 uid="uid://dkej2utekbbmg"]
+[gd_scene load_steps=27 format=3 uid="uid://dkej2utekbbmg"]
 
-[ext_resource type="Script" path="res://gender_game.gd" id="1_1s8no"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ufga6"]
-bg_color = Color(0.513726, 0.454902, 0.356863, 1)
+[ext_resource type="Script" uid="uid://cf1nj1eedmjh4" path="res://gender_game.gd" id="1_1s8no"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_pfhfj"]
 font_size = 32
@@ -20,68 +17,35 @@ font_size = 72
 font_size = 24
 font_color = Color(1, 1, 1, 0.560784)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3p4ld"]
-content_margin_top = 3.0
-content_margin_bottom = 3.0
-bg_color = Color(0.811765, 0.0117647, 0.839216, 1)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gmr3w"]
 content_margin_top = 3.0
 content_margin_bottom = 3.0
 bg_color = Color(0.756863, 0, 0.603922, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ppql"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3p4ld"]
 content_margin_top = 3.0
 content_margin_bottom = 3.0
-bg_color = Color(0, 0.537255, 0.819608, 1)
+bg_color = Color(0.811765, 0.0117647, 0.839216, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gq6hb"]
 content_margin_top = 3.0
 content_margin_bottom = 3.0
 bg_color = Color(0, 0.4, 0.937255, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1idba"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ppql"]
 content_margin_top = 3.0
 content_margin_bottom = 3.0
-bg_color = Color(0.670588, 0.490196, 0.164706, 1)
+bg_color = Color(0, 0.537255, 0.819608, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pjmu6"]
 content_margin_top = 3.0
 content_margin_bottom = 3.0
 bg_color = Color(0.827451, 0.376471, 0.00784314, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eexlv"]
-content_margin_left = 10.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1idba"]
 content_margin_top = 3.0
-content_margin_right = 10.0
 content_margin_bottom = 3.0
-bg_color = Color(0.333333, 0.235294, 0.137255, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nnwbf"]
-content_margin_left = 10.0
-content_margin_top = 3.0
-content_margin_right = 10.0
-content_margin_bottom = 3.0
-bg_color = Color(0.466667, 0.337255, 0.207843, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rtu1h"]
-content_margin_left = 10.0
-content_margin_top = 3.0
-content_margin_right = 10.0
-content_margin_bottom = 3.0
-bg_color = Color(0.466667, 0.337255, 0.207843, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
+bg_color = Color(0.670588, 0.490196, 0.164706, 1)
 
 [sub_resource type="InputEventKey" id="InputEventKey_h41h4"]
 device = -1
@@ -106,6 +70,39 @@ unicode = 51
 
 [sub_resource type="Shortcut" id="Shortcut_vkbj3"]
 events = [SubResource("InputEventKey_iwwki")]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nnwbf"]
+content_margin_left = 10.0
+content_margin_top = 3.0
+content_margin_right = 10.0
+content_margin_bottom = 3.0
+bg_color = Color(0.466667, 0.337255, 0.207843, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rtu1h"]
+content_margin_left = 10.0
+content_margin_top = 3.0
+content_margin_right = 10.0
+content_margin_bottom = 3.0
+bg_color = Color(0.466667, 0.337255, 0.207843, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eexlv"]
+content_margin_left = 10.0
+content_margin_top = 3.0
+content_margin_right = 10.0
+content_margin_bottom = 3.0
+bg_color = Color(0.393824, 0.445879, 0.508113, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d6n7q"]
 content_margin_left = 10.0
@@ -170,7 +167,6 @@ offset_right = 2.0
 offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_ufga6")
 script = ExtResource("1_1s8no")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -249,7 +245,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.921569, 0.921569, 0.921569, 1)
 theme_override_font_sizes/font_size = 22
-text = "Keep seen words:"
+text = "Keep tested words:"
 
 [node name="QuestionContainer" type="VBoxContainer" parent="VBoxContainer"]
 unique_name_in_owner = true
@@ -302,9 +298,9 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 focus_mode = 0
-theme_override_styles/normal = SubResource("StyleBoxFlat_3p4ld")
 theme_override_styles/hover = SubResource("StyleBoxFlat_gmr3w")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_gmr3w")
+theme_override_styles/normal = SubResource("StyleBoxFlat_3p4ld")
 text = "die Sample"
 
 [node name="MaleContainer" type="VBoxContainer" parent="VBoxContainer/ScrollResuts/HBoxContainer"]
@@ -318,9 +314,9 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 focus_mode = 0
-theme_override_styles/normal = SubResource("StyleBoxFlat_5ppql")
 theme_override_styles/hover = SubResource("StyleBoxFlat_gq6hb")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_gq6hb")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5ppql")
 text = "der Sample"
 
 [node name="NeutralContainer" type="VBoxContainer" parent="VBoxContainer/ScrollResuts/HBoxContainer"]
@@ -334,9 +330,9 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 2
 focus_mode = 0
-theme_override_styles/normal = SubResource("StyleBoxFlat_1idba")
 theme_override_styles/hover = SubResource("StyleBoxFlat_pjmu6")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_pjmu6")
+theme_override_styles/normal = SubResource("StyleBoxFlat_1idba")
 text = "das Sample"
 
 [node name="finish_buttons" type="HBoxContainer" parent="VBoxContainer"]
@@ -350,9 +346,6 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_eexlv")
-theme_override_styles/hover = SubResource("StyleBoxFlat_nnwbf")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_rtu1h")
 shortcut = SubResource("Shortcut_hislj")
 text = "Show 	Questions"
 
@@ -361,9 +354,6 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_eexlv")
-theme_override_styles/hover = SubResource("StyleBoxFlat_nnwbf")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_rtu1h")
 shortcut = SubResource("Shortcut_pqwgt")
 text = "Settings"
 
@@ -372,9 +362,6 @@ unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_eexlv")
-theme_override_styles/hover = SubResource("StyleBoxFlat_nnwbf")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_rtu1h")
 shortcut = SubResource("Shortcut_vkbj3")
 text = "One more time!"
 
@@ -385,9 +372,9 @@ layout_mode = 2
 size_flags_horizontal = 4
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_eexlv")
 theme_override_styles/hover = SubResource("StyleBoxFlat_nnwbf")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_rtu1h")
+theme_override_styles/normal = SubResource("StyleBoxFlat_eexlv")
 shortcut = SubResource("Shortcut_vkbj3")
 text = "Save and go back to game!"
 
@@ -401,9 +388,9 @@ alignment = 1
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_eexlv")
 theme_override_styles/hover = SubResource("StyleBoxFlat_d6n7q")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_d6n7q")
+theme_override_styles/normal = SubResource("StyleBoxFlat_eexlv")
 shortcut = SubResource("Shortcut_hislj")
 text = "die"
 
@@ -411,9 +398,9 @@ text = "die"
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_eexlv")
 theme_override_styles/hover = SubResource("StyleBoxFlat_gaiy2")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_gaiy2")
+theme_override_styles/normal = SubResource("StyleBoxFlat_eexlv")
 shortcut = SubResource("Shortcut_pqwgt")
 text = "der"
 
@@ -421,9 +408,9 @@ text = "der"
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
-theme_override_styles/normal = SubResource("StyleBoxFlat_eexlv")
 theme_override_styles/hover = SubResource("StyleBoxFlat_lnix0")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_lnix0")
+theme_override_styles/normal = SubResource("StyleBoxFlat_eexlv")
 shortcut = SubResource("Shortcut_vkbj3")
 text = "das
 "
@@ -441,9 +428,9 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 focus_mode = 0
-theme_override_styles/normal = SubResource("StyleBoxFlat_eexlv")
 theme_override_styles/hover = SubResource("StyleBoxFlat_g5oxb")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_sxktf")
+theme_override_styles/normal = SubResource("StyleBoxFlat_eexlv")
 text = "Back to Menu"
 
 [node name="Settings2" type="Button" parent="VBoxContainer/HBoxContainer"]
@@ -451,9 +438,9 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 focus_mode = 0
-theme_override_styles/normal = SubResource("StyleBoxFlat_eexlv")
 theme_override_styles/hover = SubResource("StyleBoxFlat_g5oxb")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_sxktf")
+theme_override_styles/normal = SubResource("StyleBoxFlat_eexlv")
 text = "Settings"
 
 [connection signal="drag_ended" from="VBoxContainer/SettingsContainer/QueNumSlider" to="." method="_on_que_num_slider_drag_ended"]

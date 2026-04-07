@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dfgpugq072h13"]
+[gd_scene load_steps=14 format=3 uid="uid://dfgpugq072h13"]
 
 [ext_resource type="PackedScene" uid="uid://42oxmd28tyes" path="res://german_text_input.tscn" id="1_36b10"]
 [ext_resource type="Script" uid="uid://dvhof16hkmxq7" path="res://SpellingGame.gd" id="1_c6cya"]
@@ -15,12 +15,33 @@ font_size = 18
 resource_local_to_scene = true
 font_size = 48
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vwfv3"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+bg_color = Color(0.0104851, 0.0104851, 0.0104851, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(3.17663e-06, 0.588835, 0.812475, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+shadow_color = Color(0.677236, 0.00390475, 0.994494, 1)
+shadow_size = 2
+shadow_offset = Vector2(2, 2)
+
 [sub_resource type="LabelSettings" id="LabelSettings_8eyba"]
 font = ExtResource("3_nlop1")
 font_size = 48
 
 [sub_resource type="LabelSettings" id="LabelSettings_8bbqq"]
 font_size = 22
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_vwfv3"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_umojb"]
 
@@ -49,6 +70,7 @@ alignment = 1
 
 [node name="SettingsButton" type="Button" parent="HBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 text = "Settings"
 
 [node name="Label" type="Label" parent="HBoxContainer"]
@@ -61,6 +83,7 @@ vertical_alignment = 1
 
 [node name="Exit" type="Button" parent="HBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 text = "Exit"
 
 [node name="Score" type="Label" parent="."]
@@ -108,10 +131,10 @@ custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 36
+theme_override_styles/focus = SubResource("StyleBoxFlat_vwfv3")
+theme_override_styles/normal = SubResource("StyleBoxFlat_vwfv3")
 alignment = 1
 expand_to_text_length = true
-z_to_y = false
-ae_to_umlaut = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="QuestionContainer/VBoxContainer"]
 layout_mode = 2
@@ -120,14 +143,17 @@ alignment = 1
 
 [node name="SkipButton" type="Button" parent="QuestionContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 text = "Skip"
 
 [node name="TipButton" type="Button" parent="QuestionContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 text = "Give me a tip"
 
 [node name="CheckButton" type="Button" parent="QuestionContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 text = "Check"
 
 [node name="Control" type="Control" parent="QuestionContainer/VBoxContainer"]
@@ -215,7 +241,40 @@ focus_mode = 0
 theme_override_font_sizes/font_size = 18
 text = "   ' -> ä"
 
+[node name="VBoxContainer4" type="VBoxContainer" parent="SettingsContainer/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SettingsContainer/HBoxContainer/VBoxContainer4"]
+layout_mode = 2
+text = "Sort by:"
+label_settings = SubResource("LabelSettings_8bbqq")
+
+[node name="weight" type="CheckButton" parent="SettingsContainer/HBoxContainer/VBoxContainer4"]
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 18
+button_group = SubResource("ButtonGroup_vwfv3")
+text = "   weights"
+
+[node name="date" type="CheckButton" parent="SettingsContainer/HBoxContainer/VBoxContainer4"]
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 18
+button_group = SubResource("ButtonGroup_vwfv3")
+text = "   date added"
+
+[node name="random" type="CheckButton" parent="SettingsContainer/HBoxContainer/VBoxContainer4"]
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 18
+button_pressed = true
+button_group = SubResource("ButtonGroup_vwfv3")
+text = "   random"
+
 [node name="VBoxContainer3" type="VBoxContainer" parent="SettingsContainer/HBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(220, 0)
 layout_mode = 2
 
@@ -257,6 +316,7 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
+focus_mode = 0
 theme_override_font_sizes/font_size = 24
 text = "Save"
 
@@ -314,6 +374,7 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
+focus_mode = 0
 text = "Previous Questions"
 
 [node name="Control2" type="Control" parent="."]
@@ -334,6 +395,9 @@ layout_mode = 2
 [connection signal="pressed" from="SettingsContainer/HBoxContainer/VBoxContainer2/z_to_y" to="." method="_on_z_to_y_pressed"]
 [connection signal="pressed" from="SettingsContainer/HBoxContainer/VBoxContainer2/ae_to_a" to="." method="_on_ae_to_a_pressed"]
 [connection signal="pressed" from="SettingsContainer/HBoxContainer/VBoxContainer2/right_umlaufts" to="." method="_on_right_umlaufts_pressed"]
+[connection signal="pressed" from="SettingsContainer/HBoxContainer/VBoxContainer4/weight" to="." method="_on_weight_pressed"]
+[connection signal="pressed" from="SettingsContainer/HBoxContainer/VBoxContainer4/date" to="." method="_on_date_pressed"]
+[connection signal="pressed" from="SettingsContainer/HBoxContainer/VBoxContainer4/random" to="." method="_on_random_pressed"]
 [connection signal="pressed" from="SettingsContainer/HBoxContainer/VBoxContainer3/today" to="." method="_on_today_pressed"]
 [connection signal="pressed" from="SettingsContainer/HBoxContainer/VBoxContainer3/this_week" to="." method="_on_this_week_pressed"]
 [connection signal="pressed" from="SettingsContainer/HBoxContainer/VBoxContainer3/all_time" to="." method="_on_all_time_pressed"]

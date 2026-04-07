@@ -188,6 +188,7 @@ func check():
 
 
 func _on_input_focus_entered():
+	#print(correct_letter)
 	force_down = false
 	force_right = false
 	if %ColorRect.color == Color.WHITE or %ColorRect.color == Color.GRAY or %ColorRect.color == Color.GOLDENROD:
@@ -197,8 +198,10 @@ func _on_input_focus_entered():
 	elif %ColorRect.color == Color.INDIAN_RED:
 		%ColorRect.color = Color.AQUA
 		%Input.text = correct_letter
+		await  get_tree().process_frame		
 		%Input.release_focus()
 	else:
+		await  get_tree().process_frame
 		%Input.release_focus()
 		
 

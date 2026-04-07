@@ -10,16 +10,20 @@ config_version=5
 
 [application]
 
-config/name="SideQuest"
+config/name="WörterQuest"
 run/main_scene="res://german_menu.tscn"
 config/features=PackedStringArray("4.4", "Mobile")
-config/icon="res://icon.svg"
+boot_splash/image="uid://dgsec87w1l4b2"
+config/icon="uid://cm8fevb40otkv"
 
 [autoload]
 
-Utility="*res://Global/Utility.gd"
-Filter="*res://Global/Filter.gd"
-Base="*res://Global/Base.gd"
+NewUtility="*res://Global/NewUtility.gd"
+SampleBases="*res://Global/SampleBases.gd"
+
+[global_group]
+
+ProgressBar=""
 
 [input]
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://67im38sis6n6"]
+[gd_scene load_steps=22 format=3 uid="uid://67im38sis6n6"]
 
 [ext_resource type="Script" uid="uid://bik7va2u8onxn" path="res://german_menu.gd" id="1_efs7r"]
+[ext_resource type="Theme" uid="uid://bnqoqquiu11wb" path="res://standardTheme.tres" id="1_wpur0"]
 [ext_resource type="PackedScene" uid="uid://clrbqcpm846bw" path="res://abcd_game.tscn" id="2_orjqv"]
 [ext_resource type="PackedScene" uid="uid://cmx8vfjl7gvvw" path="res://german.tscn" id="3_oiy0r"]
 [ext_resource type="PackedScene" uid="uid://c76ek4haptlih" path="res://edit_all.tscn" id="4_pt8fh"]
@@ -11,7 +12,17 @@
 [ext_resource type="PackedScene" uid="uid://8f5pdkr6352" path="res://word_editor.tscn" id="7_gvutb"]
 [ext_resource type="PackedScene" uid="uid://dkej2utekbbmg" path="res://gender_game.tscn" id="8_jc0tv"]
 [ext_resource type="PackedScene" uid="uid://cudn804q62uca" path="res://cut_sentences.tscn" id="9_rhh1r"]
-[ext_resource type="PackedScene" uid="uid://cauqasinasbt8" path="res://filter_window.tscn" id="11_t0i00"]
+[ext_resource type="FontFile" uid="uid://dem4l2ybpsy0q" path="res://Fonts/Geoform-ExtraBold.otf" id="12_wpur0"]
+[ext_resource type="Script" uid="uid://cp8a4gkw2n2rh" path="res://progress_bar.gd" id="13_370ah"]
+[ext_resource type="Texture2D" uid="uid://umaqotq1jvce" path="res://GraphicAssets/circle.png" id="13_au750"]
+[ext_resource type="PackedScene" uid="uid://cv7cd7d1si7mh" path="res://info_layer.tscn" id="14_pgl43"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pgl43"]
+font = ExtResource("12_wpur0")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+shadow_size = 6
+shadow_color = Color(0.252441, 0.377298, 1, 1)
 
 [sub_resource type="Shader" id="Shader_2o0gt"]
 code = "shader_type canvas_item;
@@ -44,6 +55,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_wpur0")
 script = ExtResource("1_efs7r")
 
 [node name="Panel" type="Panel" parent="."]
@@ -82,26 +94,32 @@ alignment = 1
 
 [node name="NewWords" type="Button" parent="Panel/Menus/HBoxContainer/MainMenu"]
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 3
 focus_mode = 0
+theme = ExtResource("1_wpur0")
 theme_override_font_sizes/font_size = 32
-text = "Nowe Słownictwo"
+text = "Add new words!"
 
 [node name="Learn" type="Button" parent="Panel/Menus/HBoxContainer/MainMenu"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 3
 focus_mode = 0
+theme = ExtResource("1_wpur0")
 theme_override_font_sizes/font_size = 32
-text = "Ucz się!"
+text = "Study Time :3"
 
 [node name="Improve" type="Button" parent="Panel/Menus/HBoxContainer/MainMenu"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 3
 focus_mode = 0
+theme = ExtResource("1_wpur0")
 theme_override_font_sizes/font_size = 32
-text = "Popraw Bazę"
+text = "Improve the Word-Base"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/Menus/HBoxContainer/MainMenu"]
 layout_mode = 2
@@ -110,19 +128,22 @@ theme_override_constants/separation = 16
 
 [node name="Load" type="Button" parent="Panel/Menus/HBoxContainer/MainMenu/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 6
 size_flags_vertical = 3
 focus_mode = 0
+theme = ExtResource("1_wpur0")
 theme_override_font_sizes/font_size = 32
-text = "Inne Bazy"
+text = "Change the Base"
 
 [node name="Quit" type="Button" parent="Panel/Menus/HBoxContainer/MainMenu/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 6
 size_flags_vertical = 3
 focus_mode = 0
+theme = ExtResource("1_wpur0")
 theme_override_font_sizes/font_size = 32
-text = "Wyjdź"
+text = "Quit"
 
 [node name="GamesMenu" type="VBoxContainer" parent="Panel/Menus/HBoxContainer"]
 unique_name_in_owner = true
@@ -136,33 +157,37 @@ alignment = 1
 [node name="ABCD_Button" type="Button" parent="Panel/Menus/HBoxContainer/GamesMenu"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 3
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
-text = "ABCD"
+text = "ABCD Game"
 
 [node name="SpellingButton" type="Button" parent="Panel/Menus/HBoxContainer/GamesMenu"]
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 3
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
-text = "Ćwicz pisownię!"
+text = "Test ur Spelling!"
 
 [node name="CrosswordButton" type="Button" parent="Panel/Menus/HBoxContainer/GamesMenu"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 3
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
-text = "Czas na Krzyżówkę!"
+text = "Time for a Crossword!"
 
 [node name="GendersButton" type="Button" parent="Panel/Menus/HBoxContainer/GamesMenu"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 3
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
-text = "Genders"
+text = "Learn Genders"
 
 [node name="Back" type="Button" parent="Panel/Menus/HBoxContainer/GamesMenu"]
 custom_minimum_size = Vector2(300, 0)
@@ -170,8 +195,9 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.5
+focus_mode = 0
 theme_override_font_sizes/font_size = 20
-text = "Wróc do menu głównego"
+text = "Back to Main Menu"
 
 [node name="EditingMenu" type="VBoxContainer" parent="Panel/Menus/HBoxContainer"]
 unique_name_in_owner = true
@@ -184,34 +210,37 @@ alignment = 1
 
 [node name="EditAllButton" type="Button" parent="Panel/Menus/HBoxContainer/EditingMenu"]
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 3
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
-text = "Cała baza"
+text = "Edit the Whole Base"
 
 [node name="Browser" type="Button" parent="Panel/Menus/HBoxContainer/EditingMenu"]
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 3
-tooltip_text = "Not ready yet"
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
-text = "Wyszukiwarka"
+text = "Search for specific word"
 
 [node name="WordEditor" type="Button" parent="Panel/Menus/HBoxContainer/EditingMenu"]
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 3
 tooltip_text = "Not ready yet"
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
-text = "Dodaj płeć"
+text = "Add Genders/Articles"
 
 [node name="CutSentences" type="Button" parent="Panel/Menus/HBoxContainer/EditingMenu"]
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 3
-tooltip_text = "Not ready yet"
+tooltip_text = "Cut new words out of already collected sentences!"
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
-text = "Cut Sentences"
+text = "Cut the Sentences"
 
 [node name="Back" type="Button" parent="Panel/Menus/HBoxContainer/EditingMenu"]
 custom_minimum_size = Vector2(300, 0)
@@ -219,8 +248,9 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.5
+focus_mode = 0
 theme_override_font_sizes/font_size = 20
-text = "Wróc do menu głównego"
+text = "Back to Main Menu"
 
 [node name="ABCDGame" parent="Panel" instance=ExtResource("2_orjqv")]
 unique_name_in_owner = true
@@ -280,16 +310,48 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 1
 
-[node name="FilterWindow" parent="Panel" instance=ExtResource("11_t0i00")]
-unique_name_in_owner = true
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
 layout_mode = 1
-anchors_preset = 11
+anchors_preset = 1
 anchor_left = 1.0
-offset_left = -169.0
-offset_top = 4.0
-offset_right = -169.0
-offset_bottom = 4.0
+anchor_right = 1.0
+offset_left = -126.0
+offset_bottom = 40.0
 grow_horizontal = 0
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+
+[node name="BaseName" type="Label" parent="Panel/MarginContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "Baza Testowa"
+label_settings = SubResource("LabelSettings_pgl43")
+horizontal_alignment = 2
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Panel" groups=["ProgressBar"]]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 24.0
+offset_top = 30.0
+offset_right = 92.0
+offset_bottom = 99.0
+tooltip_text = "Percantage of the base you know, practice more to make it higher"
+fill_mode = 5
+texture_under = ExtResource("13_au750")
+texture_progress = ExtResource("13_au750")
+tint_under = Color(0, 0, 0, 1)
+tint_progress = Color(0, 0.766667, 1, 1)
+script = ExtResource("13_370ah")
+
+[node name="Label" type="Label" parent="Panel/ProgressBar"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 18.0
+offset_right = 47.0
+offset_bottom = 46.0
+theme_override_font_sizes/font_size = 20
+text = "12.0%"
 
 [node name="Plate" parent="." instance=ExtResource("5_qqbec")]
 visible = false
@@ -321,6 +383,10 @@ offset_right = 108.0
 offset_bottom = 238.0
 tint = Color(0.745098, 0.568627, 0, 1)
 
+[node name="InfoLayer" parent="." instance=ExtResource("14_pgl43")]
+
+[connection signal="draw" from="Panel/Menus/HBoxContainer/MainMenu" to="Panel/ProgressBar" method="_on_main_menu_draw"]
+[connection signal="draw" from="Panel/Menus/HBoxContainer/MainMenu" to="InfoLayer" method="_on_main_menu_draw"]
 [connection signal="pressed" from="Panel/Menus/HBoxContainer/MainMenu/NewWords" to="." method="_on_new_words_pressed"]
 [connection signal="pressed" from="Panel/Menus/HBoxContainer/MainMenu/Learn" to="." method="_on_learn_pressed"]
 [connection signal="pressed" from="Panel/Menus/HBoxContainer/MainMenu/Improve" to="." method="_on_improve_pressed"]
@@ -337,13 +403,22 @@ tint = Color(0.745098, 0.568627, 0, 1)
 [connection signal="pressed" from="Panel/Menus/HBoxContainer/EditingMenu/CutSentences" to="." method="_on_cut_sentences_pressed"]
 [connection signal="pressed" from="Panel/Menus/HBoxContainer/EditingMenu/Back" to="." method="_on_back_pressed"]
 [connection signal="closed" from="Panel/ABCDGame" to="." method="_on_abcd_game_closed"]
+[connection signal="draw" from="Panel/ABCDGame" to="InfoLayer" method="_on_abcd_game_draw"]
+[connection signal="to_spelling" from="Panel/ABCDGame" to="." method="_on_abcd_game_to_spelling"]
 [connection signal="closed" from="Panel/Generator" to="." method="_on_generator_closed"]
+[connection signal="draw" from="Panel/Generator" to="InfoLayer" method="_on_generator_draw"]
 [connection signal="test_words" from="Panel/Generator" to="." method="_on_generator_test_words"]
 [connection signal="closed" from="Panel/EditAll" to="." method="_on_edit_all_closed"]
+[connection signal="draw" from="Panel/EditAll" to="InfoLayer" method="_on_edit_all_draw"]
 [connection signal="closed" from="Panel/SpellingGame" to="." method="_on_spelling_game_closed"]
+[connection signal="draw" from="Panel/SpellingGame" to="InfoLayer" method="_on_spelling_game_draw"]
 [connection signal="closed" from="Panel/Crossword" to="." method="_on_crossword_closed"]
+[connection signal="draw" from="Panel/Crossword" to="InfoLayer" method="_on_crossword_draw"]
 [connection signal="closed" from="Panel/Browser" to="." method="_on_browser_closed"]
+[connection signal="draw" from="Panel/Browser" to="InfoLayer" method="_on_browser_draw"]
 [connection signal="closed" from="Panel/GenderGame" to="." method="_on_gender_game_closed"]
+[connection signal="draw" from="Panel/GenderGame" to="InfoLayer" method="_on_gender_game_draw"]
 [connection signal="closed" from="Panel/CutSentences" to="." method="_on_cut_sentences_closed"]
+[connection signal="draw" from="Panel/CutSentences" to="InfoLayer" method="_on_cut_sentences_draw"]
 [connection signal="closed" from="Panel/WordEditor" to="." method="_on_word_editor_closed"]
-[connection signal="edited" from="Panel/FilterWindow" to="." method="_on_filter_window_edited"]
+[connection signal="draw" from="Panel/WordEditor" to="InfoLayer" method="_on_word_editor_draw"]

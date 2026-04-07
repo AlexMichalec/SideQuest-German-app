@@ -8,22 +8,33 @@ signal closed
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
-	start()
+	if get_tree().current_scene == self:
+		start()
 	
 func start():
+	%NoSentenceLabel.visible = false
+	%NextSentence.visible = true
 	current_index = 0
 	prepare_arrays()
-	#prepare_sentence(sentence_array[0]["original"], sentence_array[0]["translation"])
-	
+	if sentence_array.size() == 0:
+		no_sentence_to_cut()
+		return
+	while not prepare_sentence(sentence_array[current_index]["original"],sentence_array[current_index]["translation"]) :
+		set_already_cut(sentence_array[current_index])
+		current_index += 1
+		if current_index >= sentence_array.size():
+			no_sentence_to_cut()
+			return
+			
 func prepare_arrays():
 	sentence_array = []
-	ignored_words = load_words_to_ignore()
+	ignored_words = NewUtility.load_ignore_words()
 	if ignored_words == []:
 		ignored_words = [".","...","?","!",","]
 		ignored_words.append_array(["und", "was", "wie", "wo","ich","ist", "ein", "eine", "einen", "einem", "die", "das", "der", "des", "dem", "den", "ich", "du", "er", "sie", "es", "wir", "ihr"])
+		NewUtility.save_ignore_words(ignored_words)
 	existing_words = []
-	for b in Base.BIG_ARRAY:
+	for b in NewUtility.BIG_ARRAY:
 		if b["is_sentence"]:
 			if not b.get("already_cut", false):
 				sentence_array.append(b)
@@ -39,8 +50,9 @@ func prepare_arrays():
 	#	print(existing_words.pick_random())
 	sentence_array.shuffle()
 	
+	
 func prepare_sentence(sentence:String, translation:String):
-	%Progress.text = str(current_index) + "/" + str(sentence_array.size())
+	%Progress.text = str(current_index+1) + "/" + str(sentence_array.size())
 	if %SentenceContainer.get_child_count() > 2:
 		add_rest_to_ignored()
 	var new_array = sentence.split(" ")
@@ -81,7 +93,7 @@ func prepare_sentence(sentence:String, translation:String):
 			%SentenceContainer.add_child(new_button)
 	%SentenceTranslation.text = translation
 	if not has_button:
-		print("Sentence without a word to add")
+		#print("Sentence without a word to add")
 		return false
 	return true
 			
@@ -149,11 +161,11 @@ func hide_word_edit():
 
 
 func set_already_cut(sentence):
-	for b in Base.BIG_ARRAY:
+	for b in NewUtility.BIG_ARRAY:
 		if b == sentence:
 			b["already_cut"] = true
-			print("OK")
-			Base.save()
+			#print("OK")
+			NewUtility.save_array()
 			return true
 	return false
 
@@ -202,11 +214,11 @@ func add_word_to_database(word_type):
 		"part_of_speech": part_of_speech,
 		"gender": gender
 	}
-	print(new_record)
-	Base.BIG_ARRAY.append(new_record)
+	#print(new_record)
+	NewUtility.BIG_ARRAY.append(new_record)
 	%SimilarWordsLabel.text = " "
 	hide_word_edit()
-	Base.save()
+	NewUtility.save_array()
 	%SimilarWordsLabel.text = "Added:"
 	%SimilarWordsList.text = word + " - " + translation
 	await get_tree().create_timer(2).timeout
@@ -250,11 +262,26 @@ func _on_proper_pressed():
 func _on_next_sentence_pressed():
 	set_already_cut(sentence_array[current_index])
 	current_index += 1
+	if current_index >= sentence_array.size():
+		no_sentence_to_cut()
+		return
 	while not prepare_sentence(sentence_array[current_index]["original"],sentence_array[current_index]["translation"]) :
 		set_already_cut(sentence_array[current_index])
 		current_index += 1
-	save_words_to_ignore()
-		
+		if current_index >= sentence_array.size():
+			no_sentence_to_cut()
+			return
+	NewUtility.save_ignore_words(ignored_words)
+
+func no_sentence_to_cut():
+	%NoSentenceLabel.visible = true
+	%Progress.text = ""
+	for child in %SentenceContainer.get_children():
+		if child != %SampleLabel and child != %SampleButton:
+			child.queue_free()
+	%SentenceTranslation.text =""
+	%NextSentence.visible = false
+			
 func load_words_to_ignore():
 	if not FileAccess.file_exists("user://GermanIgnoreWords.json"):
 		print("File not found!")
@@ -267,19 +294,14 @@ func load_words_to_ignore():
 	var json = JSON.parse_string(json_string)  # Convert JSON back to array
 	return json if json is Array else []
 
-func save_words_to_ignore():
-	var file = FileAccess.open("user://GermanIgnoreWords.json", FileAccess.WRITE)
-	var json_string = JSON.stringify(ignored_words)  # Convert array to JSON
-	file.store_string(json_string)  # Save to file
-	file.close()
 
 
 func _on_menu_pressed():
 	closed.emit()
 	pass # Replace with function body.
 
-func _notification(what):
-	if what == NOTIFICATION_WM_CLOSE_REQUEST:
-		print("Użytkownik kliknął X – zamykanie aplikacji")
+#func _notification(what):
+	#if what == NOTIFICATION_WM_CLOSE_REQUEST:
+	#	print("Użytkownik kliknął X – zamykanie aplikacji")
 		
 		

@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://clrbqcpm846bw"]
+[gd_scene load_steps=5 format=3 uid="uid://clrbqcpm846bw"]
 
-[ext_resource type="Script" path="res://ABCDGame.gd" id="1_kn337"]
+[ext_resource type="Theme" uid="uid://bnqoqquiu11wb" path="res://standardTheme.tres" id="1_jq7o4"]
+[ext_resource type="Script" uid="uid://tuq17nbwadwr" path="res://ABCDGame.gd" id="1_kn337"]
+[ext_resource type="PackedScene" uid="uid://42oxmd28tyes" path="res://german_text_input.tscn" id="3_v6mjd"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_msc8y"]
 font_size = 24
@@ -13,6 +15,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("1_jq7o4")
 theme_override_constants/separation = 20
 alignment = 1
 script = ExtResource("1_kn337")
@@ -20,11 +23,11 @@ script = ExtResource("1_kn337")
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
-text = "Basic Game"
+text = "ABCD Game"
 horizontal_alignment = 1
 
 [node name="Control2" type="Control" parent="."]
-custom_minimum_size = Vector2(0, 60)
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -47,7 +50,7 @@ horizontal_alignment = 1
 [node name="ScrollModifyContainer" type="ScrollContainer" parent="VBoxContainer"]
 unique_name_in_owner = true
 visible = false
-custom_minimum_size = Vector2(0, 400)
+custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -82,7 +85,7 @@ text = "001"
 layout_mode = 2
 text = " - DE:"
 
-[node name="German" type="TextEdit" parent="VBoxContainer/ScrollModifyContainer/ModifyWordsContainr/EditWord/HBoxContainer"]
+[node name="German" parent="VBoxContainer/ScrollModifyContainer/ModifyWordsContainr/EditWord/HBoxContainer" instance=ExtResource("3_v6mjd")]
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -90,7 +93,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 text = "ENG:"
 
-[node name="English" type="TextEdit" parent="VBoxContainer/ScrollModifyContainer/ModifyWordsContainr/EditWord/HBoxContainer"]
+[node name="English" type="LineEdit" parent="VBoxContainer/ScrollModifyContainer/ModifyWordsContainr/EditWord/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "
@@ -100,7 +103,7 @@ text = "
 layout_mode = 2
 text = "Weight:"
 
-[node name="Waga" type="TextEdit" parent="VBoxContainer/ScrollModifyContainer/ModifyWordsContainr/EditWord/HBoxContainer"]
+[node name="Waga" type="LineEdit" parent="VBoxContainer/ScrollModifyContainer/ModifyWordsContainr/EditWord/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.2
@@ -175,7 +178,18 @@ text = "4. Answer"
 [node name="Control2" type="Control" parent="HBoxContainer2"]
 layout_mode = 2
 
+[node name="Margin" type="Control" parent="."]
+layout_mode = 2
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_stretch_ratio = 0.0
+theme_override_font_sizes/font_size = 18
+text = "Back to Main Menu"
+
 [connection signal="pressed" from="HBoxContainer/Answer1" to="." method="_on_answer_1_pressed"]
 [connection signal="pressed" from="HBoxContainer/Answer2" to="." method="_on_answer_2_pressed"]
 [connection signal="pressed" from="HBoxContainer2/Answer3" to="." method="_on_answer_3_pressed"]
 [connection signal="pressed" from="HBoxContainer2/Answer4" to="." method="_on_answer_4_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

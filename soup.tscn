@@ -1,0 +1,158 @@
+[gd_scene load_steps=10 format=3 uid="uid://c6f4re26ypons"]
+
+[ext_resource type="Theme" uid="uid://bnqoqquiu11wb" path="res://standardTheme.tres" id="1_stioc"]
+[ext_resource type="Script" uid="uid://cnme1etaf7fcx" path="res://soup.gd" id="2_csnqt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_csnqt"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+bg_color = Color(0.31248, 0.2772, 0.63, 0.792157)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5gwqc"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+bg_color = Color(0.527708, 0.21701, 0.333599, 0.792157)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_stioc"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+bg_color = Color(0.23, 0.23, 0.23, 0.407843)
+
+[sub_resource type="Animation" id="Animation_stioc"]
+resource_name = "bigger"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_font_sizes/font_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0666667, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [32, 64]
+}
+
+[sub_resource type="Animation" id="Animation_csnqt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_font_sizes/font_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [32]
+}
+
+[sub_resource type="Animation" id="Animation_5gwqc"]
+resource_name = "to_normal"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:theme_override_font_sizes/font_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [64, 32]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t455h"]
+_data = {
+&"RESET": SubResource("Animation_csnqt"),
+&"bigger": SubResource("Animation_stioc"),
+&"to_normal": SubResource("Animation_5gwqc")
+}
+
+[node name="Soup" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_stioc")
+script = ExtResource("2_csnqt")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -20.0
+offset_right = 50.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Title" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Soup, i guess"
+horizontal_alignment = 1
+
+[node name="SoupContainer" type="VBoxContainer" parent="Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="MarginLeft" type="Control" parent="Panel/VBoxContainer/SoupContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SampleButton" type="Button" parent="Panel/VBoxContainer/SoupContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_csnqt")
+theme_override_styles/hover = SubResource("StyleBoxFlat_csnqt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5gwqc")
+theme_override_styles/normal = SubResource("StyleBoxFlat_stioc")
+text = "Sample"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Panel/VBoxContainer/SoupContainer/SampleButton"]
+libraries = {
+&"": SubResource("AnimationLibrary_t455h")
+}
+
+[node name="SampleContainer" type="HBoxContainer" parent="Panel/VBoxContainer/SoupContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Back to Menu"

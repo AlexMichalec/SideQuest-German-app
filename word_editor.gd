@@ -13,6 +13,7 @@ func _ready():
 		start()
 		
 func start():
+	reset_buttons()
 	prepare_set()
 	next_word(true)
 	
@@ -21,8 +22,8 @@ func prepare_set():
 	var die_das_der_counter = 0
 	current_index = 0
 	words_set = []
-	for i in range(Base.BIG_ARRAY.size()):
-		var b = Base.BIG_ARRAY[i]
+	for i in range(NewUtility.BIG_ARRAY.size()):
+		var b = NewUtility.BIG_ARRAY[i]
 		if b["is_sentence"]:
 			continue
 		if b.has("part_of_speech"):
@@ -47,21 +48,23 @@ func prepare_set():
 				continue
 			to_do_counter += 1
 			words_set.append(i)
-	print("die_das_der: ", die_das_der_counter)
-	print("to_do_counter: ", to_do_counter)
 	words_set.shuffle()
 	total = words_set.size()
 	done = 0
 
 func next_word(first_time=false):
-	if not first_time:
-		var current_word = Base.BIG_ARRAY[words_set[current_index]]
+	if not first_time and not words_set.size() == 0 :
+		var current_word = NewUtility.BIG_ARRAY[words_set[current_index]]
 		current_word["date_modified"] = Time.get_datetime_string_from_system()
 		done += 1
 		current_index += 1
+	if words_set.size() == 0 or current_index>= words_set.size()or done == total:
+		no_more_words()
+		return
+	
 	%Counter.text = str(done)+"/"+str(total)
-	%Word.text = Base.BIG_ARRAY[words_set[current_index]]["original"]
-	%Translation.text = Base.BIG_ARRAY[words_set[current_index]]["translation"]	
+	%Word.text = NewUtility.BIG_ARRAY[words_set[current_index]]["original"]
+	%Translation.text = NewUtility.BIG_ARRAY[words_set[current_index]]["translation"]	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -74,7 +77,7 @@ func _on_female_pressed():
 	if editing:
 		return
 	editing = true
-	var current_word = Base.BIG_ARRAY[words_set[current_index]]
+	var current_word = NewUtility.BIG_ARRAY[words_set[current_index]]
 	current_word["original"][0] = current_word["original"][0].to_upper()
 	current_word["original"] = "die " + current_word["original"]
 	current_word["part_of_speech"] = "noun"
@@ -91,7 +94,7 @@ func _on_male_pressed():
 	if editing:
 		return
 	editing = true
-	var current_word = Base.BIG_ARRAY[words_set[current_index]]
+	var current_word = NewUtility.BIG_ARRAY[words_set[current_index]]
 	current_word["original"][0] = current_word["original"][0].to_upper()
 	current_word["original"] = "der " + current_word["original"]
 	current_word["part_of_speech"] = "noun"
@@ -108,7 +111,7 @@ func _on_neutral_pressed():
 	if editing:
 		return
 	editing = true
-	var current_word = Base.BIG_ARRAY[words_set[current_index]]
+	var current_word = NewUtility.BIG_ARRAY[words_set[current_index]]
 	current_word["original"][0] = current_word["original"][0].to_upper()
 	current_word["original"] = "das " + current_word["original"]
 	current_word["part_of_speech"] = "noun"
@@ -125,7 +128,7 @@ func _on_plural_pressed():
 	if editing:
 		return
 	editing = true
-	var current_word = Base.BIG_ARRAY[words_set[current_index]]
+	var current_word = NewUtility.BIG_ARRAY[words_set[current_index]]
 	current_word["original"][0] = current_word["original"][0].to_upper()
 	current_word["part_of_speech"] = "noun"
 	current_word["is_proper"] = false
@@ -138,7 +141,7 @@ func _on_proper_pressed():
 	if editing:
 		return
 	editing = true
-	var current_word = Base.BIG_ARRAY[words_set[current_index]]
+	var current_word = NewUtility.BIG_ARRAY[words_set[current_index]]
 	current_word["part_of_speech"] = "noun"
 	current_word["is_proper"] = true
 	current_word["is_plural"] = false
@@ -151,7 +154,7 @@ func _on_verb_pressed():
 	if editing:
 		return
 	editing = true
-	var current_word = Base.BIG_ARRAY[words_set[current_index]]
+	var current_word = NewUtility.BIG_ARRAY[words_set[current_index]]
 	current_word["part_of_speech"] = "verb"
 	next_word()
 	editing = false
@@ -161,7 +164,7 @@ func _on_adjective_pressed():
 	if editing:
 		return
 	editing = true
-	var current_word = Base.BIG_ARRAY[words_set[current_index]]
+	var current_word = NewUtility.BIG_ARRAY[words_set[current_index]]
 	current_word["part_of_speech"] = "adjective"
 	next_word()
 	editing = false
@@ -171,7 +174,7 @@ func _on_other_pressed():
 	if editing:
 		return
 	editing = true
-	var current_word = Base.BIG_ARRAY[words_set[current_index]]
+	var current_word = NewUtility.BIG_ARRAY[words_set[current_index]]
 	current_word["part_of_speech"] = "other"
 	next_word()
 	editing = false
@@ -181,7 +184,7 @@ func _on_sentence_pressed():
 	if editing:
 		return
 	editing = true
-	var current_word = Base.BIG_ARRAY[words_set[current_index]]
+	var current_word = NewUtility.BIG_ARRAY[words_set[current_index]]
 	current_word["is_sentence"] = true
 	current_word["original"][0] = current_word["original"][0].to_upper()
 	next_word()
@@ -190,6 +193,7 @@ func _on_sentence_pressed():
 
 func _on_check_box_toggled(button_pressed):
 	only_nouns = button_pressed
+	reset_buttons()
 	prepare_set()
 	next_word("true")
 
@@ -197,5 +201,18 @@ func _on_check_box_toggled(button_pressed):
 func _on_back_pressed():
 	if editing:
 		return
-	Base.save()
+	NewUtility.save_array()
 	closed.emit()
+	
+func no_more_words():
+	%Counter.text = ""
+	%Word.text= "Fertig"
+	%Translation.text = "There is no more words to set genders to"
+	for child in $ButtonsContainer.get_children():
+		if child is Button:
+			child.disabled = true
+
+func reset_buttons():
+	for child in $ButtonsContainer.get_children():
+		if child is Button:
+			child.disabled = false

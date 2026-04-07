@@ -6,16 +6,17 @@ var questions_amount = 10
 var keep_seen_words = false
 var seen_words = []
 var settings_not_saved = false
+var current_record = null
 
 signal closed
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if get_tree().current_scene == self:
 		start()
-	for b in Base.BIG_ARRAY:
+	for b in NewUtility.BIG_ARRAY:
 		if b.has("gender") and not b["part_of_speech"] == "noun":
 			b
-			print(b["original"], " - ", b["translation"])
+			#print(b["original"], " - ", b["translation"])
 
 func start():
 	load_settings()
@@ -28,10 +29,10 @@ func prepare_set():
 	if not keep_seen_words:
 		reset_done()
 	gender_set = []
-	for b in Base.BIG_ARRAY:
+	for b in NewUtility.BIG_ARRAY:
 		if b.has("gender") and not b["is_sentence"] and b.has("part_of_speech") and b["part_of_speech"] == "noun":
 			gender_set.append(b)
-	print(gender_set.size())
+	#print(gender_set.size())
 	gender_set.shuffle()
 	if questions_amount != -1:
 		gender_set = gender_set.slice(0,questions_amount)
@@ -46,7 +47,7 @@ func new_question():
 		o_text = o_text.right(-4)
 	%Original.text = o_text
 	%Translation.text = gender_set[0]["translation"]
-	
+	current_record = gender_set[0]
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
@@ -58,7 +59,7 @@ func show_win():
 	%answer_buttons.visible = false
 
 func correct_answer():
-	print("RICHTIG")
+	#print("RICHTIG")
 	showing_answer = true
 	%Original.text = gender_set[0]["original"]
 	%Original.label_settings.font_color = Color.LIME_GREEN
@@ -66,6 +67,7 @@ func correct_answer():
 	gender_set.pop_front()
 	score+=1
 	%Score.text = str(score) + "/" + str(gender_set.size() + score)
+	add_weight()
 	await  get_tree().create_timer(0.6).timeout
 	if gender_set.size() > 0:
 		new_question()
@@ -76,7 +78,7 @@ func correct_answer():
 	
 	
 func wrong_answer():
-	print("FALSCH")
+	#print("FALSCH")
 	showing_answer = true
 	%Original.text = gender_set[0]["original"]
 	%Original.label_settings.font_color = Color.RED
@@ -188,7 +190,7 @@ func add_to_done(word:Dictionary):
 
 func _on_que_num_slider_drag_ended(value_changed):
 	questions_amount = [10,15,20,30,-1][%QueNumSlider.value]
-	print(%QueNumSlider.value)
+	#print(%QueNumSlider.value)
 	if value_changed:
 		settings_not_saved = true
 
@@ -200,18 +202,8 @@ func _on_keep_words_toggled(button_pressed):
 		seen_words = []
 
 func load_settings():
-	if not FileAccess.file_exists("user://GenderGameSettings.json"):
-		print("File not found!")
-		return []
-	
-	var file = FileAccess.open("user://GenderGameSettings.json", FileAccess.READ)
-	var json_string = file.get_as_text()  # Read the file content
-	file.close()
-	var json = JSON.parse_string(json_string)  # Convert JSON back to array
-	keep_seen_words = json["keep_words"]
-	%KeepWords.button_pressed = keep_seen_words
-	questions_amount = int(json["questions_amount"])
-	%QueNumSlider.value = {10:0,15:1,20:2,30:3,-1:4}[questions_amount]
+	questions_amount = NewUtility.gender_questions_amount
+	keep_seen_words = NewUtility.gender_keep_tested_words
 	
 func save_settings():
 	var file = FileAccess.open("user://GenderGameSettings.json", FileAccess.WRITE)
@@ -236,3 +228,7 @@ func _on_settings_2_pressed():
 
 func _on_save_settings_button_pressed():
 	%save_settings_button.visible = false
+
+func add_weight():
+	current_record["weight"] = min(10, current_record["weight"] + 2)
+	NewUtility.save_array()

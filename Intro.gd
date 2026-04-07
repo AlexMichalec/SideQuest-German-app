@@ -18,21 +18,21 @@ var a = 0
 var b = 0
 
 var word_categories = {
-	"Animals": [["	kot	","	cat	","	Die Katze	"],
-				["	pies	","	dog	","	Der Hund	"],
-				["	chomik	","	hamster	","	Der Hamster	"],
-				["	koń	","	horse	","	Das Pferd	"],
-				["	papuga	","	parrot	","	Der Papagei	"],
-				["	ptak	","	bird	","	Der Vogel	"],
-				["	małpa	","	monkey	","	Der Affe	"],
-				["	lew	","	lion	","	Der Löwe	"],
-				["	koza	","	goat	","	Die Ziege	"],
-				["	owca	","	sheep	","	Das Schaf	"],
-				["	krowa	","	cow	","	Die Kuh	"],
-				["	niedźwiedź	","	bear	","	Der Bär	"],
-				["	jaszczurka	","	lizard	","	Die Eidechse	"],
-				["	ryba	","	fish	","	Der Fisch	"],
-				["	świnia	","	pig	","	Das Schwein	"],
+	"Animals": [["	kot	","	cat	","	die Katze	"],
+				["	pies	","	dog	","	der Hund	"],
+				["	chomik	","	hamster	","	der Hamster	"],
+				["	koń	","	horse	","	das Pferd	"],
+				["	papuga	","	parrot	","	der Papagei	"],
+				["	ptak	","	bird	","	der Vogel	"],
+				["	małpa	","	monkey	","	der Affe	"],
+				["	lew	","	lion	","	der Löwe	"],
+				["	koza	","	goat	","	die Ziege	"],
+				["	owca	","	sheep	","	das Schaf	"],
+				["	krowa	","	cow	","	die Kuh	"],
+				["	niedźwiedź	","	bear	","	der Bär	"],
+				["	jaszczurka	","	lizard	","	die Eidechse	"],
+				["	ryba	","	fish	","	der Fisch	"],
+				["	świnia	","	pig	","	das Schwein	"],
 				["	zwierzę	","	animal	","	das Tier	"],
 				["	zwierzę domowe	","	pet	","	das Haustier	"],
 				["	Kot leży pod stołem.	","	The cat is lying under the table.	","	Die Katze liegt unter dem Tisch.	"],
@@ -41,31 +41,31 @@ var word_categories = {
 				["	Jaki słodki kotek!","	What a cute kitty!	","	Was für ein süßes Kätzchen!	"],
 				["	Wyjdź z psem na spacer.	","	Take your dog for a walk.	","	Geh mit deinem Hund spazieren.	"],
 				],
-	"Vegetables" : [["	marchewka	","	carrot	","	Die Karotte	"],
-				["	ziemniak	","	potato	","	Die Kartoffel	"],
-				["	kalafior	","	cauliflower	","	Der Blumenkohl	"],
-				["	brokuł	","	broccoli	","	Der Brokkoli	"],
-				["	cebula	","	onion	","	Die Zwiebel	"],
-				["	czosnek	","	garlic	","	Der Knoblauch	"],
-				["	papryka	","	pepper	","	Die Paprika	"],
-				["	fasola	","	beans	","	Die Bohnen	"],
-				["	por	","	leek	","	Der Lauch	"],
-				["	burak	","	beetroot	","	Die Rote Bete	"],
-				["	warzywo	","	vegetable	","	Das Gemüse	"],
+	"Vegetables" : [["	marchewka	","	carrot	","	die Karotte	"],
+				["	ziemniak	","	potato	","	die Kartoffel	"],
+				["	kalafior	","	cauliflower	","	der Blumenkohl	"],
+				["	brokuł	","	broccoli	","	der Brokkoli	"],
+				["	cebula	","	onion	","	die Zwiebel	"],
+				["	czosnek	","	garlic	","	der Knoblauch	"],
+				["	papryka	","	pepper	","	die Paprika	"],
+				["	fasola	","	beans	","	die Bohnen	"],
+				["	por	","	leek	","	der Lauch	"],
+				["	burak	","	beetroot	","	die Rote Bete	"],
+				["	warzywo	","	vegetable	","	das Gemüse	"],
 				["	Jakie jest twoje ulubione warzywo?	","	What's your favorite vegetable?	","	Was ist dein Lieblingsgemüse?	"],
 				["	Ile kosztuje kilogram ziemniaków?	","	How much does a kilogram of potatoes cost?	","	Wie viel kostet ein Kilogramm Kartoffeln?	"],
 				["	Musimy kupić więcej cebuli.	","	We need to buy more onions.	","	Wir müssen mehr Zwiebeln kaufen.	"],
 				["	Trzy ziemniaki to zdecydowanie za mało	","	Three potatoes are definitely not enough.	","	Drei Kartoffeln reichen definitiv nicht.	"]],
-	"Fruits" : [["	jabłko	","	the apple	","	Der Apfel	"],
-				["	banan	","	the banana	","	Die Banane	"],
-				["	ananas	","	the pineapple	","	Die Ananas	"],
-				["	brzoskwinia	","	the peach	","	Der Pfirsich	"],
-				["	cytryna	","	the lemon	","	Die Zitrone	"],
-				["	pomarańcza	","	the orange	","	Die Orange	"],
-				["	arbuz	","	the watermelon	","	Die Wassermelone	"],
-				["	śliwka	","	the plum	","	Die Pflaume	"],
-				["	wiśnia	","	the cherry	","	Die Kirsche	"],
-				["	owoc	","	the fruit	","	Die Frucht	"],
+	"Fruits" : [["	jabłko	","	the apple	","	der Apfel	"],
+				["	banan	","	the banana	","	die Banane	"],
+				["	ananas	","	the pineapple	","	die Ananas	"],
+				["	brzoskwinia	","	the peach	","	der Pfirsich	"],
+				["	cytryna	","	the lemon	","	die Zitrone	"],
+				["	pomarańcza	","	the orange	","	die Orange	"],
+				["	arbuz	","	the watermelon	","	die Wassermelone	"],
+				["	śliwka	","	the plum	","	die Pflaume	"],
+				["	wiśnia	","	the cherry	","	die Kirsche	"],
+				["	owoc	","	the fruit	","	die Frucht	"],
 				["	Czy banan to owoc?	","	Is banana a fruit?	","	Sind Bananen Früchte?	"],
 				["	Ile jabłek można zjeść dziennie?	","	How many apples can you eat a day?	","	Wie viele Äpfel darf man am Tag essen?	"],
 				["	Mam alergię na cytryny.	","	I have allergy on lemons.	","	Ich bin allergisch gegen Zitronen.	"],
@@ -217,16 +217,16 @@ func _on_save_pressed():
 					starter_base[-1]["gender"] = gender
 				if a == 2 and b == 1 and starter_base[-1]["original"].split(" ")[0].to_upper() in ["DIE", "DER", "DAS"] and not starter_base[-1]["is_sentence"]:
 					starter_base[-1]["translation"] = "the " + starter_base[-1]["translation"]
-	print("YOU USE: ", native_language )
-	print("LEARNING: ", learning_language)
-	print("CHOSEN CATEGORIES: ", categories_chosen)
-	for b in starter_base:
-		print(b["original"])
-	for b in starter_base:
-		print(b)
+	#print("YOU USE: ", native_language )
+	#print("LEARNING: ", learning_language)
+	#print("CHOSEN CATEGORIES: ", categories_chosen)
+	#for b in starter_base:
+		#print(b["original"])
+	#for b in starter_base:
+	#	print(b)
 	
-	Base.BIG_ARRAY = starter_base
-	Base.SMALL_ARRAY = starter_base
+	#Base.BIG_ARRAY = starter_base
+	#Base.SMALL_ARRAY = starter_base
 	get_tree().change_scene_to_file("res://german_menu.tscn")
 
 
@@ -260,3 +260,10 @@ func _on_none_pressed():
 func _on_all_pressed():
 	for butt in get_tree().get_nodes_in_group("StartersButtons"):
 		butt.button_pressed = true
+
+
+func _on_random_pressed() -> void:
+	for i in range(40):
+		var butt = get_tree().get_nodes_in_group("StartersButtons").pick_random()
+		butt.button_pressed = not butt.button_pressed
+		await get_tree().create_timer(0.05).timeout

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cudn804q62uca"]
 
-[ext_resource type="Script" path="res://CutSentences.gd" id="1_q72de"]
+[ext_resource type="Script" uid="uid://cp5chie8hwd67" path="res://CutSentences.gd" id="1_q72de"]
 [ext_resource type="PackedScene" uid="uid://42oxmd28tyes" path="res://german_text_input.tscn" id="2_xofdy"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cugt8"]
@@ -65,6 +65,14 @@ horizontal_alignment = 1
 [node name="Margin2" type="Control" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+
+[node name="NoSentenceLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "There is no sentence to cut right now!"
+horizontal_alignment = 1
 
 [node name="WordEditContainer" type="HBoxContainer" parent="VBoxContainer"]
 unique_name_in_owner = true

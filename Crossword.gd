@@ -16,7 +16,7 @@ func _ready():
 		start()
 	"""
 	for i in range(20):
-		print(Base.BIG_ARRAY.pick_random())
+		print(NewUtility.BIG_ARRAY.pick_random())
 		"""
 	
 func start():
@@ -49,10 +49,10 @@ func nav_info_points():
 				x = info_points_global[10+i-1][0]
 				y = info_points_global[10+i-1][1]
 				if_horizontal = info_points_global[10+i-1][2]
-				chosen_one_timer = 0.3
+				chosen_one_timer = 0.5
 			if i==1 and chosen_one_timer == 0:
-				chosen_one_timer = 0.3
-				await get_tree().create_timer(0.3).timeout
+				chosen_one_timer = 0.5
+				await get_tree().create_timer(0.55).timeout
 				if chosen_one_timer == 0:
 					buttons_array[x][y].get_node("Input").grab_focus()
 					
@@ -75,7 +75,7 @@ func check_words_amount():
 	var size_array = []
 	for i in range(100):
 		size_array.append(0)
-	for record in Base.SMALL_ARRAY:
+	for record in NewUtility.SMALL_ARRAY:
 		if record[0].split(" ").size()==1:
 			counter1 += 1
 		elif record[0].split(" ").size() == 2 and record[0].split(" ")[0].to_upper() in ["DIE", "DAS", "DER"]:
@@ -112,16 +112,22 @@ func update_solution():
 	for child in %SolutionContainer.get_children():
 		if child != %HasloLabel and child != %HasloCrossSample and child != %HasloEmpty:
 			child.queue_free()
-	var new_solution = Base.SMALL_ARRAY.pick_random()
+	var new_solution = NewUtility.SMALL_ARRAY.pick_random()
+	NewUtility.SMALL_ARRAY.shuffle()
+	var temp_i = 0
 	while new_solution["original"].length()>20 or not can_be_solution(new_solution["original"]):
-		new_solution = Base.SMALL_ARRAY.pick_random()
+		new_solution = NewUtility.SMALL_ARRAY[temp_i]
 		break_counter += 1
-		if break_counter > 100:
+		temp_i += 1
+		if break_counter > 200 or temp_i >= NewUtility.SMALL_ARRAY.size():
 			%SolutionContainer.visible = false
 			return
 	%HasloLabel.text = new_solution["translation"].capitalize() + " = "
 	var counter_sol_numbers = 1
-	for n in new_solution["original"].to_upper():
+	var new_solution_original =new_solution["original"].to_upper()
+	if new_solution_original.left(3) in ["DIE", "DER", "DAS"]:
+		new_solution_original = new_solution_original.right(-4)
+	for n in new_solution_original:
 		if n == " ":
 			var new_break = %HasloEmpty.duplicate()
 			new_break.visible = true
@@ -152,6 +158,8 @@ func update_solution():
 		
 
 func can_be_solution(word:String):
+	if word.to_upper().left(3) in ["DIE", "DAS", "DER"]:
+		word = word.right(-4)
 	for letter in word.to_upper():
 		var how_many_letters_in_word = 0
 		for l in word.to_upper():
@@ -201,11 +209,17 @@ func show_crossword(crossword, info_points:Array):
 			var new_label = %HorizontalSample.duplicate()
 			new_label.visible = true
 			new_label.text = str(counter) + ". " + point[4].capitalize()
+			if new_label.text.length() > 25:
+				new_label.tooltip_text = new_label.text
+				new_label.text = new_label.text.left(23) + "..."
 			%HorLegend.add_child(new_label)
 		else:
 			var new_label = %VerticalSample.duplicate()
 			new_label.visible = true
 			new_label.text = str(counter) + ". " + point[4].capitalize()
+			if new_label.text.length() > 25:
+				new_label.tooltip_text = new_label.text
+				new_label.text = new_label.text.left(23) + "..."
 			%VerLegend.add_child(new_label)
 		counter += 1
 	manage_focuses(info_points)
@@ -402,7 +416,7 @@ func glue_two_words(first_word : String, second_word : String):
 func choose_new_words():
 	var words_for_crossword = []
 	while words_for_crossword.size() < 20:
-		var new_word = Base.SMALL_ARRAY.pick_random()
+		var new_word = NewUtility.SMALL_ARRAY.pick_random().duplicate()
 		if new_word["original"].split(" ").size() > 1:
 			if new_word["original"].split(" ").size() == 2 and new_word["original"].split(" ")[0].to_upper() in ["DIE", "DAS", "DER"]:
 				new_word["original"] = new_word["original"].split(" ")[1]
@@ -444,6 +458,7 @@ func _on_check_crossword_pressed():
 	show_words_points()
 	var new_points = check_solution()
 	for word in info_points_global:
+		
 		new_points += word[5]
 	if new_points>0:
 		%NewPoints.text = "+ " + str(new_points) + "p!"
@@ -495,8 +510,11 @@ func check_words():
 		if is_ok:
 			points += 1
 			word[5] += 5
+			add_weight(word)
 			if %ShowTips.visible:
 				word[5] += 5
+				add_weight(word)
+	NewUtility.save_array()
 	return
 	
 func check_solution():
@@ -539,16 +557,16 @@ func edit_translation(old_text, new_text):
 	while old_text[0] in "0123456789":
 		old_text = old_text.right(-1)
 	old_text = old_text.right(-2)	
-	print(old_text)
+	#print(old_text)
 	var is_okay = false
-	for b in Base.BIG_ARRAY:
+	for b in NewUtility.BIG_ARRAY:
 		if b["translation"] == old_text:
 			b["translation"] = new_text 
 			is_okay = true
-			print(b)
+			#print(b)
 			return
 	if is_okay:
-		Base.save()
+		NewUtility.save_array()
 		
 	
 
@@ -558,3 +576,10 @@ func _on_horizontal_sample_text_edited(old_text, new_text):
 
 func _on_vertical_sample_text_edited(old_text, new_text):
 	edit_translation(old_text, new_text)
+	
+func add_weight(word : Array):
+	for record in NewUtility.SMALL_ARRAY:
+		if record["translation"] == word[4]:
+			for g in given_words:
+				if g[1] == word[4] and record["original"].split(" ")[-1].to_upper() == g[0]:
+					record["weight"] = min(10, record["weight"] + 2)

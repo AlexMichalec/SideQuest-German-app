@@ -15,12 +15,12 @@ func _ready():
 	date_list =  []
 	categories_list = []
 	other_list = []
-	for b in Base.BIG_ARRAY:
+	for b in NewUtility.BIG_ARRAY:
 		date_list.append(b)
 		categories_list.append(b)
 		other_list.append(b)
 	print(Time.get_datetime_string_from_system())
-	prepare_date_buttons()
+	#prepare_date_buttons()
 	_on_all_date_button_pressed()
 	set_long_word_length()
 	pass # Replace with function body.
@@ -30,7 +30,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-
+"""
 func prepare_date_buttons():
 	var dates_array = Filter.by_date(0, "","", true)
 	for i in range(dates_array.size()):
@@ -44,19 +44,19 @@ func prepare_date_buttons():
 		if new_button.text.length() > 50:
 			new_button.text = new_button.text.left(50) + "..."
 		%DateButtonContainer.add_child(new_button)
-
+"""
 func update_array_label():
 	update_small_array()
-	Base.SMALL_ARRAY.shuffle()
-	%BIG_ARRAY_LABEL.text = "Total: " + str(Base.SMALL_ARRAY.size()) + "\n"
-	for b in Base.SMALL_ARRAY:
+	NewUtility.SMALL_ARRAY.shuffle()
+	%BIG_ARRAY_LABEL.text = "Total: " + str(NewUtility.SMALL_ARRAY.size()) + "\n"
+	for b in NewUtility.SMALL_ARRAY:
 		%BIG_ARRAY_LABEL.text += b["original"] + ", "
 		if %BIG_ARRAY_LABEL.text.length() > 1000:
 			%BIG_ARRAY_LABEL.text = %BIG_ARRAY_LABEL.text + "\n[...]"
 			return
 
 func update_small_array():
-	var BIG = Base.load_array()
+	var BIG = NewUtility.load_array()
 	var temp = []
 	for b in BIG:
 		if not b in date_list:
@@ -66,7 +66,7 @@ func update_small_array():
 		if not b in other_list:
 			continue
 		temp.append(b)
-	Base.SMALL_ARRAY = temp
+	NewUtility.SMALL_ARRAY = temp
 
 func _on_date_button_sample_pressed():
 	%AllDateButton.button_pressed = false
@@ -100,7 +100,7 @@ func _on_all_date_button_pressed():
 		if butt == %DateButtonSample:
 			continue
 		butt.button_pressed = true
-	date_list= Base.BIG_ARRAY
+	date_list= NewUtility.BIG_ARRAY
 	update_array_label()
 	edited.emit()
 
@@ -130,13 +130,13 @@ func add_day(date_index :int):
 		else:
 			date_list.append(t)
 	update_array_label()
-	print("ADD ", Base.BIG_ARRAY.size())
+	print("ADD ", NewUtility.BIG_ARRAY.size())
 
 func erase_day(date_index:int):
 	for f in Filter.by_date(date_index):
 		date_list.erase(f)
 	update_array_label()
-	print("ERASE ", Base.BIG_ARRAY.size())
+	print("ERASE ", NewUtility.BIG_ARRAY.size())
 
 
 
@@ -208,14 +208,14 @@ func _on_open_button_pressed():
 func _on_only_words_toggled(button_pressed):
 	if button_pressed:
 		var temp = []
-		for b in Base.BIG_ARRAY:
+		for b in NewUtility.BIG_ARRAY:
 			if not b["is_sentence"]:
 				temp.append(b)
 		other_list = temp
 		update_array_label()
 	else:
 		print("OUT")
-		other_list = Base.BIG_ARRAY
+		other_list = NewUtility.BIG_ARRAY
 		update_array_label()
 	edited.emit()
 
@@ -224,13 +224,13 @@ func _on_only_words_toggled(button_pressed):
 func _on_only_sentences_toggled(button_pressed):
 	if button_pressed:
 		var temp = []
-		for b in Base.BIG_ARRAY:
+		for b in NewUtility.BIG_ARRAY:
 			if b["is_sentence"]:
 				temp.append(b)
 		other_list = temp
 		update_array_label()
 	else:
-		other_list = Base.BIG_ARRAY
+		other_list = NewUtility.BIG_ARRAY
 		update_array_label()
 	edited.emit()
 
@@ -258,7 +258,7 @@ func _on_other_button_pressed():
 func _on_only_nouns_toggled(button_pressed):
 	if button_pressed:
 		var temp = []
-		for b in Base.BIG_ARRAY:
+		for b in NewUtility.BIG_ARRAY:
 			if not b.has("part_of_speech"):
 				continue
 			if b["part_of_speech"] == "noun":
@@ -266,7 +266,7 @@ func _on_only_nouns_toggled(button_pressed):
 		other_list = temp
 		update_array_label()
 	else:
-		other_list = Base.BIG_ARRAY
+		other_list = NewUtility.BIG_ARRAY
 		update_array_label()
 	edited.emit()
 
@@ -274,7 +274,7 @@ func _on_only_nouns_toggled(button_pressed):
 func _on_only_adjectives_toggled(button_pressed):
 	if button_pressed:
 		var temp = []
-		for b in Base.BIG_ARRAY:
+		for b in NewUtility.BIG_ARRAY:
 			if not b.has("part_of_speech"):
 				continue
 			if b["part_of_speech"] == "adjective":
@@ -282,7 +282,7 @@ func _on_only_adjectives_toggled(button_pressed):
 		other_list = temp
 		update_array_label()
 	else:
-		other_list = Base.BIG_ARRAY
+		other_list = NewUtility.BIG_ARRAY
 		update_array_label()
 	edited.emit()
 
@@ -290,7 +290,7 @@ func _on_only_adjectives_toggled(button_pressed):
 func _on_only_verbs_toggled(button_pressed):
 	if button_pressed:
 		var temp = []
-		for b in Base.BIG_ARRAY:
+		for b in NewUtility.BIG_ARRAY:
 			if not b.has("part_of_speech"):
 				continue
 			if b["part_of_speech"] == "verb":
@@ -298,7 +298,7 @@ func _on_only_verbs_toggled(button_pressed):
 		other_list = temp
 		update_array_label()
 	else:
-		other_list = Base.BIG_ARRAY
+		other_list = NewUtility.BIG_ARRAY
 		update_array_label()
 	edited.emit()
 
@@ -306,7 +306,7 @@ func _on_only_verbs_toggled(button_pressed):
 func _on_only_long_words_toggled(button_pressed):
 	if button_pressed:
 		var temp = []
-		for b in Base.BIG_ARRAY:
+		for b in NewUtility.BIG_ARRAY:
 			if b["is_sentence"]:
 				continue
 			if " " in b["original"]:
@@ -319,13 +319,13 @@ func _on_only_long_words_toggled(button_pressed):
 		other_list = temp
 		update_array_label()
 	else:
-		other_list = Base.BIG_ARRAY
+		other_list = NewUtility.BIG_ARRAY
 		update_array_label()
 	edited.emit()
 
 func set_long_word_length():
 	var max_tab = []
-	for b in Base.BIG_ARRAY:
+	for b in NewUtility.BIG_ARRAY:
 		if " " in b["original"]:
 			if b["original"].left(3).to_lower() in ["die", "der", "das"] and not b["is_sentence"]:
 				max_tab.append(b["original"].length()-4)

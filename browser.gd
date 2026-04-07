@@ -37,7 +37,7 @@ func _on_line_edit_text_changed(new_text):
 		new_record.visible = true
 		%RecordLists.add_child(new_record)
 	"""
-	for b in Base.BIG_ARRAY:
+	for b in NewUtility.BIG_ARRAY:
 		if new_text.to_lower() in b["original"].to_lower() or new_text.to_lower() in b["translation"].to_lower():
 			var new_record = %SampleRecord.duplicate()
 			var o_text = b["original"]
@@ -46,7 +46,7 @@ func _on_line_edit_text_changed(new_text):
 				while o_text[counter] != " ":
 					counter += 1
 				o_text[counter] = "\n"
-				o_text = "[right]" + o_text
+				#o_text = "[right]" + o_text + "[/right]"
 			if b["original"].to_lower().contains(new_text.to_lower()):
 				var index = b["original"].to_lower().find(new_text.to_lower())
 				o_text = o_text.insert(index + new_text.length(),"[/bgcolor]")
@@ -78,7 +78,7 @@ func edit_button():
 	
 	
 func fill_editor_window(word : Dictionary):
-	print(word)
+	#print(word)
 	current_record = word
 	%ScrollCategoriesBox.scroll_vertical = 0
 	for child in %CategoriesContainer.get_children():
@@ -134,7 +134,7 @@ func fill_editor_window(word : Dictionary):
 
 
 func _on_button_pressed():
-	Base.save()
+	NewUtility.save_array()
 	$LineEdit.text = ""
 	for child in %RecordLists.get_children():
 		if child != %SampleRecord:
@@ -215,7 +215,7 @@ func save_record():
 	if %PartOfSpeech.selected != -1:
 		current_record["part_of_speech"] = ["noun", "adjective", "verb", "other"][%PartOfSpeech.selected]
 	else:
-		print("NS",current_record)
+		#print("NS",current_record)
 		return
 	if %PluralButton.button_pressed:
 		current_record["is_plural"] = true
@@ -227,4 +227,4 @@ func save_record():
 		current_record["is_proper"] = false
 	if %GenderButton.selected != -1:
 		current_record["gender"] = ["female", "male", "neutral"][%GenderButton.selected]
-	print("S",current_record)
+	#print("S",current_record)
